@@ -13,6 +13,7 @@ import {
   Dimensions,
   SafeAreaView,
   Platform,
+  Image,
 } from "react-native"
 import { Ionicons } from "@expo/vector-icons"
 import { trainingStyles } from "../data/trainingStylesData"
@@ -372,9 +373,12 @@ const WorkoutScreen = ({ navigation, route }) => {
         <View style={styles.exercisesList}>
           <Text style={styles.exercisesTitle}>Key Exercises:</Text>
           {item.exercises.slice(0, 3).map((exercise, index) => (
-            <Text key={index} style={styles.exerciseItem}>
-              • {exercise.name}
-            </Text>
+            <View key={index} style={styles.exerciseItemContainer}>
+              {exercise.gifUrl && (
+                <Image source={exercise.gifUrl} style={styles.exerciseGifPreview} resizeMode="cover" />
+              )}
+              <Text style={styles.exerciseItem}>• {exercise.name}</Text>
+            </View>
           ))}
           {item.exercises.length > 3 && <Text style={styles.moreExercises}>+{item.exercises.length - 3} more</Text>}
         </View>
@@ -786,6 +790,18 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     borderWidth: 1,
     borderColor: "rgba(0, 153, 255, 0.3)",
+  },
+  exerciseGifPreview: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    marginRight: 8,
+    backgroundColor: "rgba(0, 0, 0, 0.2)",
+  },
+  exerciseItemContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 4,
   },
 })
 

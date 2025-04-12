@@ -54,6 +54,15 @@ import SettingsScreen from "./screens/SettingsScreen"
 // Add the import for TrainingPlansScreen
 import TrainingPlansScreen from "./screens/TrainingPlansScreen"
 
+// Import the ExerciseDetailScreen:
+import ExerciseDetailScreen from "./screens/ExerciseDetailScreen"
+
+// Add the import for LooksmaxxingScreen at the top of the file with the other screen imports:
+import LooksmaxxingScreen from "./screens/LooksmaxxingScreen"
+
+// Add the import for SkincareRoutineScreen at the top of the file with the other screen imports:
+import SkincareRoutineScreen from "./screens/SkincareRoutineScreen"
+
 // Get screen dimensions for responsive design
 const { width, height } = Dimensions.get("window")
 const isIphoneX = Platform.OS === "ios" && (height >= 812 || width >= 812)
@@ -200,6 +209,9 @@ const MainNavigator = () => {
           <Stack.Screen name="SessionDetail" component={SessionDetailScreen} />
           <Stack.Screen name="Settings" component={SettingsScreen} />
           <Stack.Screen name="TrainingPlans" component={TrainingPlansScreen} />
+          <Stack.Screen name="ExerciseDetail" component={ExerciseDetailScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Looksmaxxing" component={LooksmaxxingScreen} />
+          <Stack.Screen name="SkincareRoutine" component={SkincareRoutineScreen} />
         </>
       ) : (
         // Unauthenticated routes

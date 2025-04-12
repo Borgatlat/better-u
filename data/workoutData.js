@@ -13,8 +13,20 @@ export const workoutCategories = [
         duration: "45 min",
         difficulty: "Intermediate",
         exercises: [
-          { name: "Bench Press", sets: 4, reps: "8-10", rest: "90 sec" },
-          { name: "Incline Dumbbell Press", sets: 3, reps: "10-12", rest: "60 sec" },
+          {
+            name: "Bench Press",
+            sets: 4,
+            reps: "8-10",
+            rest: "90 sec",
+            gifUrl: require("../assets/exercises/bench-press.gif"),
+          },
+          {
+            name: "Incline Dumbbell Press",
+            sets: 3,
+            reps: "10-12",
+            rest: "60 sec",
+            gifUrl: require("../assets/exercises/dumbbell-incline-press.gif"),
+          },
           { name: "Cable Flyes", sets: 3, reps: "12-15", rest: "60 sec" },
           { name: "Push-ups", sets: 3, reps: "To failure", rest: "60 sec" },
         ],
@@ -25,7 +37,13 @@ export const workoutCategories = [
         duration: "50 min",
         difficulty: "Advanced",
         exercises: [
-          { name: "Squats", sets: 4, reps: "8-10", rest: "120 sec" },
+          {
+            name: "Squats",
+            sets: 4,
+            reps: "8-10",
+            rest: "120 sec",
+            gifUrl: require("../assets/exercises/back-squat.gif"),
+          },
           { name: "Romanian Deadlifts", sets: 3, reps: "10-12", rest: "90 sec" },
           { name: "Leg Press", sets: 3, reps: "12-15", rest: "90 sec" },
           { name: "Walking Lunges", sets: 3, reps: "16 steps", rest: "60 sec" },
@@ -40,7 +58,13 @@ export const workoutCategories = [
         difficulty: "Intermediate",
         exercises: [
           { name: "Military Press", sets: 5, reps: "5", rest: "90 sec" },
-          { name: "Dumbbell Bench Press", sets: 3, reps: "5", rest: "90 sec" },
+          {
+            name: "Dumbbell Bench Press",
+            sets: 3,
+            reps: "5",
+            rest: "90 sec",
+            gifUrl: require("../assets/exercises/dumbbell-incline-press.gif"),
+          },
           { name: "Tricep Dip", sets: 3, reps: "8", rest: "90 sec" },
           { name: "Lateral Raise", sets: 3, reps: "8", rest: "90 sec" },
           { name: "Lying Dumbbell Extension", sets: 3, reps: "8", rest: "90 sec" },
@@ -54,7 +78,13 @@ export const workoutCategories = [
         difficulty: "Intermediate",
         exercises: [
           { name: "Pull Up", sets: 5, reps: "5", rest: "90 sec" },
-          { name: "Bent-Over Barbell Row", sets: 3, reps: "5", rest: "90 sec" },
+          {
+            name: "Bent-Over Barbell Row",
+            sets: 3,
+            reps: "5",
+            rest: "90 sec",
+            gifUrl: require("../assets/exercises/barbell-clean.gif"),
+          },
           { name: "T-Bar Row", sets: 3, reps: "8", rest: "90 sec" },
           { name: "Dumbbell Shrug", sets: 3, reps: "8", rest: "90 sec" },
           { name: "Preacher Curl", sets: 3, reps: "8", rest: "90 sec" },
@@ -67,7 +97,13 @@ export const workoutCategories = [
         duration: "60 min",
         difficulty: "Intermediate",
         exercises: [
-          { name: "Barbell Squat", sets: 5, reps: "5", rest: "90 sec" },
+          {
+            name: "Barbell Squat",
+            sets: 5,
+            reps: "5",
+            rest: "90 sec",
+            gifUrl: require("../assets/exercises/back-squat.gif"),
+          },
           { name: "Deadlift", sets: 3, reps: "5", rest: "90 sec" },
           { name: "Leg Press", sets: 3, reps: "8", rest: "90 sec" },
           { name: "Lying Leg Curl", sets: 3, reps: "8", rest: "90 sec" },

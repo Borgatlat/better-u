@@ -21,6 +21,7 @@ import { useNavigation } from "@react-navigation/native"
 import { supabase } from "../lib/supabase"
 import GlassmorphicCard from "../components/GlassmorphicCard"
 import Button from "../components/Button"
+import ExerciseGifView from "../components/ExerciseGifView"
 
 const { width, height } = Dimensions.get("window")
 const isIphoneX = Platform.OS === "ios" && (height >= 812 || width >= 812)
@@ -61,6 +62,7 @@ const ActiveWorkoutScreen = ({ route }) => {
   const [restTimerAnimation] = useState(new Animated.Value(0))
   const [restTimeRemaining, setRestTimeRemaining] = useState(90) // Set default rest time to 90 seconds
   const [showRestTimer, setShowRestTimer] = useState(false) // Add this line
+  const [selectedExercise, setSelectedExercise] = useState(null)
 
   // Refs
   const timerInterval = useRef(null)
@@ -584,6 +586,10 @@ const ActiveWorkoutScreen = ({ route }) => {
     const targetMuscles = exercise.targetMuscles ? exercise.targetMuscles.join(", ") : ""
     const isCurrentExercise = index === currentExerciseIndex
 
+    const handleExercisePress = (exercise) => {
+      navigation.navigate("ExerciseDetail", { exercise })
+    }
+
     return (
       <GlassmorphicCard
         key={`exercise-${index}`}
@@ -603,9 +609,11 @@ const ActiveWorkoutScreen = ({ route }) => {
           {targetMuscles ? <Text style={styles.targetMuscles}>{targetMuscles}</Text> : null}
         </View>
 
-        <View style={styles.setsContainer}>
-          {Array.from({ length: exercise.sets }).map((_, setIndex) => renderSet(exercise, index, setIndex))}
-        </View>
+        <TouchableOpacity onPress={() => handleExercisePress(exercise)}>
+          <View style={styles.setsContainer}>
+            {Array.from({ length: exercise.sets }).map((_, setIndex) => renderSet(exercise, index, setIndex))}
+          </View>
+        </TouchableOpacity>
       </GlassmorphicCard>
     )
   }
@@ -734,6 +742,8 @@ const ActiveWorkoutScreen = ({ route }) => {
         {/* Workout content */}
         <ScrollView ref={scrollViewRef} style={styles.scrollView} contentContainerStyle={styles.scrollContent}>
           {workoutExercises.map((exercise, index) => renderExercise(exercise, index))}
+
+          {selectedExercise && <ExerciseGifView exercise={selectedExercise} />}
 
           {/* Notes section */}
           <GlassmorphicCard style={styles.notesCard}>

@@ -1,59 +1,64 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
+"use client"
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Platform } from "react-native"
 import { Ionicons } from "@expo/vector-icons"
-import { useNavigation } from "@react-navigation/native"
 import GlassmorphicCard from "./GlassmorphicCard"
 
-const LooksmaxxingCard = () => {
-  const navigation = useNavigation()
+// Get screen dimensions for responsive design
+const { width, height } = Dimensions.get("window")
+const isIphoneX = Platform.OS === "ios" && (height >= 812 || width >= 812)
 
+const LooksmaxxingCard = ({ navigation }) => {
   return (
-    <GlassmorphicCard style={styles.card}>
-      <TouchableOpacity style={styles.cardContent} onPress={() => navigation.navigate("Looksmaxxing")}>
-        <View style={styles.iconContainer}>
-          <Ionicons name="person" size={24} color="cyan" />
-        </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>Looksmaxxing</Text>
-          <Text style={styles.description}>
-            Enhance your appearance with AI-powered facial analysis, skincare, and grooming tips
-          </Text>
-        </View>
-        <Ionicons name="chevron-forward" size={24} color="#aaa" />
-      </TouchableOpacity>
+    <GlassmorphicCard style={styles.looksmaxxingCard}>
+      <View style={styles.looksmaxxingContent}>
+        <Text style={styles.looksmaxxingTitle}>Looksmaxxing</Text>
+        <Text style={styles.looksmaxxingDescription}>
+          Enhance your appearance with AI-powered analysis and personalized routines.
+        </Text>
+        <TouchableOpacity style={styles.looksmaxxingButton} onPress={() => navigation.navigate("Looksmaxxing")}>
+          <Text style={styles.looksmaxxingButtonText}>Explore</Text>
+          <Ionicons name="arrow-forward" size={20} color="black" />
+        </TouchableOpacity>
+      </View>
     </GlassmorphicCard>
   )
 }
 
 const styles = StyleSheet.create({
-  card: {
+  looksmaxxingCard: {
+    padding: 20,
+    marginBottom: 20,
+    backgroundColor: "rgba(156, 124, 244, 0.2)",
+    borderWidth: 1,
+    borderColor: "rgba(156, 124, 244, 0.3)",
+  },
+  looksmaxxingContent: {
+    alignItems: "flex-start",
+  },
+  looksmaxxingTitle: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  looksmaxxingDescription: {
+    color: "#aaa",
+    fontSize: 14,
     marginBottom: 15,
   },
-  cardContent: {
+  looksmaxxingButton: {
+    backgroundColor: "cyan",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
     flexDirection: "row",
     alignItems: "center",
-    padding: 15,
   },
-  iconContainer: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: "rgba(0, 255, 255, 0.2)",
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: 15,
-  },
-  textContainer: {
-    flex: 1,
-  },
-  title: {
-    color: "white",
-    fontSize: 18,
+  looksmaxxingButtonText: {
+    color: "black",
     fontWeight: "bold",
-    marginBottom: 5,
-  },
-  description: {
-    color: "#aaa",
-    fontSize: 12,
+    fontSize: 16,
+    marginRight: 5,
   },
 })
 

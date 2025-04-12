@@ -91,6 +91,8 @@ const MainTabs = () => {
             iconName = focused ? "trophy" : "trophy-outline"
           } else if (route.name === "ProfileTab") {
             iconName = focused ? "person" : "person-outline"
+          } else if (route.name === "LooksmaxxingTab") {
+            iconName = focused ? "face" : "face-outline"
           }
 
           // Always return a valid component
@@ -125,6 +127,7 @@ const MainTabs = () => {
       <Tab.Screen name="TrainerTab" component={TrainerScreen} options={{ tabBarLabel: "AI Trainer" }} />
       <Tab.Screen name="PRTab" component={PRScreen} options={{ tabBarLabel: "PRs" }} />
       <Tab.Screen name="ProfileTab" component={ProfileScreen} options={{ tabBarLabel: "Profile" }} />
+      <Tab.Screen name="LooksmaxxingTab" component={LooksmaxxingScreen} options={{ tabBarLabel: "Looksmaxxing" }} />
     </Tab.Navigator>
   )
 }

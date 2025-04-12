@@ -100,7 +100,7 @@ const GoalGenderScreen = ({ profileData, updateProfileData, onNext }) => {
         <TouchableOpacity style={styles.button} onPress={handleNext}>
           <Text style={styles.buttonText}>Next</Text>
           <Ionicons name="arrow-forward" size={20} color="black" style={styles.buttonIcon} />
-        </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
   )

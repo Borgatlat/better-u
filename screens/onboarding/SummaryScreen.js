@@ -75,71 +75,14 @@ const SummaryScreen = ({ profileData, onComplete }) => {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    backgroundColor: "black",
-  },
-  content: {
-    flex: 1,
-    padding: 20,
-    alignItems: "center",
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: "bold",
-    color: "white",
-    marginBottom: 10,
-    textAlign: "center",
-  },
-  subtitle: {
-    fontSize: 16,
-    color: "#aaa",
-    marginBottom: 30,
-    textAlign: "center",
-  },
-  summaryContainer: {
-    width: "100%",
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
-    borderRadius: 15,
-    padding: 20,
-    marginBottom: 30,
-    borderWidth: 1,
-    borderColor: "rgba(255, 255, 255, 0.1)",
-  },
-  summaryItem: {
-    marginBottom: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: "rgba(255, 255, 255, 0.1)",
-    paddingBottom: 15,
-  },
-  summaryLabel: {
-    fontSize: 14,
-    color: "#aaa",
-    marginBottom: 5,
-  },
-  summaryValue: {
-    fontSize: 18,
-    color: "white",
-    fontWeight: "500",
-  },
-  button: {
-    backgroundColor: "cyan",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 15,
-    borderRadius: 10,
-    width: "100%",
-  },
-  buttonText: {
-    color: "black",
-    fontSize: 16,
-    fontWeight: "bold",
-    marginRight: 5,
-  },
-  buttonIcon: {
-    marginLeft: 5,
-  },
-})
+container: {
+  flexGrow: 1,
+  backgroundColor: "black",
+},
+content: {
+  flex: 1,
+  padding: 2,
+},
 
-export default SummaryScreen
+
+\

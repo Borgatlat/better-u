@@ -194,7 +194,7 @@ const WorkoutAnalysisScreen = ({ navigation, route }) => {
       ],
       improvements: [
         "Keep the bar closer to your body during the pull",
-        "Work on faster elbow turnover in the catch",
+        "Focus on faster elbow turnover in the catch",
         "Maintain a more vertical torso in the catch position",
       ],
       tips: "Practice hang cleans to improve your second pull and turnover speed. Focus on position work with lighter weights.",

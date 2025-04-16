@@ -1,10 +1,11 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { WaitlistForm } from "./waitlist-form"
 import { useInView } from "react-intersection-observer"
 import { cn } from "@/lib/utils"
+import { getWaitlistCount } from "../actions/waitlist"
 
 export function Hero3D() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -15,30 +16,12 @@ export function Hero3D() {
     triggerOnce: false,
     threshold: 0.1,
   })
+  // Add state for waitlist count
+  const [waitlistCount, setWaitlistCount] = useState(0)
 
-  // Parallax effect for the hero content
-  const y = useTransform(scrollY, [0, 500], [0, 150])
-  const opacity = useTransform(scrollY, [0, 300], [1, 0])
-
-  // Handle mouse movement for 3D effect
+  // Fetch the actual waitlist count
   useEffect(() => {
-    setIsMounted(true)
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return
-
-      const rect = containerRef.current.getBoundingClientRect()
-      const x = e.clientX - rect.left - rect.width / 2
-      const y = e.clientY - rect.top - rect.height / 2
-
-      setMousePosition({ x, y })
-    }
-
-    window.addEventListener("mousemove", handleMouseMove)
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-    }
+    getWaitlistCount().then((count) => setWaitlistCount(count))
   }, [])
 
   // Calculate 3D rotation based on mouse position
@@ -54,6 +37,9 @@ export function Hero3D() {
     duration: Math.random() * 20 + 10,
     delay: Math.random() * 5,
   }))
+
+  const y = useTransform(scrollY, [0, 500], [0, -100])
+  const opacity = useTransform(scrollY, [0, 500], [1, 0])
 
   return (
     <div
@@ -176,7 +162,7 @@ export function Hero3D() {
                 ))}
               </div>
               <p className="text-gray-300">
-                <span className="font-semibold text-white">1,000+</span> people on the waitlist
+                <span className="font-semibold text-white">{waitlistCount}</span> people on the waitlist
               </p>
             </div>
           </motion.div>

@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import { Toaster } from "@/components/ui/toaster"
 import Script from "next/script"
 import { Hero3D } from "./components/hero-3d"
@@ -8,10 +8,17 @@ import { FeatureShowcase } from "./components/feature-showcase"
 import { motion, useScroll } from "framer-motion"
 import { AppleStyleDivider } from "./components/apple-style-divider"
 import { ComingSoonSection } from "./components/coming-soon-section"
+import { getWaitlistCount } from "./actions/waitlist"
 
 export default function Home() {
   const sectionsRef = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const { scrollY } = useScroll()
+
+  const [waitlistCount, setWaitlistCount] = useState(0)
+
+  useEffect(() => {
+    getWaitlistCount().then((count) => setWaitlistCount(count))
+  }, [])
 
   // Structured data for SEO
   const structuredData = {
@@ -184,7 +191,7 @@ export default function Home() {
                   <div className="bg-[#00f2fe]/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6 text-[#00f2fe]">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
-                        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 2 12C2 6.47715 6.47715 2 2 12C2 17.5228 6.47715 22 12 22Z"
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"

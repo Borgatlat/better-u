@@ -78,6 +78,7 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
   }
 }
 
+// Make sure we're returning the actual count without modification
 export async function getWaitlistCount() {
   try {
     const count = await redis.scard("waitlist_emails")

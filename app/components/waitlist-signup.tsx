@@ -25,11 +25,11 @@ export function WaitlistSignup() {
   const [waitlistCount, setWaitlistCount] = useState(0)
 
   useEffect(() => {
-    getWaitlistCount().then((count) => setWaitlistCount(count + 100))
+    getWaitlistCount().then((count) => setWaitlistCount(count))
   }, [])
 
   const handleSuccess = (count: number) => {
-    setWaitlistCount(count + 100)
+    setWaitlistCount(count)
   }
 
   return (
@@ -163,7 +163,7 @@ export function WaitlistSignup() {
             <Avatar initials="AS" index={1} />
             <Avatar initials="MK" index={2} />
           </div>
-          <p className="text-white font-semibold">{waitlistCount}+ people on the waitlist</p>
+          <p className="text-white font-semibold">{waitlistCount} people on the waitlist</p>
         </div>
       </div>
     </div>

@@ -1,12 +1,13 @@
 "use client"
 
 import { useEffect } from "react"
-import { usePathname } from "next/navigation"
+import { usePathname, useSearchParams } from "next/navigation"
 import { getCookie } from "../lib/cookies"
 import { recordPageView } from "../actions/cookie-analytics"
 
 export function AnalyticsTracker() {
   const pathname = usePathname()
+  const searchParams = useSearchParams() // Add this line to properly use the hook
 
   useEffect(() => {
     // Check if user has consented to analytics

@@ -5,7 +5,6 @@ import { Breadcrumbs } from "../components/breadcrumbs"
 import { AnimatedText } from "../components/animated-text"
 import { AppleStyleDivider } from "../components/apple-style-divider"
 import { WaitlistForm } from "../components/waitlist-form"
-import { Award, Heart, Zap, Shield } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "About Us - BetterU AI | Our Mission, Team & Vision",
@@ -115,33 +114,6 @@ export default function AboutUsPage() {
     },
   ]
 
-  const values = [
-    {
-      title: "Brotherhood",
-      description:
-        "We foster a community built on mutual respect, support, and genuine care for one another's wellbeing and growth.",
-      icon: <Heart className="w-6 h-6 text-[#00f2fe]" aria-hidden="true" />,
-    },
-    {
-      title: "Open to Growth",
-      description:
-        "We embrace continuous learning, adaptation, and evolution in our pursuit of excellence and service to others.",
-      icon: <Zap className="w-6 h-6 text-[#00f2fe]" aria-hidden="true" />,
-    },
-    {
-      title: "Loving",
-      description:
-        "We approach our work and relationships with compassion, empathy, and a genuine desire to help others flourish.",
-      icon: <Award className="w-6 h-6 text-[#00f2fe]" aria-hidden="true" />,
-    },
-    {
-      title: "Committed to Justice",
-      description:
-        "We strive to create technology that promotes fairness, accessibility, and equal opportunity for all people.",
-      icon: <Shield className="w-6 h-6 text-[#00f2fe]" aria-hidden="true" />,
-    },
-  ]
-
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
@@ -201,13 +173,13 @@ export default function AboutUsPage() {
           </div>
 
           <div className="bg-black/30 border border-gray-800 rounded-xl p-8 backdrop-blur-sm">
-            <p className="text-lg text-gray-300 mb-6">
+            <p className="text-gray-300 mb-6">
               At BetterU AI, we believe that self-improvement should be personalized, accessible, and guided by
               principles of care and justice. Our mission is to harness the power of artificial intelligence to help
               people become the best versions of themselves across all dimensions of life.
             </p>
-            <p className="text-lg text-gray-300 mb-6">
-              Founded on Jesuit-inspired principles, we're creating technology that understands the unique needs, goals,
+            <p className="text-gray-300 mb-6">
+              Founded on human-centered principles, we're creating technology that understands the unique needs, goals,
               and challenges of each individual user, providing tailored guidance that evolves as you do. Whether it's
               optimizing your fitness routine, enhancing your mental wellness, improving your appearance, or making
               smarter purchasing decisions, our AI is designed to support your journey every step of the way.
@@ -248,31 +220,6 @@ export default function AboutUsPage() {
         </section>
 
         <AppleStyleDivider />
-
-        <section className="my-16" id="our-values">
-          <div className="text-center mb-12">
-            <AnimatedText
-              text="Our Jesuit-Inspired Values"
-              className="text-3xl font-bold tracking-tighter sm:text-4xl mb-4"
-              gradient={true}
-            />
-            <p className="text-gray-400 md:text-lg max-w-3xl mx-auto">
-              The principles that guide our mission and vision
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {values.map((value, index) => (
-              <div key={index} className="bg-black/30 border border-gray-800 rounded-xl p-6 backdrop-blur-sm">
-                <div className="bg-[#00f2fe]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  {value.icon}
-                </div>
-                <h3 className="font-bold text-xl mb-2">{value.title}</h3>
-                <p className="text-gray-300">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
 
         <section className="my-16 text-center" id="join-us">
           <div className="bg-gradient-to-br from-[#003333] to-black border border-[#00f2fe]/20 rounded-xl p-8 backdrop-blur-sm">

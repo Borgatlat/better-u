@@ -9,6 +9,7 @@ import { FeedbackButton } from "./components/feedback-button"
 import { RichResults } from "./components/seo/rich-results"
 import { CookieConsent } from "./components/cookie-consent"
 import { AnalyticsTracker } from "./components/analytics-tracker"
+import { Suspense } from "react"
 
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
@@ -111,18 +112,21 @@ export default function RootLayout({
       <body className={inter.className}>
         <RichResults type="Organization" data={organizationData} />
         <div className="min-h-screen bg-black text-white flex flex-col">
-          <PremiumNavigation />
+          <Suspense fallback={<div className="h-16 bg-black"></div>}>
+            <PremiumNavigation />
+          </Suspense>
           <main className="flex-1 pt-safe-top">{children}</main>
           <PremiumFooter />
           <FeedbackButton />
         </div>
         <Toaster />
-        <CookieConsent />
-        <AnalyticsTracker />
+        <Suspense fallback={null}>
+          <CookieConsent />
+        </Suspense>
+        <Suspense fallback={null}>
+          <AnalyticsTracker />
+        </Suspense>
       </body>
     </html>
   )
 }
-
-
-import './globals.css'

@@ -24,6 +24,39 @@ export function Hero3D() {
     getWaitlistCount().then((count) => setWaitlistCount(count))
   }, [])
 
+  // Handle mouse movement for 3D effect
+  useEffect(() => {
+    setIsMounted(true)
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return
+
+      const rect = containerRef.current.getBoundingClientRect()
+      const x = e.clientX - rect.left - rect.width / 2
+      const y = e.clientY - rect.top - rect.height / 2
+
+      setMousePosition({ x, y })
+    }
+
+    window.addEventListener("mousemove", handleMouseMove)
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove)
+    }
+  }, [])
+
+  // Function to scroll to the next section
+  const scrollToNextSection = () => {
+    // Get the height of the viewport
+    const viewportHeight = window.innerHeight
+
+    // Scroll down one viewport height with smooth behavior
+    window.scrollTo({
+      top: viewportHeight,
+      behavior: "smooth",
+    })
+  }
+
   // Calculate 3D rotation based on mouse position
   const rotateX = isMounted ? mousePosition.y * -0.01 : 0
   const rotateY = isMounted ? mousePosition.x * 0.01 : 0
@@ -119,7 +152,7 @@ export function Hero3D() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto"
           >
-            Your personal AI companion for complete self-improvement, powered by Jesuit-inspired values.
+            Your personal AI companion for complete self-improvement, powered by core human values.
           </motion.p>
 
           <motion.div
@@ -172,10 +205,13 @@ export function Hero3D() {
       {/* Decorative elements */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
 
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+      {/* Scroll down button */}
+      <motion.button
+        onClick={scrollToNextSection}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer p-3 rounded-full hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-[#00f2fe]/50 focus:ring-offset-2 focus:ring-offset-black"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+        aria-label="Scroll down to next section"
       >
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -186,7 +222,7 @@ export function Hero3D() {
             strokeLinejoin="round"
           />
         </svg>
-      </motion.div>
+      </motion.button>
     </div>
   )
 }

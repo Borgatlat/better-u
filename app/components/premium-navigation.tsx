@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useSearchParams } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { NAVIGATION } from "@/lib/constants"
 import { Button } from "@/components/ui/button"
@@ -17,6 +17,7 @@ export function PremiumNavigation() {
   const [hoveredItem, setHoveredItem] = React.useState<string | null>(null)
   const [scrolled, setScrolled] = React.useState(false)
   const pathname = usePathname()
+  const searchParams = useSearchParams() // Add this line to properly use the hook
 
   // Handle scroll effect
   React.useEffect(() => {

@@ -3,12 +3,13 @@
 import { useRef, useState, useEffect } from "react"
 import { Toaster } from "@/components/ui/toaster"
 import Script from "next/script"
-import { Hero3D } from "./components/hero-3d"
+import { HeroSection } from "./components/hero-section"
 import { FeatureShowcase } from "./components/feature-showcase"
 import { useScroll } from "framer-motion"
 import { AppleStyleDivider } from "./components/apple-style-divider"
 import { ComingSoonSection } from "./components/coming-soon-section"
 import { getWaitlistCount } from "./actions/waitlist"
+import { MultiRowCarousel } from "./components/carousel/multi-row-carousel"
 
 export default function Home() {
   const sectionsRef = useRef<{ [key: string]: HTMLDivElement | null }>({})
@@ -46,7 +47,7 @@ export default function Home() {
 
       <main className="bg-black text-white overflow-hidden">
         {/* Hero Section */}
-        <Hero3D />
+        <HeroSection />
 
         {/* Feature Showcase */}
         <FeatureShowcase />
@@ -54,11 +55,14 @@ export default function Home() {
         {/* Divider */}
         <AppleStyleDivider />
 
-        {/* Coming Soon Section (instead of testimonials) */}
-        <ComingSoonSection />
+        {/* Multi-Row Carousel */}
+        <MultiRowCarousel />
 
         {/* Divider */}
         <AppleStyleDivider />
+
+        {/* Coming Soon Section */}
+        <ComingSoonSection />
       </main>
       <Toaster />
     </>

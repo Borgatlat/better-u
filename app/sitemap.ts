@@ -32,8 +32,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Add navigation routes
-  const navRoutes = NAVIGATION.map((item) => ({
+  // Add navigation routes, excluding blog
+  const navRoutes = NAVIGATION.filter((item) => item.href !== "/blog").map((item) => ({
     url: `${baseUrl}${item.href}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,

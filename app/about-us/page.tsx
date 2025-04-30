@@ -175,11 +175,11 @@ export default function AboutUsPage() {
           <div className="bg-black/30 border border-gray-800 rounded-xl p-8 backdrop-blur-sm">
             <p className="text-gray-300 mb-6">
               At BetterU AI, we believe that self-improvement should be personalized, accessible, and guided by
-              principles of care and justice. Our mission is to harness the power of artificial intelligence to help
-              people become the best versions of themselves across all dimensions of life.
+              evidence-based approaches. Our mission is to harness the power of artificial intelligence to help people
+              become the best versions of themselves across all dimensions of life.
             </p>
             <p className="text-gray-300 mb-6">
-              Founded on human-centered principles, we're creating technology that understands the unique needs, goals,
+              Founded on user-centered principles, we're creating technology that understands the unique needs, goals,
               and challenges of each individual user, providing tailored guidance that evolves as you do. Whether it's
               optimizing your fitness routine, enhancing your mental wellness, improving your appearance, or making
               smarter purchasing decisions, our AI is designed to support your journey every step of the way.

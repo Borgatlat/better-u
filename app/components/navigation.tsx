@@ -36,19 +36,22 @@ export function Navigation() {
             className="hidden md:flex flex-1 items-center justify-center space-x-6 text-sm font-medium"
             aria-label="Main Navigation"
           >
-            {NAVIGATION.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "transition-colors hover:text-[#00f2fe]",
-                  pathname === item.href ? "text-white" : "text-gray-400",
-                )}
-                aria-current={pathname === item.href ? "page" : undefined}
-              >
-                {item.title}
-              </Link>
-            ))}
+            {NAVIGATION.map(
+              (item) =>
+                item.href !== "/blog" && (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                      "transition-colors hover:text-[#00f2fe]",
+                      pathname === item.href ? "text-white" : "text-gray-400",
+                    )}
+                    aria-current={pathname === item.href ? "page" : undefined}
+                  >
+                    {item.title}
+                  </Link>
+                ),
+            )}
           </nav>
         </div>
 
@@ -75,20 +78,23 @@ export function Navigation() {
               <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
                 <nav aria-label="Mobile Navigation">
                   <div className="flex flex-col space-y-3">
-                    {NAVIGATION.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className={cn(
-                          "text-sm transition-colors hover:text-[#00f2fe]",
-                          pathname === item.href ? "text-white" : "text-gray-400",
-                        )}
-                        onClick={() => setOpen(false)}
-                        aria-current={pathname === item.href ? "page" : undefined}
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
+                    {NAVIGATION.map(
+                      (item) =>
+                        item.href !== "/blog" && (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className={cn(
+                              "text-sm transition-colors hover:text-[#00f2fe]",
+                              pathname === item.href ? "text-white" : "text-gray-400",
+                            )}
+                            onClick={() => setOpen(false)}
+                            aria-current={pathname === item.href ? "page" : undefined}
+                          >
+                            {item.title}
+                          </Link>
+                        ),
+                    )}
                     <Button
                       onClick={() => {
                         setOpen(false)

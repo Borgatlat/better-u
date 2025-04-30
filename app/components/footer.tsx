@@ -47,11 +47,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-sm text-gray-400 hover:text-[#00f2fe] transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
                 <Link
                   href="mailto:lucas@betteruai.com"
                   className="text-sm text-gray-400 hover:text-[#00f2fe] transition-colors"

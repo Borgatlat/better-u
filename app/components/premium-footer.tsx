@@ -117,15 +117,6 @@ export function PremiumFooter() {
               </li>
               <li>
                 <Link
-                  href="/blog"
-                  className="text-gray-400 hover:text-[#00f2fe] transition-colors flex items-center group"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#00f2fe]/50 mr-2 group-hover:scale-150 transition-transform" />
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="mailto:lucas@betteruai.com"
                   className="text-gray-400 hover:text-[#00f2fe] transition-colors flex items-center group"
                 >
@@ -180,7 +171,7 @@ export function PremiumFooter() {
               <Link href="/sitemap.xml" className="text-gray-500 hover:text-[#00f2fe] text-sm transition-colors">
                 Sitemap
               </Link>
-              <Link href="/accessibility" className="text-gray-500 hover:text-[#00f2fe] text-sm transition-colors">
+              <Link href="/about-us" className="text-gray-500 hover:text-[#00f2fe] text-sm transition-colors">
                 Accessibility
               </Link>
             </div>

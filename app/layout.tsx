@@ -107,6 +107,10 @@ export default function RootLayout({
       <head>
         {/* Add viewport-fit=cover meta tag for iOS devices */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+        <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       {/* Then add the component inside the body */}
       <body className={inter.className}>

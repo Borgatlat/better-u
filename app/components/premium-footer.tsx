@@ -168,9 +168,6 @@ export function PremiumFooter() {
               <Link href="/cookie-preferences" className="text-gray-500 hover:text-[#00f2fe] text-sm transition-colors">
                 Cookie Preferences
               </Link>
-              <Link href="/sitemap.xml" className="text-gray-500 hover:text-[#00f2fe] text-sm transition-colors">
-                Sitemap
-              </Link>
               <Link href="/about-us" className="text-gray-500 hover:text-[#00f2fe] text-sm transition-colors">
                 Accessibility
               </Link>

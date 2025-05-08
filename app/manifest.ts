@@ -2,35 +2,29 @@ import type { MetadataRoute } from "next"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "BetterU AI - Your Personal Self-Improvement AI",
-    short_name: "BetterU AI",
-    description:
-      "Transform your life with AI-powered personal development across facial enhancement, fitness, mental wellness, and smart shopping.",
+    name: "BetterU AI",
+    short_name: "BetterU",
+    description: "Your personal AI self-improvement assistant",
     start_url: "/",
     display: "standalone",
     background_color: "#000000",
-    theme_color: "#00f2fe",
+    theme_color: "#000000",
     icons: [
       {
-        src: "/favicon.ico",
-        sizes: "any",
-        type: "image/x-icon",
-      },
-      {
-        src: "/icon-192.png",
+        src: "/android-chrome-192x192.png",
         sizes: "192x192",
         type: "image/png",
       },
       {
-        src: "/icon-512.png",
+        src: "/android-chrome-512x512.png",
         sizes: "512x512",
         type: "image/png",
       },
       {
-        src: "/icon-maskable.png",
-        sizes: "512x512",
+        src: "/apple-touch-icon.png",
+        sizes: "180x180",
         type: "image/png",
-        purpose: "maskable",
+        purpose: "apple-touch-icon",
       },
     ],
   }

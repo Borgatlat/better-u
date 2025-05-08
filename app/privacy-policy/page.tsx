@@ -20,7 +20,18 @@ export default function PrivacyPolicy() {
           our mobile application, and tell you about your privacy rights and how the law protects you.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">2. Data We Collect</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">2. Our Data Commitment</h2>
+        <p className="font-bold text-white">
+          BetterU AI does not sell your data or utilize it for commercial purposes. Your personal information is never
+          sold, rented, or traded to third parties for marketing or advertising purposes.
+        </p>
+        <p>
+          We collect and process your data solely to provide and improve our services to you. Your data is used
+          exclusively to personalize your experience, enhance our platform's functionality, and deliver the
+          self-improvement tools you expect from BetterU AI.
+        </p>
+
+        <h2 className="text-xl font-semibold text-white mt-8">3. Data We Collect</h2>
         <p>
           We may collect, use, store and transfer different kinds of personal data about you which we have grouped
           together as follows:
@@ -48,7 +59,7 @@ export default function PrivacyPolicy() {
           </li>
         </ul>
 
-        <h2 className="text-xl font-semibold text-white mt-8">3. How We Use Your Data</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">4. How We Use Your Data</h2>
         <p>
           We will only use your personal data when the law allows us to. Most commonly, we will use your personal data
           for the following purposes:
@@ -66,7 +77,7 @@ export default function PrivacyPolicy() {
           <li>Where we need to comply with a legal obligation.</li>
         </ul>
 
-        <h2 className="text-xl font-semibold text-white mt-8">4. Data Storage and Security</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">5. Data Storage and Security</h2>
         <p>
           We implement appropriate technical and organizational measures to protect your personal data against
           accidental or unlawful destruction, loss, alteration, unauthorized disclosure, or access. These measures
@@ -84,7 +95,7 @@ export default function PrivacyPolicy() {
           including for the purposes of satisfying any legal, regulatory, tax, accounting, or reporting requirements.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">5. Data Sharing</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">6. Data Sharing</h2>
         <p>We may share your personal data with the following categories of recipients:</p>
         <ul className="list-disc pl-6 space-y-2 mt-4">
           <li>Service providers who provide IT, system administration, and platform services.</li>
@@ -101,7 +112,7 @@ export default function PrivacyPolicy() {
           instructions.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">6. Your Rights</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">7. Your Rights</h2>
         <p>Depending on your location, you may have certain rights regarding your personal data, including:</p>
         <ul className="list-disc pl-6 space-y-2 mt-4">
           <li>The right to access, update or delete the information we have on you.</li>
@@ -122,21 +133,21 @@ export default function PrivacyPolicy() {
           If you wish to exercise any of these rights, please contact us using the details provided below.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">7. Children's Privacy</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">8. Children's Privacy</h2>
         <p>
           Our service is not intended for use by children under the age of 13. We do not knowingly collect personal data
           from children under 13. If you are a parent or guardian and you are aware that your child has provided us with
           personal data, please contact us so that we can take necessary actions.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">8. Changes to This Privacy Policy</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">9. Changes to This Privacy Policy</h2>
         <p>
           We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new
           Privacy Policy on this page and updating the "Last Updated" date at the top of this Privacy Policy. You are
           advised to review this Privacy Policy periodically for any changes.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">9. Contact Us</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">10. Contact Us</h2>
         <p>If you have any questions about this privacy policy or our privacy practices, please contact us at:</p>
         <p className="mt-2">
           <a href="mailto:lucas@betteruai.com" className="text-[#00f2fe] hover:underline">

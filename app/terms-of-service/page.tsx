@@ -27,7 +27,16 @@ export default function TermsOfService() {
           on BetterU AI. All intellectual property rights are reserved.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">3. App Store Terms</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">3. Data Privacy Commitment</h2>
+        <p>
+          <strong>BetterU AI explicitly does not sell your data or utilize it for commercial purposes.</strong> Your
+          personal information and usage data are collected solely to provide and improve our services to you. We are
+          committed to maintaining the highest standards of data privacy and security. Your data belongs to you, and we
+          only process it to deliver personalized self-improvement recommendations and enhance your experience with our
+          platform.
+        </p>
+
+        <h2 className="text-xl font-semibold text-white mt-8">4. App Store Terms</h2>
         <p>When you download our app from the Apple App Store, you acknowledge and agree that:</p>
         <ul className="list-disc pl-6 space-y-2 mt-4">
           <li>These Terms of Service are concluded between you and BetterU AI only, and not with Apple, Inc.</li>
@@ -68,7 +77,7 @@ export default function TermsOfService() {
           </li>
         </ul>
 
-        <h2 className="text-xl font-semibold text-white mt-8">4. User-Generated Content</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">5. User-Generated Content</h2>
         <p>
           Our app may allow you to post, link, store, share and otherwise make available certain information, text,
           graphics, videos, or other material. You are responsible for the content you post. By posting content, you
@@ -76,7 +85,7 @@ export default function TermsOfService() {
           on and through our service.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">5. Subscriptions</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">6. Subscriptions</h2>
         <p>
           Some parts of our service are billed on a subscription basis. You will be billed in advance on a recurring and
           periodic basis, depending on the type of subscription plan you select. At the end of each period, your
@@ -89,7 +98,7 @@ export default function TermsOfService() {
           account current, complete, and accurate.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">6. Free Trial</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">7. Free Trial</h2>
         <p>
           BetterU AI may, at its sole discretion, offer a subscription with a free trial for a limited period of time.
           You may be required to enter your billing information to sign up for the free trial. If you do enter your
@@ -98,7 +107,7 @@ export default function TermsOfService() {
           be automatically charged the applicable subscription fee for the type of subscription you have selected.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">7. Data Privacy</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">8. Data Privacy</h2>
         <p>
           Our Privacy Policy describes how we handle the information you provide to us when you use our services. You
           understand that through your use of the services you consent to the collection and use of this information,
@@ -106,7 +115,7 @@ export default function TermsOfService() {
           processing, and use by BetterU AI and its affiliates.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">8. Limitation of Liability</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">9. Limitation of Liability</h2>
         <p>
           In no event shall BetterU AI, nor any of its officers, directors and employees, be held liable for anything
           arising out of or in any way connected with your use of this website or our mobile application. BetterU AI
@@ -114,21 +123,21 @@ export default function TermsOfService() {
           to your use of this website or our mobile application.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">9. Governing Law</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">10. Governing Law</h2>
         <p>
           These Terms shall be governed and construed in accordance with the laws of the United States, without regard
           to its conflict of law provisions. Our failure to enforce any right or provision of these Terms will not be
           considered a waiver of those rights.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">10. Changes to Terms</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">11. Changes to Terms</h2>
         <p>
           We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is
           material we will try to provide at least 30 days' notice prior to any new terms taking effect. What
           constitutes a material change will be determined at our sole discretion.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">11. Contact Us</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">12. Contact Us</h2>
         <p>If you have any questions about these Terms of Service, please contact us at:</p>
         <p className="mt-2">
           <a href="mailto:lucas@betteruai.com" className="text-[#00f2fe] hover:underline">

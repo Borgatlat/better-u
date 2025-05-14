@@ -24,8 +24,8 @@ export default function BulkEmailPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Send Email to All Waitlist Subscribers</h1>
+    <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
+      <h1 className="text-3xl font-bold mb-6 text-gray-900">Send Email to All Waitlist Subscribers</h1>
 
       <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-6">
         <h2 className="text-lg font-medium text-blue-800 mb-2">Email Formatting Tips</h2>
@@ -37,9 +37,9 @@ export default function BulkEmailPage() {
         </ul>
       </div>
 
-      <form action={handleSubmit} className="space-y-6 bg-white p-6 rounded-lg shadow">
+      <form action={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="subject" className="block text-sm font-medium text-gray-900 mb-1">
             Email Subject
           </label>
           <input
@@ -47,26 +47,26 @@ export default function BulkEmailPage() {
             id="subject"
             name="subject"
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-900 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             placeholder="e.g., Exciting Updates from BetterU AI"
           />
         </div>
 
         <div>
-          <label htmlFor="previewText" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="previewText" className="block text-sm font-medium text-gray-900 mb-1">
             Preview Text (optional)
           </label>
           <input
             type="text"
             id="previewText"
             name="previewText"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-900 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             placeholder="Brief preview text that appears in email clients"
           />
         </div>
 
         <div>
-          <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="content" className="block text-sm font-medium text-gray-900 mb-1">
             Email Content
           </label>
           <textarea
@@ -74,7 +74,7 @@ export default function BulkEmailPage() {
             name="content"
             required
             rows={10}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-900 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             placeholder="Write your email content here. Press Enter to create new paragraphs."
           ></textarea>
         </div>
@@ -82,7 +82,7 @@ export default function BulkEmailPage() {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md disabled:opacity-50"
+          className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md disabled:opacity-50 shadow-sm"
         >
           {isLoading ? "Sending..." : "Send to All Subscribers"}
         </button>
@@ -92,11 +92,11 @@ export default function BulkEmailPage() {
         <div
           className={`mt-6 p-4 rounded-md ${result.success ? "bg-green-50 border border-green-200" : "bg-red-50 border border-red-200"}`}
         >
-          <h2 className="text-lg font-medium mb-2">{result.success ? "Success!" : "Error"}</h2>
-          <p>{result.message}</p>
+          <h2 className="text-lg font-medium mb-2 text-gray-900">{result.success ? "Success!" : "Error"}</h2>
+          <p className="text-gray-800">{result.message}</p>
 
           {result.success && result.totalEmails > 0 && (
-            <div className="mt-2">
+            <div className="mt-2 text-gray-800">
               <p>Total emails: {result.totalEmails}</p>
               <p>Successfully sent: {result.successCount}</p>
               {result.failedEmails && result.failedEmails.length > 0 && (

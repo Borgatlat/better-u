@@ -76,6 +76,20 @@ export const metadata: Metadata = {
   },
   category: "technology",
   themeColor: "#000000",
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    other: [
+      {
+        rel: "apple-touch-icon",
+        url: "/apple-touch-icon.png",
+      },
+    ],
+  },
     generator: 'v0.dev'
 }
 
@@ -107,10 +121,6 @@ export default function RootLayout({
       <head>
         {/* Add viewport-fit=cover meta tag for iOS devices */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
-        <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       {/* Then add the component inside the body */}
       <body className={inter.className}>

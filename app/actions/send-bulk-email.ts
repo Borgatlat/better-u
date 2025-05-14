@@ -45,20 +45,26 @@ export async function sendBulkEmail(formData: FormData) {
           const unsubscribeToken = Buffer.from(email).toString("base64")
           const unsubscribeUrl = `${process.env.NEXT_PUBLIC_APP_URL || "https://betteruai.com"}/unsubscribe?token=${unsubscribeToken}`
 
+          // Generate the HTML email content
+          const htmlContent = EmailTemplate({
+            email,
+            subject,
+            previewText: previewText || subject,
+            content,
+            unsubscribeUrl,
+          })
+
           await resend.emails.send({
-            from: "BetterU AI <hello@betteruai.com>",
+            from: "Lucas @ BetterU AI <lucas@betteruai.com>",
             to: email,
             subject: subject,
-            react: EmailTemplate({
-              previewText: previewText || subject,
-              content: content,
-              unsubscribeUrl: unsubscribeUrl,
-            }),
+            html: htmlContent,
           })
 
           successCount++
           return { success: true, email }
         } catch (error) {
+          console.error(`Failed to send email to ${email}:`, error)
           failedEmails.push(email)
           return { success: false, email, error }
         }

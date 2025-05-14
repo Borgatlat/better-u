@@ -28,6 +28,16 @@ export default function BulkEmailDirectPage() {
       <div className="max-w-4xl mx-auto p-6">
         <h1 className="text-3xl font-bold mb-6">Send Email to All Waitlist Subscribers</h1>
 
+        <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-6">
+          <h2 className="text-lg font-medium text-blue-800 mb-2">Email Formatting Tips</h2>
+          <ul className="list-disc pl-5 text-blue-700">
+            <li>Use plain text in your email content</li>
+            <li>Press Enter to create new paragraphs - they will be properly formatted</li>
+            <li>Your email will be sent with proper formatting and styling</li>
+            <li>Test by sending to yourself first before sending to all subscribers</li>
+          </ul>
+        </div>
+
         <form action={handleSubmit} className="space-y-6 bg-white p-6 rounded-lg shadow">
           <div>
             <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
@@ -66,7 +76,7 @@ export default function BulkEmailDirectPage() {
               required
               rows={10}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
-              placeholder="Write your email content here. You can use line breaks for paragraphs."
+              placeholder="Write your email content here. Press Enter to create new paragraphs."
             ></textarea>
           </div>
 

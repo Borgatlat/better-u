@@ -1,16 +1,24 @@
 interface EmailTemplateProps {
-  email: string
+  email?: string
   subject?: string
   previewText?: string
   content?: string
+  unsubscribeUrl?: string
 }
 
 export default function EmailTemplate({
-  email,
-  subject = "Welcome to BetterU AI Waitlist",
+  email = "",
+  subject = "Welcome to BetterU AI",
   previewText = "Thank you for joining our waitlist!",
   content = "We've received your email address and will keep you updated on our progress.",
+  unsubscribeUrl = "https://betteruai.com/unsubscribe",
 }: EmailTemplateProps) {
+  // Format the content to handle line breaks
+  const formattedContent = content
+    .split("\n")
+    .map((paragraph, index) => `<p style="color: #374151; font-size: 16px; margin-bottom: 16px;">${paragraph}</p>`)
+    .join("")
+
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -27,17 +35,17 @@ export default function EmailTemplate({
           <h1 style="color: #111827; font-size: 24px; margin-bottom: 16px; text-align: center;">${subject}</h1>
           
           <div style="color: #374151; font-size: 16px; margin-bottom: 24px;">
-            ${content.replace(/\n/g, "<br>")}
+            ${formattedContent}
           </div>
           
           <div style="margin-top: 32px; padding-top: 32px; border-top: 1px solid #e5e7eb;">
             <p style="color: #374151; font-size: 14px; margin-bottom: 8px;">Best regards,</p>
-            <p style="color: #111827; font-size: 16px; font-weight: 500;">The BetterU AI Team</p>
+            <p style="color: #111827; font-size: 16px; font-weight: 500;">Lucas @ BetterU AI</p>
           </div>
           
           <div style="margin-top: 32px; font-size: 12px; color: #6b7280; text-align: center;">
             <p>You're receiving this email because you signed up for the BetterU AI waitlist.</p>
-            <p>If you'd like to unsubscribe, please <a href="https://betteruai.com/unsubscribe?email=${email}" style="color: #2563eb;">click here</a>.</p>
+            <p>If you'd like to unsubscribe, please <a href="${unsubscribeUrl}" style="color: #2563eb;">click here</a>.</p>
           </div>
         </div>
       </body>

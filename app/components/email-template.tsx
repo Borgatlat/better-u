@@ -40,7 +40,7 @@ export default function EmailTemplate({
           
           <div style="margin-top: 32px; padding-top: 32px; border-top: 1px solid #e5e7eb;">
             <p style="color: #374151; font-size: 14px; margin-bottom: 8px;">Best regards,</p>
-            <p style="color: #111827; font-size: 16px; font-weight: 500;">Lucas @ BetterU AI</p>
+            <p style="color: #111827; font-size: 16px; font-weight: 500;">The BetterU AI Team</p>
           </div>
           
           <div style="margin-top: 32px; font-size: 12px; color: #6b7280; text-align: center;">

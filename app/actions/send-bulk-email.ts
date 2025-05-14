@@ -29,6 +29,8 @@ export async function sendBulkEmail(formData: FormData) {
       }
     }
 
+    console.log(`Found ${emails.length} emails in waitlist`)
+
     const totalEmails = emails.length
     let successCount = 0
     const failedEmails: string[] = []
@@ -37,10 +39,13 @@ export async function sendBulkEmail(formData: FormData) {
     const batchSize = 10
     for (let i = 0; i < emails.length; i += batchSize) {
       const batch = emails.slice(i, i + batchSize)
+      console.log(`Processing batch ${i / batchSize + 1} of ${Math.ceil(emails.length / batchSize)}`)
 
       // Process each email in the batch
       const promises = batch.map(async (email) => {
         try {
+          console.log(`Sending email to: ${email}`)
+
           // Create a unique unsubscribe token for this email
           const unsubscribeToken = Buffer.from(email).toString("base64")
           const unsubscribeUrl = `${process.env.NEXT_PUBLIC_APP_URL || "https://betteruai.com"}/unsubscribe?token=${unsubscribeToken}`
@@ -54,15 +59,17 @@ export async function sendBulkEmail(formData: FormData) {
             unsubscribeUrl,
           })
 
-          await resend.emails.send({
-            from: "Lucas @ BetterU AI <lucas@betteruai.com>",
+          const result = await resend.emails.send({
+            from: "BetterU AI <hello@betteruai.com>",
             to: email,
             subject: subject,
             html: htmlContent,
           })
 
+          console.log(`Email sent to ${email}, result:`, result)
+
           successCount++
-          return { success: true, email }
+          return { success: true, email, result }
         } catch (error) {
           console.error(`Failed to send email to ${email}:`, error)
           failedEmails.push(email)
@@ -70,10 +77,12 @@ export async function sendBulkEmail(formData: FormData) {
         }
       })
 
-      await Promise.all(promises)
+      const results = await Promise.all(promises)
+      console.log(`Batch results:`, results)
 
       // Add a small delay between batches to avoid rate limits
       if (i + batchSize < emails.length) {
+        console.log(`Waiting 1 second before next batch...`)
         await new Promise((resolve) => setTimeout(resolve, 1000))
       }
     }

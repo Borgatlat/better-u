@@ -4,12 +4,14 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { PremiumNavigation } from "./components/premium-navigation"
 import { PremiumFooter } from "./components/premium-footer"
+import { CookieConsent } from "./components/cookie-consent"
+import { AnalyticsTracker } from "./components/analytics-tracker"
+import { TestFlightBanner } from "./components/testflight-banner"
+import { FloatingTestFlightButton } from "./components/floating-testflight-button"
+import { Suspense } from "react"
 import { Toaster } from "@/components/ui/toaster"
 import { FeedbackButton } from "./components/feedback-button"
 import { RichResults } from "./components/seo/rich-results"
-import { CookieConsent } from "./components/cookie-consent"
-import { AnalyticsTracker } from "./components/analytics-tracker"
-import { Suspense } from "react"
 
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
@@ -129,9 +131,15 @@ export default function RootLayout({
           <Suspense fallback={<div className="h-16 bg-black"></div>}>
             <PremiumNavigation />
           </Suspense>
+          <Suspense fallback={null}>
+            <TestFlightBanner />
+          </Suspense>
           <main className="flex-1 pt-safe-top">{children}</main>
           <PremiumFooter />
           <FeedbackButton />
+          <Suspense fallback={null}>
+            <FloatingTestFlightButton />
+          </Suspense>
         </div>
         <Toaster />
         <Suspense fallback={null}>

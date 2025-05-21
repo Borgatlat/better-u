@@ -2,13 +2,13 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { usePathname, useSearchParams } from "next/navigation"
+import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { NAVIGATION } from "@/lib/constants"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, X } from "lucide-react"
+import { Menu, X, AppleIcon } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Logo } from "./logo"
 
@@ -17,7 +17,6 @@ export function PremiumNavigation() {
   const [hoveredItem, setHoveredItem] = React.useState<string | null>(null)
   const [scrolled, setScrolled] = React.useState(false)
   const pathname = usePathname()
-  const searchParams = useSearchParams() // Add this line to properly use the hook
 
   // Handle scroll effect
   React.useEffect(() => {
@@ -112,6 +111,24 @@ export function PremiumNavigation() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Button
+              as="a"
+              href="https://testflight.apple.com/join/9TQrDfBx"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="outline"
+              className="hidden md:inline-flex border-[#00f2fe]/50 text-[#00f2fe] hover:text-white hover:bg-[#00f2fe]/10"
+            >
+              <AppleIcon className="mr-2 h-4 w-4" />
+              Join iOS Beta
+            </Button>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <Button
@@ -184,6 +201,23 @@ export function PremiumNavigation() {
                           </motion.div>
                         ),
                     )}
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                    >
+                      <Button
+                        as="a"
+                        href="https://testflight.apple.com/join/9TQrDfBx"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variant="outline"
+                        className="mt-2 w-full border-[#00f2fe]/50 text-[#00f2fe] hover:text-white hover:bg-[#00f2fe]/10"
+                      >
+                        <AppleIcon className="mr-2 h-4 w-4" />
+                        Join iOS Beta
+                      </Button>
+                    </motion.div>
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}

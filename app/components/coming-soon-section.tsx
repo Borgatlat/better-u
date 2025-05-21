@@ -3,7 +3,8 @@
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { WaitlistForm } from "./waitlist-form"
-import { Sparkles } from "lucide-react"
+import { Sparkles, AppleIcon } from "lucide-react"
+import { TestFlightButton } from "./testflight-button"
 
 export function ComingSoonSection() {
   const [ref, inView] = useInView({
@@ -47,6 +48,28 @@ export function ComingSoonSection() {
               </div>
             </div>
           </div>
+
+          {/* TestFlight Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-8 flex flex-col items-center"
+          >
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <AppleIcon className="h-5 w-5 text-[#00f2fe]" />
+              <p className="text-lg text-white font-medium">iOS Beta Available Now</p>
+            </div>
+            <p className="text-gray-300 max-w-2xl mx-auto mb-4">
+              Want to try BetterU AI right now? Our iOS beta is available on TestFlight. Get early access and help shape
+              the future of the app.
+            </p>
+            <TestFlightButton
+              variant="default"
+              className="bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] text-black hover:text-white"
+              text="Download iOS Beta"
+            />
+          </motion.div>
         </motion.div>
 
         {/* Feature preview cards */}

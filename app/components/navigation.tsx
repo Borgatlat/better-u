@@ -10,6 +10,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 import { Logo } from "./logo"
+import { TestFlightButton } from "./testflight-button"
 
 export function Navigation() {
   const [open, setOpen] = React.useState(false)
@@ -56,6 +57,10 @@ export function Navigation() {
         </div>
 
         <div className="flex items-center space-x-4">
+          <TestFlightButton
+            variant="outline"
+            className="hidden md:inline-flex border-[#00f2fe]/50 text-[#00f2fe] hover:text-white hover:bg-[#00f2fe]/10"
+          />
           <Button
             onClick={scrollToWaitlist}
             className="hidden md:inline-flex bg-[#00f2fe] hover:bg-[#00b4ff] text-black font-semibold px-4 rounded-lg transition-all duration-300 ease-in-out focus:outline-none"
@@ -95,6 +100,10 @@ export function Navigation() {
                           </Link>
                         ),
                     )}
+                    <TestFlightButton
+                      variant="outline"
+                      className="mt-2 w-full border-[#00f2fe]/50 text-[#00f2fe] hover:text-white hover:bg-[#00f2fe]/10"
+                    />
                     <Button
                       onClick={() => {
                         setOpen(false)

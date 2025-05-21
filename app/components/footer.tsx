@@ -3,6 +3,7 @@ import { NAVIGATION } from "@/lib/constants"
 import { InstagramIcon } from "./icons/instagram-icon"
 import { SocialIcon } from "./social-icon"
 import { BetterULogo } from "./betteru-logo"
+import { AppleIcon } from "lucide-react"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -52,6 +53,17 @@ export function Footer() {
                   className="text-sm text-gray-400 hover:text-[#00f2fe] transition-colors"
                 >
                   Contact
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://testflight.apple.com/join/9TQrDfBx"
+                  className="text-sm text-gray-400 hover:text-[#00f2fe] transition-colors flex items-center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <AppleIcon className="h-3 w-3 mr-1" />
+                  iOS Beta
                 </Link>
               </li>
             </ul>

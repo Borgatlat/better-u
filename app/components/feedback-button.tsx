@@ -5,7 +5,10 @@ import { MessageSquare } from "lucide-react"
 
 export function FeedbackButton() {
   const handleClick = () => {
-    window.location.href = "mailto:lucas@betteruai.com?subject=BetterU AI Feedback"
+    window.open(
+      "https://docs.google.com/forms/d/e/1FAIpQLScqC-Un8Nisy7W1iGYTIvjUmMr4iZyEMLJ-hfv53OsNvzHmfg/viewform?usp=dialog",
+      "_blank",
+    )
   }
 
   return (

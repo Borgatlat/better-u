@@ -7,152 +7,123 @@ export default function PrivacyPolicy() {
       <Breadcrumbs />
 
       <h1 className="text-3xl font-bold mb-8 bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] bg-clip-text text-transparent">
-        Privacy Policy
+        BetterUAI Privacy Policy
       </h1>
 
       <div className="space-y-6 text-gray-300">
-        <p>Last Updated: April 5, 2025</p>
+        <p>Last Updated: May 27, 2025</p>
 
         <h2 className="text-xl font-semibold text-white mt-8">1. Introduction</h2>
         <p>
-          Welcome to BetterU AI. We respect your privacy and are committed to protecting your personal data. This
-          privacy policy will inform you about how we look after your personal data when you visit our website or use
-          our mobile application, and tell you about your privacy rights and how the law protects you.
+          BetterUAI, Inc. ("BetterUAI," "we," "us," or "our") respects your privacy and is committed to protecting your
+          personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your
+          information when you use our mobile and web applications (the "Service").
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">2. Our Data Commitment</h2>
-        <p className="font-bold text-white">
-          BetterU AI does not sell your data or utilize it for commercial purposes. Your personal information is never
-          sold, rented, or traded to third parties for marketing or advertising purposes.
-        </p>
+        <h2 className="text-xl font-semibold text-white mt-8">2. Information We Collect</h2>
+        <ul className="list-disc pl-6 space-y-2 mt-4">
+          <li>
+            <strong>Account Information:</strong> Email address, username, and password (securely hashed).
+          </li>
+          <li>
+            <strong>Profile & Usage Data:</strong> Profile details you choose to provide (e.g., name, age, gender);
+            wellness activity data (workouts, hydration logs, mental health check‑ins); device information (model,
+            operating system) and app usage statistics.
+          </li>
+          <li>
+            <strong>Automatically Collected Data:</strong> IP address, device identifiers, language preference, crash
+            reports, and performance metrics.
+          </li>
+          <li>
+            <strong>Third‑Party Integrations:</strong> Data from connected services (e.g., health platforms) when you
+            choose to link them.
+          </li>
+        </ul>
+
+        <h2 className="text-xl font-semibold text-white mt-8">3. How We Use Your Information</h2>
+        <p>We use your information to:</p>
+        <ul className="list-disc pl-6 space-y-2 mt-4">
+          <li>Create, manage, and personalize your account;</li>
+          <li>Provide, improve, and troubleshoot the Service;</li>
+          <li>Communicate with you about updates, promotions, and support;</li>
+          <li>Analyze trends and usage to enhance features;</li>
+          <li>Detect, prevent, and address technical or security issues.</li>
+        </ul>
+
+        <h2 className="text-xl font-semibold text-white mt-8">4. Sharing Your Information</h2>
+        <p>We do not sell your personal information. We may share data with:</p>
+        <ul className="list-disc pl-6 space-y-2 mt-4">
+          <li>
+            <strong>Service Providers:</strong> Vendors who perform functions on our behalf (hosting, analytics, email
+            delivery), limited to what they need to provide those services;
+          </li>
+          <li>
+            <strong>Legal Authorities:</strong> When required by law, to protect our rights, or to investigate fraud or
+            security issues;
+          </li>
+          <li>
+            <strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of our assets,
+            subject to this Privacy Policy.
+          </li>
+        </ul>
+
+        <h2 className="text-xl font-semibold text-white mt-8">5. Your Choices and Controls</h2>
+        <ul className="list-disc pl-6 space-y-2 mt-4">
+          <li>
+            <strong>Profile & Communications:</strong> You can view and update your profile information at any time and
+            opt out of promotional emails via the unsubscribe link.
+          </li>
+          <li>
+            <strong>Device Permissions:</strong> You may disable device permissions (e.g., health data access) in your
+            device settings, though this may limit certain features.
+          </li>
+          <li>
+            <strong>Data Deletion:</strong> You can request deletion of your account and personal data by contacting us
+            at support@betteru.ai. We will process your request unless retention is legally required.
+          </li>
+        </ul>
+
+        <h2 className="text-xl font-semibold text-white mt-8">6. Data Security</h2>
         <p>
-          We collect and process your data solely to provide and improve our services to you. Your data is used
-          exclusively to personalize your experience, enhance our platform's functionality, and deliver the
-          self-improvement tools you expect from BetterU AI.
+          We implement reasonable administrative, technical, and physical safeguards to protect your information.
+          However, no system is entirely secure; you acknowledge that transmitting data over the internet carries
+          inherent risks.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">3. Data We Collect</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">7. Data Retention</h2>
         <p>
-          We may collect, use, store and transfer different kinds of personal data about you which we have grouped
-          together as follows:
-        </p>
-        <ul className="list-disc pl-6 space-y-2 mt-4">
-          <li>
-            <strong>Identity and Profile Data</strong> includes email address, age, gender, height, weight, fitness
-            goals, and training level.
-          </li>
-          <li>
-            <strong>Health and Fitness Data</strong> includes workout history, exercise statistics, physical
-            measurements, and progress tracking.
-          </li>
-          <li>
-            <strong>Wellness Data</strong> includes mood tracking, emotional states, and mental wellness information.
-          </li>
-          <li>
-            <strong>Technical Data</strong> includes internet protocol (IP) address, your login data, browser type and
-            version, time zone setting and location, browser plug-in types and versions, operating system and platform,
-            and other technology on the devices you use to access this website or application.
-          </li>
-          <li>
-            <strong>Usage Data</strong> includes information about how you use our website, mobile application, products
-            and services.
-          </li>
-        </ul>
-
-        <h2 className="text-xl font-semibold text-white mt-8">4. How We Use Your Data</h2>
-        <p>
-          We will only use your personal data when the law allows us to. Most commonly, we will use your personal data
-          for the following purposes:
-        </p>
-        <ul className="list-disc pl-6 space-y-2 mt-4">
-          <li>To create and maintain your user profile within our application.</li>
-          <li>To provide personalized fitness, wellness, and self-improvement recommendations.</li>
-          <li>To track your progress and help you achieve your fitness and wellness goals.</li>
-          <li>To analyze trends and improve our services based on user behavior and feedback.</li>
-          <li>Where we need to perform the contract we are about to enter into or have entered into with you.</li>
-          <li>
-            Where it is necessary for our legitimate interests (or those of a third party) and your interests and
-            fundamental rights do not override those interests.
-          </li>
-          <li>Where we need to comply with a legal obligation.</li>
-        </ul>
-
-        <h2 className="text-xl font-semibold text-white mt-8">5. Data Storage and Security</h2>
-        <p>
-          We implement appropriate technical and organizational measures to protect your personal data against
-          accidental or unlawful destruction, loss, alteration, unauthorized disclosure, or access. These measures
-          include:
-        </p>
-        <ul className="list-disc pl-6 space-y-2 mt-4">
-          <li>Encryption of sensitive personal data both in transit and at rest.</li>
-          <li>Regular security assessments and testing of our systems.</li>
-          <li>Access controls and authentication procedures for our staff and systems.</li>
-          <li>Regular backups to prevent data loss.</li>
-        </ul>
-        <p className="mt-4">
-          We store your data on secure servers and cloud services that comply with industry-standard security practices.
-          We retain your personal data only for as long as necessary to fulfill the purposes for which we collected it,
-          including for the purposes of satisfying any legal, regulatory, tax, accounting, or reporting requirements.
-        </p>
-
-        <h2 className="text-xl font-semibold text-white mt-8">6. Data Sharing</h2>
-        <p>We may share your personal data with the following categories of recipients:</p>
-        <ul className="list-disc pl-6 space-y-2 mt-4">
-          <li>Service providers who provide IT, system administration, and platform services.</li>
-          <li>Professional advisers including lawyers, bankers, auditors, and insurers.</li>
-          <li>
-            Regulators and other authorities who require reporting of processing activities in certain circumstances.
-          </li>
-          <li>Third parties to whom we may choose to sell, transfer, or merge parts of our business or our assets.</li>
-        </ul>
-        <p className="mt-4">
-          We require all third parties to respect the security of your personal data and to treat it in accordance with
-          the law. We do not allow our third-party service providers to use your personal data for their own purposes
-          and only permit them to process your personal data for specified purposes and in accordance with our
-          instructions.
-        </p>
-
-        <h2 className="text-xl font-semibold text-white mt-8">7. Your Rights</h2>
-        <p>Depending on your location, you may have certain rights regarding your personal data, including:</p>
-        <ul className="list-disc pl-6 space-y-2 mt-4">
-          <li>The right to access, update or delete the information we have on you.</li>
-          <li>
-            The right of rectification - the right to have your information corrected if it is inaccurate or incomplete.
-          </li>
-          <li>The right to object to our processing of your personal data.</li>
-          <li>
-            The right of restriction - the right to request that we restrict the processing of your personal data.
-          </li>
-          <li>
-            The right to data portability - the right to request that we transfer the data we have collected to another
-            organization, or directly to you.
-          </li>
-          <li>The right to withdraw consent at any time where we rely on consent to process your personal data.</li>
-        </ul>
-        <p className="mt-4">
-          If you wish to exercise any of these rights, please contact us using the details provided below.
+          We retain your personal information as long as your account is active or as needed to provide the Service,
+          comply with legal obligations, resolve disputes, and enforce our agreements.
         </p>
 
         <h2 className="text-xl font-semibold text-white mt-8">8. Children's Privacy</h2>
         <p>
-          Our service is not intended for use by children under the age of 13. We do not knowingly collect personal data
-          from children under 13. If you are a parent or guardian and you are aware that your child has provided us with
-          personal data, please contact us so that we can take necessary actions.
+          Our Service is intended for users aged 13 and older. We do not knowingly collect personal information from
+          children under 13. If we learn we have inadvertently collected such information, we will delete it promptly.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">9. Changes to This Privacy Policy</h2>
+        <h2 className="text-xl font-semibold text-white mt-8">9. International Users</h2>
         <p>
-          We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new
-          Privacy Policy on this page and updating the "Last Updated" date at the top of this Privacy Policy. You are
-          advised to review this Privacy Policy periodically for any changes.
+          If you access the Service from outside the United States, your information may be transferred to and processed
+          in the U.S., where data protection laws may differ. By using the Service, you consent to these transfers.
         </p>
 
-        <h2 className="text-xl font-semibold text-white mt-8">10. Contact Us</h2>
-        <p>If you have any questions about this privacy policy or our privacy practices, please contact us at:</p>
+        <h2 className="text-xl font-semibold text-white mt-8">10. Changes to This Policy</h2>
+        <p>
+          We may update this Privacy Policy at any time. We will notify you of material changes via email or in‑app
+          notice. Continued use of the Service after notification constitutes acceptance of the revised policy.
+        </p>
+
+        <h2 className="text-xl font-semibold text-white mt-8">11. Contact Us</h2>
+        <p>If you have questions or requests about this Privacy Policy, please contact us at:</p>
         <p className="mt-2">
-          <a href="mailto:lucas@betteruai.com" className="text-[#00f2fe] hover:underline">
-            lucas@betteruai.com
+          <a href="mailto:support@betteruai.com" className="text-[#00f2fe] hover:underline">
+            support@betteruai.com
           </a>
+        </p>
+
+        <p className="mt-8 font-semibold text-white">
+          By using BetterUAI, you acknowledge that you have read and understood this Privacy Policy.
         </p>
 
         <div className="mt-12 pt-6 border-t border-gray-800">

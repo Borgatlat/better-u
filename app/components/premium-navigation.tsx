@@ -8,9 +8,10 @@ import { NAVIGATION } from "@/lib/constants"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, X, AppleIcon } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Logo } from "./logo"
+import { TestFlightButton } from "./testflight-button"
 
 export function PremiumNavigation() {
   const [open, setOpen] = React.useState(false)
@@ -113,17 +114,10 @@ export function PremiumNavigation() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Button
-              as="a"
-              href="https://testflight.apple.com/join/9TQrDfBx"
-              target="_blank"
-              rel="noopener noreferrer"
+            <TestFlightButton
               variant="outline"
               className="hidden md:inline-flex border-[#00f2fe]/50 text-[#00f2fe] hover:text-white hover:bg-[#00f2fe]/10"
-            >
-              <AppleIcon className="mr-2 h-4 w-4" />
-              Join iOS Beta
-            </Button>
+            />
           </motion.div>
 
           <motion.div
@@ -206,17 +200,10 @@ export function PremiumNavigation() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                      <Button
-                        as="a"
-                        href="https://testflight.apple.com/join/9TQrDfBx"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <TestFlightButton
                         variant="outline"
                         className="mt-2 w-full border-[#00f2fe]/50 text-[#00f2fe] hover:text-white hover:bg-[#00f2fe]/10"
-                      >
-                        <AppleIcon className="mr-2 h-4 w-4" />
-                        Join iOS Beta
-                      </Button>
+                      />
                     </motion.div>
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}

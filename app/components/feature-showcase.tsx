@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence, useInView } from "framer-motion"
 import { NAVIGATION } from "@/lib/constants"
-import { Dumbbell, Brain, ShoppingBag, Sparkles, ChevronRight } from "lucide-react"
+import { Dumbbell, Brain, ShoppingBag, Users, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export function FeatureShowcase() {
@@ -26,7 +26,7 @@ export function FeatureShowcase() {
   const getFeatureIcon = (index: number) => {
     switch (index) {
       case 0:
-        return <Sparkles className="w-6 h-6" />
+        return <Users className="w-6 h-6" />
       case 1:
         return <Dumbbell className="w-6 h-6" />
       case 2:
@@ -34,7 +34,7 @@ export function FeatureShowcase() {
       case 3:
         return <ShoppingBag className="w-6 h-6" />
       default:
-        return <Sparkles className="w-6 h-6" />
+        return <Users className="w-6 h-6" />
     }
   }
 

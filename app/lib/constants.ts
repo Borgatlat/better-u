@@ -1,24 +1,24 @@
 export const NAVIGATION = [
   {
-    title: "Facial Enhancement",
-    href: "/facial",
-    description: "AI-powered skincare, grooming, and facial harmony optimization",
+    title: "Community",
+    href: "/community",
+    description: "Connect with others, share your progress, and stay motivated together",
     features: [
-      { title: "Skincare Analysis", description: "Get personalized skincare routines based on your skin type" },
-      { title: "Grooming Guide", description: "Expert advice for hair, beard, and eyebrow maintenance" },
-      { title: "Facial Harmony", description: "Analysis and recommendations for balanced facial features" },
-      { title: "Progress Tracking", description: "Track your skincare and grooming journey over time" },
+      { title: "Share Workouts", description: "Post your workout sessions and inspire others with your progress" },
+      { title: "Track Runs", description: "Share your running achievements and connect with fellow runners" },
+      { title: "Mental Sessions", description: "Share mindfulness practices and mental wellness journeys" },
+      { title: "Social Features", description: "Like, comment, and engage with the community" },
     ],
   },
   {
     title: "Gym & Fitness",
     href: "/gym",
-    description: "Personalized workout plans, nutrition tracking, and fitness goals",
+    description: "Advanced fitness tracking with run monitoring, pace calculation, and health sync",
     features: [
+      { title: "Run Tracking", description: "Track your runs with real-time pace and distance monitoring" },
+      { title: "Calorie Tracking", description: "Accurate calorie burn calculation for all your activities" },
+      { title: "Apple Health Sync", description: "Seamlessly sync all your fitness data with Apple Health" },
       { title: "Custom Workouts", description: "AI-generated workout plans tailored to your goals" },
-      { title: "Progress Tracking", description: "Track weights, PRs, and body measurements" },
-      { title: "Nutrition Planning", description: "Personalized meal plans and calorie tracking" },
-      { title: "Challenge System", description: "Join community challenges and track achievements" },
     ],
   },
   {

@@ -4,29 +4,56 @@ import { useInView } from "react-intersection-observer"
 import { CarouselRow } from "./carousel-row"
 
 // Define the carousel data
+const communityItems = [
+  {
+    id: "community-1",
+    title: "Share Your Workouts",
+    description: "Post your fitness sessions and inspire others with your progress",
+    category: "Community",
+  },
+  {
+    id: "community-2",
+    title: "Connect with Runners",
+    description: "Share your running achievements and connect with fellow athletes",
+    category: "Community",
+  },
+  {
+    id: "community-3",
+    title: "Mental Wellness Posts",
+    description: "Share mindfulness practices and mental wellness journeys",
+    category: "Community",
+  },
+  {
+    id: "community-4",
+    title: "Like & Comment",
+    description: "Engage with the community through likes, comments, and support",
+    category: "Community",
+  },
+]
+
 const fitnessItems = [
   {
     id: "fitness-1",
-    title: "AI-Powered Workout Plans",
-    description: "Personalized exercise routines tailored to your goals and fitness level",
+    title: "Advanced Run Tracking",
+    description: "Track your runs with real-time pace, distance, and route monitoring",
     category: "Fitness",
   },
   {
     id: "fitness-2",
-    title: "Real-time Form Analysis",
-    description: "Get instant feedback on your exercise technique to maximize results",
+    title: "Calorie Burn Calculator",
+    description: "Accurate calorie tracking for all your workouts and activities",
     category: "Fitness",
   },
   {
     id: "fitness-3",
-    title: "Progress Tracking",
-    description: "Visualize your improvements with detailed analytics and insights",
+    title: "Apple Health Sync",
+    description: "Seamlessly sync all your fitness data with Apple Health",
     category: "Fitness",
   },
   {
     id: "fitness-4",
-    title: "Nutrition Planning",
-    description: "Custom meal plans that complement your workout routine",
+    title: "AI Workout Plans",
+    description: "Personalized exercise routines tailored to your goals and fitness level",
     category: "Fitness",
   },
 ]
@@ -58,33 +85,6 @@ const mentalWellnessItems = [
   },
 ]
 
-const appearanceItems = [
-  {
-    id: "appearance-1",
-    title: "Skincare Analysis",
-    description: "AI-powered skin assessment and personalized care recommendations",
-    category: "Appearance",
-  },
-  {
-    id: "appearance-2",
-    title: "Grooming Guide",
-    description: "Expert advice for hair, beard, and eyebrow maintenance",
-    category: "Appearance",
-  },
-  {
-    id: "appearance-3",
-    title: "Style Recommendations",
-    description: "Personalized fashion advice based on your body type and preferences",
-    category: "Appearance",
-  },
-  {
-    id: "appearance-4",
-    title: "Facial Harmony",
-    description: "Analysis and recommendations for balanced facial features",
-    category: "Appearance",
-  },
-]
-
 export function MultiRowCarousel() {
   const [ref, inView] = useInView({
     triggerOnce: false,
@@ -104,39 +104,39 @@ export function MultiRowCarousel() {
             Discover BetterU AI
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Explore our comprehensive suite of AI-powered self-improvement tools
+            Explore our comprehensive suite of AI-powered self-improvement tools and community features
           </p>
         </motion.div>
 
         <div className="space-y-16">
-          {/* Fitness Row - Moving Left */}
+          {/* Community Row - Moving Left */}
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -100 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-semibold mb-4 text-white">Fitness & Training</h3>
-            <CarouselRow items={fitnessItems} direction="left" speed={30} />
+            <h3 className="text-2xl font-semibold mb-4 text-white">Community & Social</h3>
+            <CarouselRow items={communityItems} direction="left" speed={30} />
           </motion.div>
 
-          {/* Mental Wellness Row - Moving Right */}
+          {/* Fitness Row - Moving Right */}
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : 100 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h3 className="text-2xl font-semibold mb-4 text-white">Mental Wellness</h3>
-            <CarouselRow items={mentalWellnessItems} direction="right" speed={25} />
+            <h3 className="text-2xl font-semibold mb-4 text-white">Fitness & Training</h3>
+            <CarouselRow items={fitnessItems} direction="right" speed={25} />
           </motion.div>
 
-          {/* Appearance Row - Moving Left */}
+          {/* Mental Wellness Row - Moving Left */}
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -100 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <h3 className="text-2xl font-semibold mb-4 text-white">Appearance Enhancement</h3>
-            <CarouselRow items={appearanceItems} direction="left" speed={20} />
+            <h3 className="text-2xl font-semibold mb-4 text-white">Mental Wellness</h3>
+            <CarouselRow items={mentalWellnessItems} direction="left" speed={20} />
           </motion.div>
         </div>
       </div>

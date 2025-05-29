@@ -33,41 +33,14 @@ export default function AccountConfirmedPage() {
           </p>
         </div>
 
-        {/* Next Steps */}
-        <div className="space-y-6">
-          <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6 space-y-4">
-            <h2 className="text-xl font-semibold text-[#00f2fe]">What's Next?</h2>
-            <ul className="text-left space-y-2 text-gray-300">
-              <li className="flex items-start space-x-2">
-                <span className="text-[#00f2fe] mt-1">•</span>
-                <span>You'll receive updates about our iOS beta launch</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <span className="text-[#00f2fe] mt-1">•</span>
-                <span>Get early access to new features and improvements</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <span className="text-[#00f2fe] mt-1">•</span>
-                <span>Join our community of self-improvement enthusiasts</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="space-y-3">
-            <Link
-              href="/"
-              className="block w-full bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] text-black font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity"
-            >
-              Explore BetterU AI
-            </Link>
-            <Link
-              href="/blog"
-              className="block w-full border border-[#00f2fe] text-[#00f2fe] font-semibold py-3 px-6 rounded-lg hover:bg-[#00f2fe]/10 transition-colors"
-            >
-              Read Our Blog
-            </Link>
-          </div>
+        {/* Action Button */}
+        <div className="pt-6">
+          <Link
+            href="/"
+            className="block w-full bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] text-black font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity"
+          >
+            Return to Home
+          </Link>
         </div>
 
         {/* Footer Note */}

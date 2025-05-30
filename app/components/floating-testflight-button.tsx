@@ -34,10 +34,7 @@ export function FloatingTestFlightButton() {
   return (
     <div className="fixed bottom-6 right-6 z-50 md:hidden">
       <Button
-        as="a"
-        href="https://testflight.apple.com/join/9TQrDfBx"
-        target="_blank"
-        rel="noopener noreferrer"
+        onClick={() => window.open("https://testflight.apple.com/join/9TQrDfBx", "_blank", "noopener,noreferrer")}
         className="rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg hover:shadow-xl transition-all duration-300"
         size="lg"
       >

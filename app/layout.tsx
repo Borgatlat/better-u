@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     width: "device-width",
     initialScale: 1,
     maximumScale: 5,
-    viewportFit: "cover", // Add viewport-fit for iOS devices
+    viewportFit: "cover",
   },
   verification: {
     google: "verification_token",
@@ -92,7 +92,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-    generator: 'v0.dev'
+  generator: "Next.js",
 }
 
 export default function RootLayout({
@@ -120,10 +120,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="dark">
-      <head>
-        {/* Add viewport-fit=cover meta tag for iOS devices */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-      </head>
+      <head>{/* Add viewport-fit=cover meta tag for iOS devices */}</head>
       {/* Then add the component inside the body */}
       <body className={inter.className}>
         <RichResults type="Organization" data={organizationData} />

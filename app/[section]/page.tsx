@@ -1,4 +1,4 @@
-import { NAVIGATION } from "@/lib/constants"
+import { FEATURE_SHOWCASE } from "@/lib/constants"
 import { WaitlistForm } from "../components/waitlist-form"
 import { FeatureSection } from "../components/feature-section"
 import { notFound } from "next/navigation"
@@ -12,7 +12,7 @@ type Props = {
 
 // Generate metadata for each section page
 export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
-  const section = NAVIGATION.find((item) => item.href === `/${params.section}`)
+  const section = FEATURE_SHOWCASE.find((item) => item.href === `/${params.section}`)
 
   if (!section) {
     return {
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
 }
 
 export default function SectionPage({ params }: { params: { section: string } }) {
-  const section = NAVIGATION.find((item) => item.href === `/${params.section}`)
+  const section = FEATURE_SHOWCASE.find((item) => item.href === `/${params.section}`)
 
   if (!section) {
     notFound()
@@ -98,9 +98,9 @@ export default function SectionPage({ params }: { params: { section: string } })
   )
 }
 
-// Generate static paths for all sections
+// Generate static paths for all sections - exclude auth pages
 export async function generateStaticParams() {
-  return NAVIGATION.map((item) => ({
+  return FEATURE_SHOWCASE.map((item) => ({
     section: item.href.substring(1), // Remove the leading slash
   }))
 }

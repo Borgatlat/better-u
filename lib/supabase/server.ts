@@ -1,13 +1,10 @@
 import { createServerClient } from "@supabase/ssr"
-import { cookies } from "next/headers"
+import type { NextRequest, NextResponse } from "next/server"
 
 // Re-export createServerClient for compatibility
 export { createServerClient } from "@supabase/ssr"
 
-export async function getSupabaseClient() {
-  const cookieStore = await cookies()
-
-  // Hardcoded values as fallback (only for development)
+export function createClient(request?: NextRequest, response?: NextResponse) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://kmpufblmilcvortrfilp.supabase.co"
   const supabaseAnonKey =
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
@@ -16,19 +13,40 @@ export async function getSupabaseClient() {
   return createServerClient(supabaseUrl, supabaseAnonKey, {
     cookies: {
       getAll() {
-        return cookieStore.getAll()
+        if (typeof window !== "undefined") {
+          // Client-side fallback
+          return []
+        }
+        // Server-side: try to get cookies from request
+        if (request) {
+          return request.cookies.getAll().map((cookie) => ({
+            name: cookie.name,
+            value: cookie.value,
+          }))
+        }
+        return []
       },
       setAll(cookiesToSet) {
-        try {
+        if (typeof window !== "undefined") {
+          // Client-side: use document.cookie
           cookiesToSet.forEach(({ name, value, options }) => {
-            cookieStore.set(name, value, options)
+            document.cookie = `${name}=${value}; path=/; ${options?.secure ? "secure;" : ""} ${options?.sameSite ? `samesite=${options.sameSite};` : ""}`
           })
-        } catch {
-          // The `setAll` method was called from a Server Component.
-          // This can be ignored if you have middleware refreshing
-          // user sessions.
+          return
+        }
+
+        // Server-side: try to set cookies on response
+        if (response) {
+          cookiesToSet.forEach(({ name, value, options }) => {
+            response.cookies.set(name, value, options)
+          })
         }
       },
     },
   })
+}
+
+// Legacy function for backward compatibility
+export async function getSupabaseClient() {
+  return createClient()
 }

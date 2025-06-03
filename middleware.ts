@@ -1,16 +1,34 @@
-import { updateSession } from "./lib/supabase/middleware"
+import { createClient } from "./lib/supabase/server"
+import { NextResponse } from "next/server"
+import type { NextRequest } from "next/server"
 
-export async function middleware(request: any) {
+export async function middleware(request: NextRequest) {
   // Only apply auth middleware to protected routes
   const protectedPaths = ["/dashboard", "/settings", "/admin"]
   const isProtectedPath = protectedPaths.some((path) => request.nextUrl.pathname.startsWith(path))
 
-  if (isProtectedPath) {
-    return await updateSession(request)
+  if (!isProtectedPath) {
+    return NextResponse.next()
   }
 
-  // For all other routes, just continue without auth check
-  return
+  try {
+    const response = NextResponse.next()
+    const supabase = createClient(request, response)
+
+    const {
+      data: { session },
+    } = await supabase.auth.getSession()
+
+    if (!session) {
+      // Redirect to login if no session
+      return NextResponse.redirect(new URL("/login", request.url))
+    }
+
+    return response
+  } catch (error) {
+    console.error("Middleware error:", error)
+    return NextResponse.redirect(new URL("/login", request.url))
+  }
 }
 
 export const config = {

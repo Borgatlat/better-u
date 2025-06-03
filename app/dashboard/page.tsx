@@ -1,18 +1,40 @@
 "use client"
 
-import { authServer } from "@/lib/auth"
-import { redirect } from "next/navigation"
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
+import { useAuth } from "@/app/components/auth/auth-provider"
+import { authClient } from "@/lib/auth"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Dumbbell, Brain, Users, ShoppingBag, Sparkles } from "lucide-react"
 
-export default async function DashboardPage() {
-  const user = await authServer.getUser()
-  const profile = await authServer.getProfile()
+interface Profile {
+  id: string
+  email: string
+  full_name?: string
+  avatar_url?: string
+}
 
-  if (!user) {
-    redirect("/login")
-  }
+export default function DashboardPage() {
+  const { user, loading } = useAuth()
+  const router = useRouter()
+  const [profile, setProfile] = useState<Profile | null>(null)
+  const [profileLoading, setProfileLoading] = useState(true)
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push("/login")
+      return
+    }
+
+    if (user) {
+      // Fetch user profile
+      authClient.getProfile().then((profileData) => {
+        setProfile(profileData)
+        setProfileLoading(false)
+      })
+    }
+  }, [user, loading, router])
 
   const features = [
     {
@@ -41,11 +63,28 @@ export default async function DashboardPage() {
     },
   ]
 
+  if (loading || profileLoading) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto mb-4"></div>
+          <p className="text-gray-400">Loading your dashboard...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!user) {
+    return null // Will redirect to login
+  }
+
+  const displayName = profile?.full_name || user.user_metadata?.full_name || user.email
+
   return (
     <div className="min-h-screen bg-black text-white p-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Welcome back, {profile?.full_name || user.email}!</h1>
+          <h1 className="text-4xl font-bold mb-2">Welcome back, {displayName}!</h1>
           <p className="text-gray-400 text-lg">Your AI-powered self-improvement journey continues here.</p>
         </div>
 

@@ -11,7 +11,7 @@ export function Logo({ className, size = 40 }: LogoProps) {
     <Link href="/" className={className}>
       <div className="flex items-center gap-2">
         <BetterULogo width={size} height={size} />
-        <span className="text-[#00f2fe] font-bold text-xl hidden sm:inline">BetterU AI</span>
+        <span className="text-[#00f2fe] font-bold text-xl hidden sm:inline">BetterUAI</span>
       </div>
     </Link>
   )

@@ -1,7 +1,39 @@
 export const NAVIGATION = [
   {
     title: "Facial Enhancement",
-    href: "/facial",
+    href: "/facial-enhancement",
+  },
+  {
+    title: "Gym & Fitness",
+    href: "/gym-fitness",
+  },
+  {
+    title: "Mental Wellness",
+    href: "/mental-wellness",
+  },
+  {
+    title: "Smart Shop",
+    href: "/smart-shop",
+  },
+  {
+    title: "Pricing",
+    href: "/pricing",
+  },
+  {
+    title: "Login",
+    href: "/login",
+  },
+  {
+    title: "Sign Up",
+    href: "/signup",
+  },
+] as const
+
+// Separate features data for the FeatureShowcase component
+export const FEATURE_SHOWCASE = [
+  {
+    title: "Facial Enhancement",
+    href: "/facial-enhancement",
     description: "AI-powered skincare, grooming, and facial harmony optimization",
     features: [
       { title: "Skincare Analysis", description: "Get personalized skincare routines based on your skin type" },
@@ -12,7 +44,7 @@ export const NAVIGATION = [
   },
   {
     title: "Gym & Fitness",
-    href: "/gym",
+    href: "/gym-fitness",
     description: "Personalized workout plans, nutrition tracking, and fitness goals",
     features: [
       { title: "Custom Workouts", description: "AI-generated workout plans tailored to your goals" },
@@ -23,7 +55,7 @@ export const NAVIGATION = [
   },
   {
     title: "Mental Wellness",
-    href: "/mental",
+    href: "/mental-wellness",
     description: "AI therapy, meditation guidance, and emotional support",
     features: [
       { title: "AI Therapy", description: "24/7 emotional support and guided conversations" },
@@ -34,7 +66,7 @@ export const NAVIGATION = [
   },
   {
     title: "Smart Shop",
-    href: "/shop",
+    href: "/smart-shop",
     description: "Personalized product recommendations based on your needs",
     features: [
       { title: "Smart Recommendations", description: "AI-powered product suggestions for your specific needs" },
@@ -44,3 +76,33 @@ export const NAVIGATION = [
     ],
   },
 ]
+
+export const SOCIAL_LINKS = [
+  {
+    name: "X",
+    href: "https://x.com/betteruai",
+    icon: "x",
+  },
+  {
+    name: "Instagram",
+    href: "https://instagram.com/betteruai",
+    icon: "instagram",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://linkedin.com/company/betteruai",
+    icon: "linkedin",
+  },
+  {
+    name: "Discord",
+    href: "https://discord.gg/betteruai",
+    icon: "discord",
+  },
+] as const
+
+export const COMPANY_INFO = {
+  name: "BetterUAI",
+  description: "Your personal AI companion for complete self-improvement across all aspects of your life.",
+  email: "hello@betteruai.com",
+  address: "San Francisco, CA",
+} as const

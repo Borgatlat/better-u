@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence, useInView } from "framer-motion"
-import { NAVIGATION } from "@/lib/constants"
+import { FEATURE_SHOWCASE } from "@/lib/constants"
 import { Dumbbell, Brain, ShoppingBag, Users, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -16,7 +16,7 @@ export function FeatureShowcase() {
     if (!isInView) return
 
     const interval = setInterval(() => {
-      setActiveFeature((prev) => (prev + 1) % NAVIGATION.length)
+      setActiveFeature((prev) => (prev + 1) % FEATURE_SHOWCASE.length)
     }, 5000)
 
     return () => clearInterval(interval)
@@ -66,7 +66,7 @@ export function FeatureShowcase() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-4"
           >
-            {NAVIGATION.map((item, index) => (
+            {FEATURE_SHOWCASE.map((item, index) => (
               <motion.div
                 key={index}
                 className={cn(
@@ -144,12 +144,12 @@ export function FeatureShowcase() {
                   <div className="inline-block p-3 rounded-lg bg-[#00f2fe]/20 text-[#00f2fe] mb-4">
                     {getFeatureIcon(activeFeature)}
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">{NAVIGATION[activeFeature].title}</h3>
-                  <p className="text-gray-300">{NAVIGATION[activeFeature].description}</p>
+                  <h3 className="text-2xl font-bold text-white mb-2">{FEATURE_SHOWCASE[activeFeature].title}</h3>
+                  <p className="text-gray-300">{FEATURE_SHOWCASE[activeFeature].description}</p>
                 </div>
 
                 <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 overflow-auto">
-                  {NAVIGATION[activeFeature].features.map((feature, idx) => (
+                  {FEATURE_SHOWCASE[activeFeature].features.map((feature, idx) => (
                     <motion.div
                       key={idx}
                       initial={{ opacity: 0, y: 20 }}

@@ -2,29 +2,33 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { PremiumNavigation } from "./components/premium-navigation"
-import { PremiumFooter } from "./components/premium-footer"
+import { Navigation } from "./components/navigation"
+import { Footer } from "./components/footer"
 import { CookieConsent } from "./components/cookie-consent"
 import { AnalyticsTracker } from "./components/analytics-tracker"
-import { TestFlightBanner } from "./components/testflight-banner"
-import { FloatingTestFlightButton } from "./components/floating-testflight-button"
-import { Suspense } from "react"
+import { AuthProvider } from "./components/auth/auth-provider"
 import { Toaster } from "@/components/ui/toaster"
-import { FeedbackButton } from "./components/feedback-button"
-import { RichResults } from "./components/seo/rich-results"
+import { Suspense } from "react"
 
-const inter = Inter({ subsets: ["latin"], display: "swap" })
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+})
 
 export const metadata: Metadata = {
-  title: "BetterU AI - Personal AI Self-Improvement Assistant | Fitness, Mental Wellness & More",
+  title: {
+    default: "BetterUAI - AI-Powered Personal Self-Improvement Assistant",
+    template: "%s | BetterUAI",
+  },
   description:
-    "Transform your life with BetterU AI, the all-in-one AI companion for self-improvement. Get personalized guidance for facial enhancement, fitness, mental wellness, and smart shopping.",
-  keywords:
-    "AI self-improvement, personal AI assistant, fitness AI, mental wellness app, self-improvement app, BetterU",
-  authors: [{ name: "BetterU AI Team" }],
-  creator: "BetterU AI",
-  publisher: "BetterU AI",
+    "Transform your life with BetterUAI - your personal AI companion for complete self-improvement across facial enhancement, fitness, mental wellness, and smart shopping.",
+  keywords: ["AI", "self-improvement", "fitness", "mental wellness", "personal development", "BetterUAI"],
+  authors: [{ name: "BetterUAI Team" }],
+  creator: "BetterUAI",
+  publisher: "BetterUAI",
   formatDetection: {
+    email: false,
+    address: false,
     telephone: false,
   },
   metadataBase: new URL("https://betteruai.com"),
@@ -32,28 +36,27 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "BetterU AI - Your Personal Self-Improvement AI Companion",
-    description:
-      "Transform your life with AI-powered personal development across facial enhancement, fitness, mental wellness, and smart shopping.",
+    type: "website",
+    locale: "en_US",
     url: "https://betteruai.com",
-    siteName: "BetterU AI",
+    siteName: "BetterUAI",
+    title: "BetterUAI - AI-Powered Personal Self-Improvement Assistant",
+    description:
+      "Transform your life with BetterUAI - your personal AI companion for complete self-improvement across all aspects of your life.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "BetterU AI - Your Personal Self-Improvement AI Companion",
+        alt: "BetterUAI - AI-Powered Self-Improvement",
       },
     ],
-    locale: "en_US",
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "BetterU AI - Your Personal Self-Improvement AI Companion",
-    description:
-      "Transform your life with AI-powered personal development across facial enhancement, fitness, mental wellness, and smart shopping.",
-    images: ["/twitter-image.png"],
+    title: "BetterUAI - AI-Powered Personal Self-Improvement Assistant",
+    description: "Transform your life with BetterUAI - your personal AI companion for complete self-improvement.",
+    images: ["/og-image.png"],
     creator: "@betteruai",
   },
   robots: {
@@ -67,32 +70,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    viewportFit: "cover",
-  },
   verification: {
-    google: "verification_token",
+    google: "your-google-verification-code",
   },
-  category: "technology",
-  themeColor: "#000000",
-  icons: {
-    icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-    other: [
-      {
-        rel: "apple-touch-icon",
-        url: "/apple-touch-icon.png",
-      },
-    ],
-  },
-  generator: "Next.js",
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -100,51 +81,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const organizationData = {
-    name: "BetterU AI",
-    url: "https://betteruai.com",
-    logo: "https://betteruai.com/logo.png",
-    sameAs: [
-      "https://www.instagram.com/betteru2025",
-      "https://twitter.com/betteruai",
-      "https://www.linkedin.com/company/betteruai",
-    ],
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+1-555-123-4567",
-      contactType: "customer service",
-      email: "support@betteruai.com",
-      availableLanguage: "English",
-    },
-  }
-
   return (
     <html lang="en" className="dark">
-      <head>{/* Add viewport-fit=cover meta tag for iOS devices */}</head>
-      {/* Then add the component inside the body */}
       <body className={inter.className}>
-        <RichResults type="Organization" data={organizationData} />
-        <div className="min-h-screen bg-black text-white flex flex-col">
-          <Suspense fallback={<div className="h-16 bg-black"></div>}>
-            <PremiumNavigation />
+        <AuthProvider>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Navigation />
+            <main className="pt-14">{children}</main>
+            <Footer />
+            <CookieConsent />
+            <AnalyticsTracker />
+            <Toaster />
           </Suspense>
-          <Suspense fallback={null}>
-            <TestFlightBanner />
-          </Suspense>
-          <main className="flex-1 pt-safe-top">{children}</main>
-          <PremiumFooter />
-          <FeedbackButton />
-          <Suspense fallback={null}>
-            <FloatingTestFlightButton />
-          </Suspense>
-        </div>
-        <Toaster />
-        <Suspense fallback={null}>
-          <CookieConsent />
-        </Suspense>
-        <Suspense fallback={null}>
-          <AnalyticsTracker />
-        </Suspense>
+        </AuthProvider>
       </body>
     </html>
   )

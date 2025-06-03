@@ -25,38 +25,55 @@ export function Navigation() {
     }
   }
 
+  // Separate main navigation from auth links
+  const mainNavigation = NAVIGATION.filter((item) => !["Login", "Sign Up"].includes(item.title))
+  const authLinks = NAVIGATION.filter((item) => ["Login", "Sign Up"].includes(item.title))
+
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-black">
+    <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-black/80 backdrop-blur-md">
       {/* Add a safe area spacer for iOS devices */}
-      <div className="h-safe-top w-full bg-black" />
+      <div className="h-safe-top w-full bg-black/80" />
 
       <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
         <div className="flex flex-1 items-center">
           <Logo className="mr-6" />
           <nav
-            className="hidden md:flex flex-1 items-center justify-center space-x-6 text-sm font-medium"
+            className="hidden lg:flex flex-1 items-center justify-center space-x-6 text-sm font-medium"
             aria-label="Main Navigation"
           >
-            {NAVIGATION.map(
-              (item) =>
-                item.href !== "/blog" && (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={cn(
-                      "transition-colors hover:text-[#00f2fe]",
-                      pathname === item.href ? "text-white" : "text-gray-400",
-                    )}
-                    aria-current={pathname === item.href ? "page" : undefined}
-                  >
-                    {item.title}
-                  </Link>
-                ),
-            )}
+            {mainNavigation.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "transition-colors hover:text-[#00f2fe]",
+                  pathname === item.href ? "text-white" : "text-gray-300",
+                )}
+                aria-current={pathname === item.href ? "page" : undefined}
+              >
+                {item.title}
+              </Link>
+            ))}
           </nav>
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3">
+          {/* Auth Links - Desktop */}
+          <div className="hidden md:flex items-center space-x-3">
+            {authLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "text-sm transition-colors hover:text-[#00f2fe]",
+                  pathname === item.href ? "text-white" : "text-gray-300",
+                )}
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
+
           <TestFlightButton
             variant="outline"
             className="hidden md:inline-flex border-[#00f2fe]/50 text-[#00f2fe] hover:text-white hover:bg-[#00f2fe]/10"
@@ -67,12 +84,13 @@ export function Navigation() {
           >
             Join Waitlist
           </Button>
+
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="ghost"
-                className="px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
-                aria-label="Open menu"
+                className="px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 lg:hidden"
+                aria-label="Menu"
               >
                 <Menu className="h-6 w-6" aria-hidden="true" />
                 <span className="sr-only">Toggle Menu</span>
@@ -83,23 +101,20 @@ export function Navigation() {
               <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
                 <nav aria-label="Mobile Navigation">
                   <div className="flex flex-col space-y-3">
-                    {NAVIGATION.map(
-                      (item) =>
-                        item.href !== "/blog" && (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className={cn(
-                              "text-sm transition-colors hover:text-[#00f2fe]",
-                              pathname === item.href ? "text-white" : "text-gray-400",
-                            )}
-                            onClick={() => setOpen(false)}
-                            aria-current={pathname === item.href ? "page" : undefined}
-                          >
-                            {item.title}
-                          </Link>
-                        ),
-                    )}
+                    {NAVIGATION.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={cn(
+                          "text-sm transition-colors hover:text-[#00f2fe]",
+                          pathname === item.href ? "text-white" : "text-gray-300",
+                        )}
+                        onClick={() => setOpen(false)}
+                        aria-current={pathname === item.href ? "page" : undefined}
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
                     <TestFlightButton
                       variant="outline"
                       className="mt-2 w-full border-[#00f2fe]/50 text-[#00f2fe] hover:text-white hover:bg-[#00f2fe]/10"

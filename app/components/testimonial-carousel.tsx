@@ -23,7 +23,7 @@ const testimonials = [
   },
   {
     quote:
-      "As someone who struggles with skincare decisions, the facial enhancement AI has given me clear, actionable advice that's already improving my complexion.",
+      "The AI-powered guidance and personalized recommendations have helped me make better decisions about my wellness journey and see real improvements.",
     author: "James T.",
     role: "Marketing Professional",
     avatar: "/contemplative-man.png",

@@ -36,7 +36,8 @@ export default function AboutUsPage() {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     name: "About BetterU AI",
-    description: "Learn about BetterU AI's mission to transform lives through AI-powered self-improvement technology.",
+    description:
+      "BetterU AI is a pioneering company in the field of AI-powered self-improvement, offering personalized guidance for fitness and mental wellness.",
     url: "https://betteruai.com/about-us",
     mainEntity: {
       "@type": "Organization",
@@ -72,7 +73,7 @@ export default function AboutUsPage() {
         },
       ],
       description:
-        "BetterU AI is a pioneering company in the field of AI-powered self-improvement, offering personalized guidance for facial enhancement, fitness, mental wellness, and smart shopping.",
+        "BetterU AI is a pioneering company in the field of AI-powered self-improvement, offering personalized guidance for fitness and mental wellness.",
     },
   }
 
@@ -181,8 +182,8 @@ export default function AboutUsPage() {
             <p className="text-gray-300 mb-6">
               Founded on user-centered principles, we're creating technology that understands the unique needs, goals,
               and challenges of each individual user, providing tailored guidance that evolves as you do. Whether it's
-              optimizing your fitness routine, enhancing your mental wellness, improving your appearance, or making
-              smarter purchasing decisions, our AI is designed to support your journey every step of the way.
+              optimizing your fitness routine, enhancing your mental wellness, or improving your appearance, our AI is
+              designed to support your journey every step of the way.
             </p>
             <p className="text-lg text-gray-300">
               By democratizing access to personalized self-improvement, we aim to empower millions of people worldwide

@@ -6,20 +6,7 @@ import { Avatar } from "./avatar"
 import { WaitlistForm } from "./waitlist-form"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
-import {
-  User,
-  Dumbbell,
-  Brain,
-  ShoppingBag,
-  Sparkles,
-  Heart,
-  Trophy,
-  Smile,
-  BookOpen,
-  Utensils,
-  MedalIcon as Meditation,
-  ShoppingCart,
-} from "lucide-react"
+import { Dumbbell, Brain, Trophy, Smile, Utensils, Radiation as Meditation } from "lucide-react"
 
 export function WaitlistSignup() {
   const [waitlistCount, setWaitlistCount] = useState(0)
@@ -48,13 +35,8 @@ export function WaitlistSignup() {
           <WaitlistForm onSuccess={handleSuccess} />
         </div>
 
-        <Tabs defaultValue="facial" className="w-full">
-          <TabsList className="grid grid-cols-4 gap-4 bg-black/20 p-2 rounded-xl">
-            <TabsTrigger value="facial" className="flex items-center gap-2">
-              <User className="w-4 h-4" />
-              <span className="hidden sm:inline">Facial Enhancement</span>
-              <span className="sm:hidden">Face</span>
-            </TabsTrigger>
+        <Tabs defaultValue="gym" className="w-full">
+          <TabsList className="grid grid-cols-2 gap-4 bg-black/20 p-2 rounded-xl">
             <TabsTrigger value="gym" className="flex items-center gap-2">
               <Dumbbell className="w-4 h-4" />
               <span className="hidden sm:inline">Gym & Fitness</span>
@@ -65,33 +47,7 @@ export function WaitlistSignup() {
               <span className="hidden sm:inline">Mental Wellness</span>
               <span className="sm:hidden">Mental</span>
             </TabsTrigger>
-            <TabsTrigger value="shop" className="flex items-center gap-2">
-              <ShoppingBag className="w-4 h-4" />
-              <span className="hidden sm:inline">Smart Shop</span>
-              <span className="sm:hidden">Shop</span>
-            </TabsTrigger>
           </TabsList>
-
-          <TabsContent value="facial" className="mt-4">
-            <Card className="bg-black/20 border-0">
-              <CardContent className="grid sm:grid-cols-2 gap-4 p-4">
-                <div className="flex items-start gap-3 text-left">
-                  <Sparkles className="w-5 h-5 text-green-400 mt-1" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Skincare AI Analysis</h3>
-                    <p className="text-sm text-gray-400">Personalized skincare routines and product recommendations</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 text-left">
-                  <Heart className="w-5 h-5 text-green-400 mt-1" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Facial Harmony</h3>
-                    <p className="text-sm text-gray-400">Hair, eyebrows, and beard grooming guidance</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
 
           <TabsContent value="gym" className="mt-4">
             <Card className="bg-black/20 border-0">
@@ -129,27 +85,6 @@ export function WaitlistSignup() {
                   <div>
                     <h3 className="font-semibold mb-1">AI Therapy</h3>
                     <p className="text-sm text-gray-400">24/7 emotional support and mental wellness tracking</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="shop" className="mt-4">
-            <Card className="bg-black/20 border-0">
-              <CardContent className="grid sm:grid-cols-2 gap-4 p-4">
-                <div className="flex items-start gap-3 text-left">
-                  <ShoppingCart className="w-5 h-5 text-green-400 mt-1" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Smart Recommendations</h3>
-                    <p className="text-sm text-gray-400">AI-powered personal shopping assistant</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 text-left">
-                  <BookOpen className="w-5 h-5 text-green-400 mt-1" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Product Education</h3>
-                    <p className="text-sm text-gray-400">Learn about products tailored to your needs</p>
                   </div>
                 </div>
               </CardContent>

@@ -6,7 +6,7 @@ import { useAuth } from "@/app/components/auth/auth-provider"
 import { authClient } from "@/lib/auth"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Dumbbell, Brain, Users, ShoppingBag, Sparkles } from "lucide-react"
+import { Dumbbell, Brain, Users, Sparkles } from "lucide-react"
 
 interface Profile {
   id: string
@@ -53,12 +53,6 @@ export default function DashboardPage() {
       icon: Users,
       title: "Community",
       description: "Connect with like-minded individuals",
-      status: "Coming Soon",
-    },
-    {
-      icon: ShoppingBag,
-      title: "Smart Shopping",
-      description: "AI-curated product recommendations",
       status: "Coming Soon",
     },
   ]

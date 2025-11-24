@@ -23,8 +23,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-sm text-gray-400 max-w-xs">
-              Transform your life with AI-powered personal development across facial enhancement, fitness, mental
-              wellness, and smart shopping.
+              Transform your life with AI-powered personal development across fitness and mental wellness.
             </p>
           </div>
           <div className="space-y-4">

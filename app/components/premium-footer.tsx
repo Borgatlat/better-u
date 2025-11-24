@@ -72,8 +72,7 @@ export function PremiumFooter() {
               </div>
             </Link>
             <p className="text-gray-400 max-w-xs">
-              Transform your life with AI-powered personal development for facial enhancement, fitness, mental wellness,
-              and smart shopping.
+              Transform your life with AI-powered personal development for fitness and mental wellness.
             </p>
             <div className="flex space-x-4">
               <SocialIcon

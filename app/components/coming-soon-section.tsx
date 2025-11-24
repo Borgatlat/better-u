@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Sparkles, AppleIcon } from "lucide-react"
+import { Sparkles, AppleIcon, TrendingUp, Users, Target } from "lucide-react"
 import { AppStoreButton } from "./app-store-button"
 
 export function ComingSoonSection() {
@@ -12,127 +12,181 @@ export function ComingSoonSection() {
   })
 
   return (
-    <section ref={ref} className="py-24 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#001a1a]/30 to-black" />
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#00f2fe] rounded-full filter blur-[120px] opacity-10" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#00f2fe] rounded-full filter blur-[120px] opacity-10" />
+    <section ref={ref} className="py-32 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#001420]/50 to-black" />
+
+      {/* Animated gradient orbs */}
+      <motion.div
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00f2fe] rounded-full filter blur-[150px] opacity-20"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.15, 0.25, 0.15],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#00b4ff] rounded-full filter blur-[150px] opacity-20"
+        animate={{
+          scale: [1.2, 1, 1.2],
+          opacity: [0.25, 0.15, 0.25],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "easeInOut",
+          delay: 1,
+        }}
+      />
+
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,242,254,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,242,254,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
         >
-          <div className="inline-flex items-center justify-center mb-6">
-            <div className="bg-[#00f2fe]/10 p-3 rounded-lg">
-              <Sparkles className="w-8 h-8 text-[#00f2fe]" />
+          <motion.div
+            className="inline-flex items-center justify-center mb-8 relative"
+            animate={{
+              y: [0, -8, 0],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut",
+            }}
+          >
+            <div className="absolute inset-0 bg-[#00f2fe] blur-2xl opacity-40 rounded-full" />
+            <div className="relative bg-gradient-to-br from-[#00f2fe]/20 to-[#00b4ff]/20 p-6 rounded-2xl border border-[#00f2fe]/30 backdrop-blur-xl">
+              <Sparkles className="w-12 h-12 text-[#00f2fe]" />
             </div>
-          </div>
-
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] bg-clip-text text-transparent">
-            Download BetterU AI Today
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            BetterU AI is now officially available on the App Store! Start your personalized self-improvement journey
-            with AI-powered coaching, custom workouts, and mental wellness support.
-          </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col items-center"
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <AppleIcon className="h-6 w-6 text-[#00f2fe]" />
-              <p className="text-2xl text-white font-bold">Available Now on iOS</p>
+            <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight">
+              <span className="bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent">
+                Download{" "}
+              </span>
+              <span className="relative inline-block">
+                <span className="bg-gradient-to-r from-[#00f2fe] via-[#00d4ff] to-[#00b4ff] bg-clip-text text-transparent animate-gradient">
+                  BetterU AI
+                </span>
+                <motion.span
+                  className="absolute -inset-4 bg-[#00f2fe] blur-3xl opacity-20"
+                  animate={{
+                    opacity: [0.1, 0.3, 0.1],
+                    scale: [0.9, 1.1, 0.9],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Number.POSITIVE_INFINITY,
+                  }}
+                />
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent">
+                Today
+              </span>
+            </h2>
+          </motion.div>
+
+          <motion.p
+            className="text-xl md:text-2xl text-gray-300/90 max-w-4xl mx-auto mb-12 leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: inView ? 1 : 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            BetterU AI is now officially available on the App Store. Start your personalized self-improvement journey
+            with AI-powered coaching, custom workouts, and mental wellness support.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col items-center gap-6"
+          >
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#00f2fe]/10 to-[#00b4ff]/10 border border-[#00f2fe]/20 backdrop-blur-xl">
+              <div className="w-3 h-3 rounded-full bg-[#00f2fe] animate-pulse" />
+              <AppleIcon className="h-5 w-5 text-[#00f2fe]" />
+              <span className="text-base font-semibold text-white">Available Now on iOS</span>
             </div>
+
             <AppStoreButton
               variant="default"
               size="lg"
-              className="bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] text-black hover:text-white text-lg px-8 py-6"
+              className="bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] text-black hover:text-white text-lg px-10 py-6 shadow-2xl shadow-[#00f2fe]/30"
               text="Download on App Store"
             />
+
+            <p className="text-sm text-gray-400">Join thousands improving their lives daily</p>
           </motion.div>
         </motion.div>
 
-        {/* Feature preview cards */}
-        <div className="grid md:grid-cols-3 gap-6 mt-16">
+        <div className="grid md:grid-cols-3 gap-8 mt-20">
           {[
             {
               title: "Personalized AI Coaching",
-              description: "Get tailored guidance based on your unique goals and preferences",
-              icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M17.5 6.51L17.51 6.49889"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              ),
+              description: "Get tailored guidance based on your unique goals and preferences with real-time adaptation",
+              icon: Target,
+              gradient: "from-[#00f2fe]/10 to-[#00b4ff]/10",
             },
             {
-              title: "Progress Tracking",
-              description: "Monitor your improvement journey with detailed analytics and insights",
-              icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M16 8V16M12 11V16M8 14V16M6 20H18C19.1046 20 20 19.1046 20 18V6C20 4.89543 19.1046 4 18 4H6C4.89543 4 4 4.89543 4 6V18C4 19.1046 4.89543 20 6 20Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              ),
+              title: "Advanced Progress Tracking",
+              description:
+                "Monitor your improvement journey with detailed analytics, insights, and milestone celebrations",
+              icon: TrendingUp,
+              gradient: "from-[#00b4ff]/10 to-[#0090ff]/10",
             },
             {
-              title: "Community Support",
-              description: "Connect with others on similar self-improvement journeys",
-              icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M17 20H22V18C22 16.3431 20.6569 15 19 15C18.0444 15 17.1931 15.4468 16.6438 16.1429M17 20H7M17 20V18C17 17.3438 16.8736 16.717 16.6438 16.1429M7 20H2V18C2 16.3431 3.34315 15 5 15C5.95561 15 6.80686 15.4468 7.35625 16.1429M7 20V18C7 17.3438 7.12642 16.717 7.35625 16.1429M7.35625 16.1429C8.0935 14.301 9.89482 13 12 13C14.1052 13 15.9065 14.301 16.6438 16.1429M15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7ZM21 10C21 11.1046 20.1046 12 19 12C17.8954 12 17 11.1046 17 10C17 8.89543 17.8954 8 19 8C20.1046 8 21 8.89543 21 10ZM7 10C7 11.1046 6.10457 12 5 12C3.89543 12 3 11.1046 3 10C3 8.89543 3.89543 8 5 8C6.10457 8 7 8.89543 7 10Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              ),
+              title: "Vibrant Community",
+              description: "Connect with others on similar self-improvement journeys and share your achievements",
+              icon: Users,
+              gradient: "from-[#0090ff]/10 to-[#00f2fe]/10",
             },
-          ].map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-              className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-[#00f2fe]/30 transition-all group"
-            >
-              <div className="bg-[#00f2fe]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-[#00f2fe] group-hover:scale-110 transition-transform">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-              <p className="text-gray-400">{feature.description}</p>
-            </motion.div>
-          ))}
+          ].map((feature, index) => {
+            const IconComponent = feature.icon
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
+                transition={{ duration: 0.6, delay: 0.5 + index * 0.15 }}
+                className="group relative"
+              >
+                {/* Glow effect on hover */}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500" />
+
+                <div className="relative bg-black/60 backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-[#00f2fe]/40 transition-all duration-500 h-full">
+                  {/* Icon container */}
+                  <motion.div
+                    className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${feature.gradient} border border-[#00f2fe]/20 mb-6 relative overflow-hidden`}
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#00f2fe]/20 to-transparent" />
+                    <IconComponent className="w-8 h-8 text-[#00f2fe] relative z-10" />
+                  </motion.div>
+
+                  <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-[#00f2fe] transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>

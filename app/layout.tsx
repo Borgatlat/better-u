@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | BetterUAI",
   },
   description:
-    "Transform your life with BetterUAI - your personal AI companion for complete self-improvement across facial enhancement, fitness, mental wellness, and smart shopping.",
+    "Transform your life with BetterUAI - your personal AI companion for complete self-improvement across fitness and mental wellness.",
   keywords: ["AI", "self-improvement", "fitness", "mental wellness", "personal development", "BetterUAI"],
   authors: [{ name: "BetterUAI Team" }],
   creator: "BetterUAI",

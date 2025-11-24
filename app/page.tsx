@@ -1,25 +1,18 @@
 "use client"
 
-import { useRef, useState, useEffect } from "react"
+import { useRef } from "react"
 import { Toaster } from "@/components/ui/toaster"
 import Script from "next/script"
 import { HeroSection } from "./components/hero-section"
 import { FeatureShowcase } from "./components/feature-showcase"
 import { useScroll } from "framer-motion"
 import { AppleStyleDivider } from "./components/apple-style-divider"
-import { ComingSoonSection } from "./components/coming-soon-section"
-import { getWaitlistCount } from "./actions/waitlist"
+import { AppStoreLaunchBanner } from "./components/app-store-launch-banner"
 import { MultiRowCarousel } from "./components/carousel/multi-row-carousel"
 
 export default function Home() {
   const sectionsRef = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const { scrollY } = useScroll()
-
-  const [waitlistCount, setWaitlistCount] = useState(0)
-
-  useEffect(() => {
-    getWaitlistCount().then((count) => setWaitlistCount(count))
-  }, [])
 
   // Structured data for SEO
   const structuredData = {
@@ -27,13 +20,18 @@ export default function Home() {
     "@type": "SoftwareApplication",
     name: "BetterU AI",
     applicationCategory: "LifestyleApplication",
-    operatingSystem: "iOS, Android",
+    operatingSystem: "iOS",
     description:
-      "Your personal AI companion for complete self-improvement across facial enhancement, fitness, mental wellness, and smart shopping.",
+      "Your personal AI companion for complete self-improvement across fitness, mental wellness, and personal growth.",
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      ratingCount: "100",
     },
   }
 
@@ -61,8 +59,7 @@ export default function Home() {
         {/* Divider */}
         <AppleStyleDivider />
 
-        {/* Coming Soon Section */}
-        <ComingSoonSection />
+        <AppStoreLaunchBanner />
       </main>
       <Toaster />
     </>

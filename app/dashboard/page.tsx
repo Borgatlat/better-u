@@ -117,19 +117,19 @@ export default function DashboardPage() {
             <div className="flex items-center gap-3">
               <Sparkles className="h-8 w-8 text-cyan-400" />
               <div>
-                <CardTitle className="text-white text-2xl">Get Early Access</CardTitle>
+                <CardTitle className="text-white text-2xl">Download BetterU AI</CardTitle>
                 <CardDescription className="text-gray-300">
-                  Join our TestFlight beta to experience BetterU AI on iOS
+                  BetterU AI is now available on the App Store! Download and start your journey today.
                 </CardDescription>
               </div>
             </div>
           </CardHeader>
           <CardContent>
             <Button
-              onClick={() => window.open("https://testflight.apple.com/join/9TQrDfBx", "_blank")}
+              onClick={() => window.open("https://apps.apple.com/us/app/betteru-social-fitness/id6744857930", "_blank")}
               className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-black font-semibold"
             >
-              Join iOS Beta
+              Download on App Store
             </Button>
           </CardContent>
         </Card>

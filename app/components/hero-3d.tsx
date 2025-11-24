@@ -2,10 +2,8 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { WaitlistForm } from "./waitlist-form"
 import { useInView } from "react-intersection-observer"
-import { cn } from "@/lib/utils"
-import { getWaitlistCount } from "../actions/waitlist"
+import { AppStoreButton } from "./app-store-button"
 
 export function Hero3D() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -16,13 +14,6 @@ export function Hero3D() {
     triggerOnce: false,
     threshold: 0.1,
   })
-  // Add state for waitlist count
-  const [waitlistCount, setWaitlistCount] = useState(0)
-
-  // Fetch the actual waitlist count
-  useEffect(() => {
-    getWaitlistCount().then((count) => setWaitlistCount(count))
-  }, [])
 
   // Handle mouse movement for 3D effect
   useEffect(() => {
@@ -152,22 +143,17 @@ export function Hero3D() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto"
           >
-            Your personal AI companion for complete self-improvement, powered by core human values.
+            Your personal AI companion for complete self-improvement across all aspects of your life.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.9 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="relative"
+            className="relative flex justify-center"
             style={{ transformStyle: "preserve-3d", transform: "translateZ(50px)" }}
           >
-            <div className="max-w-md mx-auto relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] rounded-xl blur-lg opacity-30" />
-              <div className="relative bg-black/60 backdrop-blur-xl p-1 rounded-xl border border-white/10">
-                <WaitlistForm />
-              </div>
-            </div>
+            <AppStoreButton size="large" showBadge />
           </motion.div>
 
           <motion.div
@@ -176,27 +162,19 @@ export function Hero3D() {
             animate={{ opacity: inView ? 1 : 0 }}
             transition={{ delay: 0.8, duration: 0.5 }}
           >
-            <div className="flex items-center space-x-4">
-              <div className="flex -space-x-2">
-                {[0, 1, 2].map((i) => (
-                  <div
-                    key={i}
-                    className={cn(
-                      "w-10 h-10 rounded-full border-2 border-black flex items-center justify-center text-xs font-semibold",
-                      i === 0
-                        ? "bg-purple-600 text-white"
-                        : i === 1
-                          ? "bg-blue-600 text-white"
-                          : "bg-blue-700 text-white",
-                    )}
-                  >
-                    {i === 0 ? "LB" : i === 1 ? "DJ" : "JM"}
-                  </div>
-                ))}
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
+              <div className="flex items-center space-x-2">
+                <span className="text-[#00f2fe]">✓</span>
+                <span>AI-Powered Workouts</span>
               </div>
-              <p className="text-gray-300">
-                <span className="font-semibold text-white">{waitlistCount}</span> people on the waitlist
-              </p>
+              <div className="flex items-center space-x-2">
+                <span className="text-[#00f2fe]">✓</span>
+                <span>Mental Wellness</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-[#00f2fe]">✓</span>
+                <span>Smart Goals</span>
+              </div>
             </div>
           </motion.div>
         </motion.div>

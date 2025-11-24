@@ -5,7 +5,7 @@ import { SheetFooter } from "@/components/ui/sheet"
 import { UserMenu } from "./auth/user-menu"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { TestFlightButton } from "./testflight-button"
+import { AppStoreButton } from "./app-store-button"
 import {
   Sheet,
   SheetClose,
@@ -49,24 +49,11 @@ export function PremiumNavigation() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <TestFlightButton
+            <AppStoreButton
               variant="outline"
               className="hidden md:inline-flex border-[#00f2fe]/50 text-[#00f2fe] hover:text-white hover:bg-[#00f2fe]/10"
+              text="Download App"
             />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <Button
-              onClick={() => {}}
-              className="hidden md:inline-flex bg-transparent hover:bg-white/10 text-white border border-[#00f2fe]/50 font-medium px-5 py-2 rounded-full transition-all duration-300 ease-in-out focus:outline-none group overflow-hidden relative"
-            >
-              <span className="relative z-10">Join Waitlist</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </Button>
           </motion.div>
 
           <motion.div
@@ -79,12 +66,12 @@ export function PremiumNavigation() {
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button className="md:hidden">Open</Button>
+              <Button className="md:hidden">Menu</Button>
             </SheetTrigger>
             <SheetContent side="right">
               <SheetHeader>
                 <SheetTitle>Menu</SheetTitle>
-                <SheetDescription>Take action</SheetDescription>
+                <SheetDescription>Access your options</SheetDescription>
               </SheetHeader>
 
               <motion.div
@@ -92,22 +79,7 @@ export function PremiumNavigation() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <TestFlightButton className="mt-4 w-full" />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-              >
-                <Button
-                  onClick={() => {
-                    setOpen(false)
-                  }}
-                  className="mt-4 w-full bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] text-black font-semibold px-4 rounded-lg transition-all duration-300 ease-in-out focus:outline-none"
-                >
-                  Join Waitlist
-                </Button>
+                <AppStoreButton className="mt-4 w-full" text="Download App" />
               </motion.div>
 
               <motion.div

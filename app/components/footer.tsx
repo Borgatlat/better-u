@@ -57,13 +57,13 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="https://testflight.apple.com/join/9TQrDfBx"
+                  href="https://apps.apple.com/us/app/betteru-social-fitness/id6744857930"
                   className="text-sm text-gray-400 hover:text-[#00f2fe] transition-colors flex items-center"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <AppleIcon className="h-3 w-3 mr-1" />
-                  iOS Beta
+                  Download iOS App
                 </Link>
               </li>
             </ul>

@@ -7,6 +7,7 @@ import { Footer } from "./components/footer"
 import { CookieConsent } from "./components/cookie-consent"
 import { AnalyticsTracker } from "./components/analytics-tracker"
 import { AuthProvider } from "./components/auth/auth-provider"
+import { AppStoreBanner } from "./components/app-store-banner"
 import { Toaster } from "@/components/ui/toaster"
 import { Suspense } from "react"
 
@@ -73,7 +74,7 @@ export const metadata: Metadata = {
   verification: {
     google: "your-google-verification-code",
   },
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
@@ -87,6 +88,7 @@ export default function RootLayout({
         <AuthProvider>
           <Suspense fallback={<div>Loading...</div>}>
             <Navigation />
+            <AppStoreBanner />
             <main className="pt-14">{children}</main>
             <Footer />
             <CookieConsent />

@@ -10,20 +10,11 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 import { Logo } from "./logo"
-import { TestFlightButton } from "./testflight-button"
+import { AppStoreButton } from "./app-store-button"
 
 export function Navigation() {
   const [open, setOpen] = React.useState(false)
   const pathname = usePathname()
-
-  const scrollToWaitlist = () => {
-    const waitlistForm = document.querySelector("form[action]")
-    if (waitlistForm) {
-      waitlistForm.scrollIntoView({ behavior: "smooth" })
-    } else if (pathname !== "/") {
-      window.location.href = "/"
-    }
-  }
 
   // Separate main navigation from auth links
   const mainNavigation = NAVIGATION.filter((item) => !["Login", "Sign Up"].includes(item.title))
@@ -74,16 +65,11 @@ export function Navigation() {
             ))}
           </div>
 
-          <TestFlightButton
-            variant="outline"
-            className="hidden md:inline-flex border-[#00f2fe]/50 text-[#00f2fe] hover:text-white hover:bg-[#00f2fe]/10"
+          <AppStoreButton
+            variant="default"
+            className="hidden md:inline-flex bg-[#00f2fe] hover:bg-[#00b4ff] text-black font-semibold"
+            text="Download App"
           />
-          <Button
-            onClick={scrollToWaitlist}
-            className="hidden md:inline-flex bg-[#00f2fe] hover:bg-[#00b4ff] text-black font-semibold px-4 rounded-lg transition-all duration-300 ease-in-out focus:outline-none"
-          >
-            Join Waitlist
-          </Button>
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
@@ -115,19 +101,11 @@ export function Navigation() {
                         {item.title}
                       </Link>
                     ))}
-                    <TestFlightButton
-                      variant="outline"
-                      className="mt-2 w-full border-[#00f2fe]/50 text-[#00f2fe] hover:text-white hover:bg-[#00f2fe]/10"
+                    <AppStoreButton
+                      variant="default"
+                      className="mt-4 w-full bg-[#00f2fe] hover:bg-[#00b4ff] text-black font-semibold"
+                      text="Download App"
                     />
-                    <Button
-                      onClick={() => {
-                        setOpen(false)
-                        scrollToWaitlist()
-                      }}
-                      className="mt-4 w-full bg-[#00f2fe] hover:bg-[#00b4ff] text-black font-semibold px-4 rounded-lg transition-all duration-300 ease-in-out focus:outline-none"
-                    >
-                      Join Waitlist
-                    </Button>
                   </div>
                 </nav>
               </ScrollArea>

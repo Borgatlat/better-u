@@ -2,10 +2,8 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { WaitlistForm } from "./waitlist-form"
+import { AppStoreButton } from "./app-store-button"
 import { useInView } from "react-intersection-observer"
-import { cn } from "@/lib/utils"
-import { getWaitlistCount } from "../actions/waitlist"
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -16,15 +14,7 @@ export function HeroSection() {
     triggerOnce: false,
     threshold: 0.1,
   })
-  // Add state for waitlist count
-  const [waitlistCount, setWaitlistCount] = useState(0)
 
-  // Fetch the actual waitlist count
-  useEffect(() => {
-    getWaitlistCount().then((count) => setWaitlistCount(count))
-  }, [])
-
-  // Handle mouse movement for subtle effect
   useEffect(() => {
     setIsMounted(true)
 
@@ -45,23 +35,17 @@ export function HeroSection() {
     }
   }, [])
 
-  // Function to scroll to the next section
   const scrollToNextSection = () => {
-    // Get the height of the viewport
     const viewportHeight = window.innerHeight
-
-    // Scroll down one viewport height with smooth behavior
     window.scrollTo({
       top: viewportHeight,
       behavior: "smooth",
     })
   }
 
-  // Calculate subtle rotation based on mouse position
   const rotateX = isMounted ? mousePosition.y * -0.01 : 0
   const rotateY = isMounted ? mousePosition.x * 0.01 : 0
 
-  // Particles for background effect
   const particles = Array.from({ length: 20 }).map((_, i) => ({
     id: i,
     size: Math.random() * 4 + 2,
@@ -80,7 +64,6 @@ export function HeroSection() {
       className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
       style={{ perspective: "1000px" }}
     >
-      {/* Animated background particles */}
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
@@ -105,10 +88,8 @@ export function HeroSection() {
         />
       ))}
 
-      {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-radial from-[#003333]/40 via-black to-black" />
 
-      {/* 3D rotating container */}
       <motion.div
         ref={ref}
         className="container relative z-10 px-4 md:px-6 text-center"
@@ -156,18 +137,24 @@ export function HeroSection() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.9 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="relative"
-            style={{ transformStyle: "preserve-3d", transform: "translateZ(50px)" }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
+            transition={{ delay: 0.5, duration: 0.6, type: "spring", stiffness: 100 }}
+            className="relative flex justify-center mb-8"
+            style={{ transformStyle: "preserve-3d", transform: "translateZ(40px)" }}
           >
-            <div className="max-w-md mx-auto relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] rounded-xl blur-lg opacity-30" />
-              <div className="relative bg-black/60 backdrop-blur-xl p-1 rounded-xl border border-white/10">
-                <WaitlistForm />
-              </div>
-            </div>
+            <AppStoreButton size="large" showBadge />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: inView ? 1 : 0 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
+            className="text-center mb-8"
+          >
+            <p className="text-sm text-gray-400 font-medium">
+              Join thousands improving their lives daily • Free to download
+            </p>
           </motion.div>
 
           <motion.div
@@ -176,36 +163,26 @@ export function HeroSection() {
             animate={{ opacity: inView ? 1 : 0 }}
             transition={{ delay: 0.8, duration: 0.5 }}
           >
-            <div className="flex items-center space-x-4">
-              <div className="flex -space-x-2">
-                {[0, 1, 2].map((i) => (
-                  <div
-                    key={i}
-                    className={cn(
-                      "w-10 h-10 rounded-full border-2 border-black flex items-center justify-center text-xs font-semibold",
-                      i === 0
-                        ? "bg-purple-600 text-white"
-                        : i === 1
-                          ? "bg-blue-600 text-white"
-                          : "bg-blue-700 text-white",
-                    )}
-                  >
-                    {i === 0 ? "LB" : i === 1 ? "DJ" : "JM"}
-                  </div>
-                ))}
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
+              <div className="flex items-center space-x-2">
+                <span className="text-[#00f2fe]">✓</span>
+                <span>AI-Powered Workouts</span>
               </div>
-              <p className="text-gray-300">
-                <span className="font-semibold text-white">{waitlistCount}</span> people on the waitlist
-              </p>
+              <div className="flex items-center space-x-2">
+                <span className="text-[#00f2fe]">✓</span>
+                <span>Mental Wellness</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-[#00f2fe]">✓</span>
+                <span>Smart Goals</span>
+              </div>
             </div>
           </motion.div>
         </motion.div>
       </motion.div>
 
-      {/* Decorative elements */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
 
-      {/* Scroll down button */}
       <motion.button
         onClick={scrollToNextSection}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer p-3 rounded-full hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-[#00f2fe]/50 focus:ring-offset-2 focus:ring-offset-black"

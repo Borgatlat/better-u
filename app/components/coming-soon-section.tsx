@@ -2,9 +2,8 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { WaitlistForm } from "./waitlist-form"
 import { Sparkles, AppleIcon } from "lucide-react"
-import { TestFlightButton } from "./testflight-button"
+import { AppStoreButton } from "./app-store-button"
 
 export function ComingSoonSection() {
   const [ref, inView] = useInView({
@@ -33,41 +32,28 @@ export function ComingSoonSection() {
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] bg-clip-text text-transparent">
-            Coming Soon
+            Download BetterU AI Today
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            We're working hard to bring you the ultimate AI-powered self-improvement experience. Join our waitlist to be
-            among the first to access BetterU AI when we launch.
+            BetterU AI is now officially available on the App Store! Start your personalized self-improvement journey
+            with AI-powered coaching, custom workouts, and mental wellness support.
           </p>
 
-          <div className="max-w-md mx-auto">
-            <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] rounded-xl blur-lg opacity-30" />
-              <div className="relative bg-black/60 backdrop-blur-xl p-1 rounded-xl border border-white/10">
-                <WaitlistForm />
-              </div>
-            </div>
-          </div>
-
-          {/* TestFlight Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-8 flex flex-col items-center"
+            className="flex flex-col items-center"
           >
             <div className="flex items-center justify-center space-x-2 mb-4">
-              <AppleIcon className="h-5 w-5 text-[#00f2fe]" />
-              <p className="text-lg text-white font-medium">iOS Beta Available Now</p>
+              <AppleIcon className="h-6 w-6 text-[#00f2fe]" />
+              <p className="text-2xl text-white font-bold">Available Now on iOS</p>
             </div>
-            <p className="text-gray-300 max-w-2xl mx-auto mb-4">
-              Want to try BetterU AI right now? Our iOS beta is available on TestFlight. Get early access and help shape
-              the future of the app.
-            </p>
-            <TestFlightButton
+            <AppStoreButton
               variant="default"
-              className="bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] text-black hover:text-white"
-              text="Download iOS Beta"
+              size="lg"
+              className="bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] text-black hover:text-white text-lg px-8 py-6"
+              text="Download on App Store"
             />
           </motion.div>
         </motion.div>

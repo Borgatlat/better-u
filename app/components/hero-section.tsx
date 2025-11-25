@@ -1,13 +1,12 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { AppStoreButton } from "./app-store-button"
 import { useInView } from "react-intersection-observer"
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isMounted, setIsMounted] = useState(false)
   const { scrollY } = useScroll()
   const [ref, inView] = useInView({
@@ -17,22 +16,6 @@ export function HeroSection() {
 
   useEffect(() => {
     setIsMounted(true)
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return
-
-      const rect = containerRef.current.getBoundingClientRect()
-      const x = e.clientX - rect.left - rect.width / 2
-      const y = e.clientY - rect.top - rect.height / 2
-
-      setMousePosition({ x, y })
-    }
-
-    window.addEventListener("mousemove", handleMouseMove)
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-    }
   }, [])
 
   const scrollToNextSection = () => {
@@ -43,162 +26,112 @@ export function HeroSection() {
     })
   }
 
-  const rotateX = isMounted ? mousePosition.y * -0.01 : 0
-  const rotateY = isMounted ? mousePosition.x * 0.01 : 0
+  const y = useTransform(scrollY, [0, 500], [0, -80])
+  const opacity = useTransform(scrollY, [0, 400], [1, 0])
 
-  const particles = Array.from({ length: 20 }).map((_, i) => ({
-    id: i,
-    size: Math.random() * 4 + 2,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    duration: Math.random() * 20 + 10,
-    delay: Math.random() * 5,
-  }))
-
-  const y = useTransform(scrollY, [0, 500], [0, -100])
-  const opacity = useTransform(scrollY, [0, 500], [1, 0])
+  const features = ["AI-Powered Workouts", "Mental Wellness", "Progress Tracking"]
 
   return (
     <div
       ref={containerRef}
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
-      style={{ perspective: "1000px" }}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#050505]"
     >
-      {particles.map((particle) => (
-        <motion.div
-          key={particle.id}
-          className="absolute rounded-full bg-[#00f2fe] opacity-20 blur-sm"
+      <div className="absolute inset-0">
+        {/* Primary gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#050505] to-[#050505]" />
+
+        {/* Subtle cyan accent glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[#00f2fe]/[0.04] rounded-full blur-[150px]" />
+
+        {/* Grid pattern overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.015]"
           style={{
-            width: particle.size,
-            height: particle.size,
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-          }}
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0.1, 0.3, 0.1],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: particle.duration,
-            repeat: Number.POSITIVE_INFINITY,
-            delay: particle.delay,
-            ease: "easeInOut",
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)`,
+            backgroundSize: "80px 80px",
           }}
         />
-      ))}
+      </div>
 
-      <div className="absolute inset-0 bg-gradient-radial from-[#003333]/40 via-black to-black" />
-
+      {/* Main content */}
       <motion.div
         ref={ref}
-        className="container relative z-10 px-4 md:px-6 text-center"
-        style={{
-          y,
-          opacity,
-          rotateX,
-          rotateY,
-          transformStyle: "preserve-3d",
-        }}
+        className="container relative z-10 px-6 text-center max-w-4xl mx-auto"
+        style={{ y, opacity }}
       >
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Transform Your Life with{" "}
-            <span className="relative">
-              <span className="bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] bg-clip-text text-transparent">
-                BetterU AI
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 10 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+            className="inline-flex items-center gap-2 mb-10"
+          >
+            <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.06]">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00f2fe] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00f2fe]"></span>
               </span>
-              <motion.span
-                className="absolute -inset-1 rounded-lg opacity-30 blur-xl bg-[#00f2fe]"
-                animate={{
-                  opacity: [0.2, 0.4, 0.2],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                }}
-              />
-            </span>
+              <span className="text-xs font-medium text-white/60 tracking-wide">Now Available on iOS</span>
+            </div>
+          </motion.div>
+
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold mb-8 leading-[1.05] tracking-tight">
+            <span className="text-white">Transform Your Life</span>
+            <br />
+            <span className="text-white">with </span>
+            <span className="text-gradient">BetterU AI</span>
           </h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: inView ? 1 : 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto"
+            className="text-base md:text-lg text-white/40 mb-12 max-w-xl mx-auto leading-relaxed"
           >
-            Your personal AI companion for complete self-improvement across all aspects of your life.
+            Your personal AI companion for complete self-improvement across fitness and mental wellness.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
-            transition={{ delay: 0.5, duration: 0.6, type: "spring", stiffness: 100 }}
-            className="relative flex justify-center mb-8"
-            style={{ transformStyle: "preserve-3d", transform: "translateZ(40px)" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
+            transition={{ delay: 0.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col items-center gap-6"
           >
-            <AppStoreButton size="large" showBadge />
-          </motion.div>
+            <AppStoreButton variant="hero" text="Download on App Store" />
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: inView ? 1 : 0 }}
-            transition={{ delay: 0.7, duration: 0.5 }}
-            className="text-center mb-8"
-          >
-            <p className="text-sm text-gray-400 font-medium">
-              Join thousands improving their lives daily • Free to download
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="mt-12 flex justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: inView ? 1 : 0 }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-          >
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
-              <div className="flex items-center space-x-2">
-                <span className="text-[#00f2fe]">✓</span>
-                <span>AI-Powered Workouts</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <span className="text-[#00f2fe]">✓</span>
-                <span>Mental Wellness</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <span className="text-[#00f2fe]">✓</span>
-                <span>Smart Goals</span>
-              </div>
-            </div>
+            <p className="text-sm text-white/30">Join thousands improving daily</p>
           </motion.div>
         </motion.div>
       </motion.div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050505] to-transparent" />
 
       <motion.button
         onClick={scrollToNextSection}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer p-3 rounded-full hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-[#00f2fe]/50 focus:ring-offset-2 focus:ring-offset-black"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-        aria-label="Scroll down to next section"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 cursor-pointer group focus:outline-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        aria-label="Scroll to explore"
       >
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M12 5L12 19M12 19L6 13M12 19L18 13"
-            stroke="#00f2fe"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+        <span className="text-[10px] font-medium text-white/30 uppercase tracking-[0.2em] group-hover:text-white/50 transition-colors">
+          Explore
+        </span>
+        <motion.div
+          className="w-5 h-8 rounded-full border border-white/10 flex items-start justify-center p-1.5 group-hover:border-white/20 transition-colors"
+          animate={{ y: [0, 3, 0] }}
+          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+        >
+          <motion.div
+            className="w-0.5 h-1.5 bg-white/30 rounded-full group-hover:bg-white/50 transition-colors"
+            animate={{ y: [0, 6, 0], opacity: [1, 0.3, 1] }}
+            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
           />
-        </svg>
+        </motion.div>
       </motion.button>
     </div>
   )

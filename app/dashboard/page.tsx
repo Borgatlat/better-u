@@ -4,9 +4,8 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/app/components/auth/auth-provider"
 import { authClient } from "@/lib/auth"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Dumbbell, Brain, Users, Sparkles } from "lucide-react"
+import { AppStoreButton } from "@/app/components/app-store-button"
 
 interface Profile {
   id: string
@@ -28,7 +27,6 @@ export default function DashboardPage() {
     }
 
     if (user) {
-      // Fetch user profile
       authClient.getProfile().then((profileData) => {
         setProfile(profileData)
         setProfileLoading(false)
@@ -41,92 +39,101 @@ export default function DashboardPage() {
       icon: Dumbbell,
       title: "Fitness & Training",
       description: "AI-powered workout plans and form correction",
-      status: "Coming Soon",
+      status: "Active",
     },
     {
       icon: Brain,
       title: "Mental Wellness",
       description: "Mindfulness and cognitive enhancement tools",
-      status: "Coming Soon",
+      status: "Active",
     },
     {
       icon: Users,
       title: "Community",
       description: "Connect with like-minded individuals",
-      status: "Coming Soon",
+      status: "Active",
     },
   ]
 
   if (loading || profileLoading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto mb-4"></div>
-          <p className="text-gray-400">Loading your dashboard...</p>
+          <div className="w-8 h-8 border-2 border-white/20 border-t-[#00f2fe] rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-sm text-white/40">Loading dashboard...</p>
         </div>
       </div>
     )
   }
 
   if (!user) {
-    return null // Will redirect to login
+    return null
   }
 
-  const displayName = profile?.full_name || user.user_metadata?.full_name || user.email
+  const displayName = profile?.full_name || user.user_metadata?.full_name || user.email?.split("@")[0]
 
   return (
-    <div className="min-h-screen bg-black text-white p-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Welcome back, {displayName}!</h1>
-          <p className="text-gray-400 text-lg">Your AI-powered self-improvement journey continues here.</p>
+    <div className="min-h-screen bg-[#050505]">
+      {/* Background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#00f2fe]/[0.02] rounded-full blur-[150px]" />
+      </div>
+
+      <div className="container max-w-5xl mx-auto px-6 py-32 relative z-10">
+        {/* Header */}
+        <div className="mb-12">
+          <p className="text-[#00f2fe] text-sm font-medium tracking-widest uppercase mb-4">Dashboard</p>
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-3">
+            Welcome back, {displayName}
+          </h1>
+          <p className="text-white/40">Your AI-powered self-improvement journey continues here.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        {/* Feature cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
           {features.map((feature, index) => {
             const Icon = feature.icon
             return (
-              <Card key={index} className="bg-white/5 border-white/10 hover:bg-white/10 transition-colors">
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-cyan-400/20 rounded-lg">
-                      <Icon className="h-6 w-6 text-cyan-400" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-white text-lg">{feature.title}</CardTitle>
-                      <span className="text-xs text-cyan-400 font-medium">{feature.status}</span>
-                    </div>
+              <div
+                key={index}
+                className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.1] transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                    <Icon className="h-5 w-5 text-white/60" />
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-400">{feature.description}</CardDescription>
-                </CardContent>
-              </Card>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="font-medium text-white">{feature.title}</h3>
+                      <span className="text-[10px] font-medium text-[#00f2fe] bg-[#00f2fe]/10 px-2 py-0.5 rounded-full">
+                        {feature.status}
+                      </span>
+                    </div>
+                    <p className="text-sm text-white/40">{feature.description}</p>
+                  </div>
+                </div>
+              </div>
             )
           })}
         </div>
 
-        <Card className="bg-gradient-to-r from-cyan-400/10 to-blue-500/10 border-cyan-400/20">
-          <CardHeader>
-            <div className="flex items-center gap-3">
-              <Sparkles className="h-8 w-8 text-cyan-400" />
+        {/* Download CTA */}
+        <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-xl bg-[#00f2fe]/10">
+                <Sparkles className="h-6 w-6 text-[#00f2fe]" />
+              </div>
               <div>
-                <CardTitle className="text-white text-2xl">Download BetterU AI</CardTitle>
-                <CardDescription className="text-gray-300">
-                  BetterU AI is now available on the App Store! Download and start your journey today.
-                </CardDescription>
+                <h2 className="text-xl font-semibold text-white mb-1">Get the Mobile App</h2>
+                <p className="text-white/40">
+                  Download BetterU AI on iOS for the complete experience with all features.
+                </p>
               </div>
             </div>
-          </CardHeader>
-          <CardContent>
-            <Button
-              onClick={() => window.open("https://apps.apple.com/us/app/betteru-social-fitness/id6744857930", "_blank")}
-              className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-black font-semibold"
-            >
-              Download on App Store
-            </Button>
-          </CardContent>
-        </Card>
+            <AppStoreButton variant="hero" text="Download on App Store" />
+          </div>
+        </div>
       </div>
     </div>
   )

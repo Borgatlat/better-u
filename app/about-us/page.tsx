@@ -1,10 +1,8 @@
 import type { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
 import { Breadcrumbs } from "../components/breadcrumbs"
-import { AnimatedText } from "../components/animated-text"
-import { AppleStyleDivider } from "../components/apple-style-divider"
-import { WaitlistForm } from "../components/waitlist-form"
+import { AppStoreButton } from "../components/app-store-button"
+import { ArrowUpRight } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "About Us - BetterU AI | Our Mission, Team & Vision",
@@ -31,235 +29,102 @@ export const metadata: Metadata = {
 }
 
 export default function AboutUsPage() {
-  // Structured data for About Us page
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    name: "About BetterU AI",
-    description:
-      "BetterU AI is a pioneering company in the field of AI-powered self-improvement, offering personalized guidance for fitness and mental wellness.",
-    url: "https://betteruai.com/about-us",
-    mainEntity: {
-      "@type": "Organization",
-      name: "BetterU AI",
-      url: "https://betteruai.com",
-      logo: "https://betteruai.com/logo.png",
-      foundingDate: "2024",
-      founders: [
-        {
-          "@type": "Person",
-          name: "Lucas Borgarello",
-          jobTitle: "Co-Founder",
-        },
-        {
-          "@type": "Person",
-          name: "Daniel Johnson",
-          jobTitle: "Co-Founder, Mobile",
-        },
-        {
-          "@type": "Person",
-          name: "Enrique Ortiz",
-          jobTitle: "Co-Founder",
-        },
-        {
-          "@type": "Person",
-          name: "Jordi Idiarte",
-          jobTitle: "Co-Founder",
-        },
-        {
-          "@type": "Person",
-          name: "Joaquin Muniz",
-          jobTitle: "Co-Founder",
-        },
-      ],
-      description:
-        "BetterU AI is a pioneering company in the field of AI-powered self-improvement, offering personalized guidance for fitness and mental wellness.",
-    },
-  }
-
   const teamMembers = [
-    {
-      name: "Lucas Borgarello",
-      role: "Co-Founder",
-      bio: "Passionate about combining AI with personal development, Lucas co-founded BetterU AI to democratize access to personalized self-improvement.",
-      image: "/placeholder.svg?height=300&width=300",
-      initials: "LB",
-    },
-    {
-      name: "Daniel Johnson",
-      role: "Co-Founder, Mobile",
-      bio: "With expertise in mobile development, Daniel leads our efforts to create seamless mobile experiences that help users transform their lives.",
-      image: "/placeholder.svg?height=300&width=300",
-      initials: "DJ",
-    },
-    {
-      name: "Enrique Ortiz",
-      role: "Co-Founder",
-      bio: "Combining technical expertise with a passion for wellness, Enrique helps drive innovation in our AI-powered self-improvement platform.",
-      image: "/placeholder.svg?height=300&width=300",
-      initials: "EO",
-    },
-    {
-      name: "Jordi Idiarte",
-      role: "Co-Founder",
-      bio: "Jordi brings a unique perspective to BetterU AI, focusing on creating technology that truly understands and adapts to individual needs.",
-      image: "/placeholder.svg?height=300&width=300",
-      initials: "JI",
-    },
-    {
-      name: "Joaquin Muniz",
-      role: "Co-Founder",
-      bio: "With a background in AI and user experience, Joaquin works to ensure BetterU AI delivers meaningful transformation in users' lives.",
-      image: "/placeholder.svg?height=300&width=300",
-      initials: "JM",
-    },
+    { name: "Lucas Borgarello", role: "Co-Founder", initials: "LB" },
+    { name: "Daniel Johnson", role: "Co-Founder, Mobile", initials: "DJ" },
+    { name: "Enrique Ortiz", role: "Co-Founder", initials: "EO" },
+    { name: "Jordi Idiarte", role: "Co-Founder", initials: "JI" },
+    { name: "Joaquin Muniz", role: "Co-Founder", initials: "JM" },
   ]
 
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      {/* Add padding-top to account for the fixed header and safe area */}
-      <div className="container max-w-4xl mx-auto px-4 py-24 mt-safe-top pt-14">
+    <div className="min-h-screen bg-[#050505]">
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#00f2fe]/[0.02] rounded-full blur-[150px]" />
+      </div>
+
+      <div className="container max-w-3xl mx-auto px-6 py-32 relative z-10">
         <Breadcrumbs />
 
-        <section className="mb-16">
-          <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] bg-clip-text text-transparent">
-            About BetterU AI
+        <section className="mb-20">
+          <p className="text-[#00f2fe] text-sm font-medium tracking-widest uppercase mb-4">About Us</p>
+          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">
+            Transforming lives through
+            <br />
+            <span className="text-white/60">AI-powered improvement</span>
           </h1>
-
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <p className="text-lg text-gray-300 mb-6">
-                BetterU AI was founded in 2024 with a simple but powerful mission: to make personalized self-improvement
-                accessible to everyone through the power of artificial intelligence.
-              </p>
-              <p className="text-lg text-gray-300">
-                We believe that everyone deserves the opportunity to become their best self, but traditional methods of
-                self-improvement often fall short. They're either too generic, too expensive, or too time-consuming.
-                We're changing that by creating AI technology that truly understands your unique needs and goals.
-              </p>
-            </div>
-            <div className="relative h-64 md:h-auto rounded-xl overflow-hidden bg-gradient-to-br from-[#003333] to-black border border-[#00f2fe]/20">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-32 h-32 relative">
-                  <Image
-                    src="/placeholder.svg?height=300&width=300"
-                    alt="BetterU AI Office"
-                    fill
-                    className="object-cover rounded-xl opacity-0"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-6xl font-bold bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] bg-clip-text text-transparent">
-                      BetterU
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <p className="text-lg text-white/40 leading-relaxed max-w-2xl">
+            BetterU AI was founded in 2024 with a mission to make personalized self-improvement accessible to everyone
+            through the power of artificial intelligence.
+          </p>
         </section>
 
-        <AppleStyleDivider />
-
-        <section className="my-16" id="our-mission">
-          <div className="text-center mb-12">
-            <AnimatedText
-              text="Our Mission"
-              className="text-3xl font-bold tracking-tighter sm:text-4xl mb-4"
-              gradient={true}
-            />
-            <p className="text-gray-400 md:text-lg max-w-3xl mx-auto">
-              We're on a mission to transform lives through AI-powered self-improvement
+        <section className="mb-20">
+          <h2 className="text-2xl font-semibold text-white mb-6 tracking-tight">Our Mission</h2>
+          <div className="space-y-4 text-white/50 leading-relaxed">
+            <p>
+              We believe that everyone deserves the opportunity to become their best self. Traditional methods of
+              self-improvement often fall short - they're either too generic, too expensive, or too time-consuming.
             </p>
-          </div>
-
-          <div className="bg-black/30 border border-gray-800 rounded-xl p-8 backdrop-blur-sm">
-            <p className="text-gray-300 mb-6">
-              At BetterU AI, we believe that self-improvement should be personalized, accessible, and guided by
-              evidence-based approaches. Our mission is to harness the power of artificial intelligence to help people
-              become the best versions of themselves across all dimensions of life.
-            </p>
-            <p className="text-gray-300 mb-6">
-              Founded on user-centered principles, we're creating technology that understands the unique needs, goals,
-              and challenges of each individual user, providing tailored guidance that evolves as you do. Whether it's
-              optimizing your fitness routine, enhancing your mental wellness, or improving your appearance, our AI is
-              designed to support your journey every step of the way.
-            </p>
-            <p className="text-lg text-gray-300">
-              By democratizing access to personalized self-improvement, we aim to empower millions of people worldwide
-              to unlock their full potential and live healthier, happier, and more fulfilling lives.
+            <p>
+              We're changing that by creating AI technology that truly understands your unique needs and goals,
+              providing personalized guidance that evolves as you do.
             </p>
           </div>
         </section>
 
-        <section className="my-16" id="our-team">
-          <div className="text-center mb-12">
-            <AnimatedText
-              text="Meet Our Team"
-              className="text-3xl font-bold tracking-tighter sm:text-4xl mb-4"
-              gradient={true}
-            />
-            <p className="text-gray-400 md:text-lg max-w-3xl mx-auto">The passionate experts behind BetterU AI</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="bg-black/30 border border-gray-800 rounded-xl p-6 backdrop-blur-sm">
-                <div className="flex items-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-[#003333] flex items-center justify-center text-white font-semibold text-xl mr-4">
+        <section className="mb-20">
+          <h2 className="text-2xl font-semibold text-white mb-8 tracking-tight">Our Team</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {teamMembers.map((member) => (
+              <div
+                key={member.name}
+                className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.1] transition-colors"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-white/[0.04] flex items-center justify-center text-white/60 text-sm font-medium">
                     {member.initials}
                   </div>
                   <div>
-                    <h3 className="font-bold text-xl">{member.name}</h3>
-                    <p className="text-[#00f2fe]">{member.role}</p>
+                    <h3 className="font-medium text-white">{member.name}</h3>
+                    <p className="text-sm text-white/40">{member.role}</p>
                   </div>
                 </div>
-                <p className="text-gray-300">{member.bio}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <AppleStyleDivider />
-
-        <section className="my-16 text-center" id="join-us">
-          <div className="bg-gradient-to-br from-[#003333] to-black border border-[#00f2fe]/20 rounded-xl p-8 backdrop-blur-sm">
-            <h2 className="text-3xl font-bold mb-4">Join Our Journey</h2>
-            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-              Be among the first to experience the future of AI-powered self-improvement. Join our waitlist today and be
-              notified when BetterU AI launches.
-            </p>
-            <div className="max-w-md mx-auto">
-              <WaitlistForm />
-            </div>
-          </div>
+        <section className="text-center py-16 border-t border-white/[0.06]">
+          <h2 className="text-2xl font-semibold text-white mb-4 tracking-tight">Join Our Journey</h2>
+          <p className="text-white/40 mb-8 max-w-md mx-auto">
+            Download the app and start your AI-powered self-improvement journey today.
+          </p>
+          <AppStoreButton variant="hero" text="Download on App Store" />
         </section>
 
-        <section className="mt-16">
-          <div className="border-t border-gray-800 pt-8">
-            <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
-            <p className="text-gray-300 mb-6">
-              Have questions or want to learn more about BetterU AI? We'd love to hear from you.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="mailto:info@betteruai.com"
-                className="bg-[#00f2fe] hover:bg-[#00b4ff] text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300 ease-in-out focus:outline-none text-center"
-              >
-                Email Us
-              </Link>
-              <Link
-                href="https://www.instagram.com/betteru2025?igsh=MXYwOWFnOTJ3dWhidw=="
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-transparent hover:bg-white/10 text-white border border-white/20 font-semibold px-6 py-3 rounded-lg transition-all duration-300 ease-in-out focus:outline-none text-center"
-              >
-                Follow on Instagram
-              </Link>
-            </div>
+        <section className="pt-12 border-t border-white/[0.06]">
+          <h2 className="text-lg font-medium text-white mb-4">Contact</h2>
+          <div className="flex flex-wrap gap-4">
+            <Link
+              href="mailto:info@betteruai.com"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black font-medium text-sm hover:bg-white/90 transition-colors"
+            >
+              Email Us
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="https://www.instagram.com/betteru2025"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.04] text-white font-medium text-sm border border-white/[0.08] hover:bg-white/[0.08] transition-colors"
+            >
+              Instagram
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
           </div>
         </section>
       </div>
-    </>
+    </div>
   )
 }

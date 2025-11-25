@@ -44,7 +44,14 @@ export function GlassmorphicCard({ children, className, delay = 0, index = 0 }: 
         // @ts-ignore
         inViewRef(el)
       }}
-      className={cn("relative overflow-hidden rounded-xl backdrop-blur-sm transition-all duration-300", className)}
+      className={cn(
+        "relative overflow-hidden rounded-2xl",
+        "bg-white/[0.02] backdrop-blur-xl",
+        "border border-white/[0.06]",
+        "transition-all duration-500",
+        "hover:bg-white/[0.04] hover:border-white/[0.1]",
+        className,
+      )}
       initial={{ opacity: 0, y: 20 }}
       animate={{
         opacity: inView ? 1 : 0,
@@ -53,37 +60,21 @@ export function GlassmorphicCard({ children, className, delay = 0, index = 0 }: 
       transition={{
         duration: 0.5,
         delay: animationDelay,
-        ease: "easeOut",
+        ease: [0.22, 1, 0.36, 1],
       }}
       style={{
         scale,
         opacity,
       }}
     >
-      {/* Dynamic gradient background */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-[#00f2fe]/20 to-transparent -z-10"
+        className="absolute inset-0 bg-gradient-to-br from-[#00f2fe]/[0.02] to-transparent pointer-events-none"
         style={{
           opacity: gradientOpacity,
         }}
       />
 
-      {/* Border glow effect */}
-      <motion.div
-        className="absolute inset-0 rounded-xl border border-[#00f2fe]/20"
-        animate={{
-          boxShadow: inView
-            ? ["0 0 0px rgba(0, 242, 254, 0)", "0 0 15px rgba(0, 242, 254, 0.3)", "0 0 0px rgba(0, 242, 254, 0)"]
-            : "0 0 0px rgba(0, 242, 254, 0)",
-        }}
-        transition={{
-          duration: 2,
-          repeat: Number.POSITIVE_INFINITY,
-          repeatType: "reverse",
-        }}
-      />
-
-      {children}
+      <div className="relative z-10">{children}</div>
     </motion.div>
   )
 }

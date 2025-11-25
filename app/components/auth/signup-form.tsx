@@ -1,14 +1,12 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import Link from "next/link"
 
@@ -57,77 +55,82 @@ export function SignupForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center">Create Account</CardTitle>
-          <CardDescription className="text-center">Sign up to get started with BetterUAI</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSignup} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="fullName">Full Name</Label>
-              <Input
-                id="fullName"
-                type="text"
-                placeholder="Enter your full name"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                required
-                disabled={loading}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                disabled={loading}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Create a password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                disabled={loading}
-                minLength={6}
-              />
-            </div>
+    <div className="w-full">
+      <form onSubmit={handleSignup} className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="fullName" className="text-sm text-white/60">
+            Full Name
+          </Label>
+          <Input
+            id="fullName"
+            type="text"
+            placeholder="Your name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            required
+            disabled={loading}
+            className="bg-white/[0.03] border-white/[0.08] text-white placeholder:text-white/30 focus:border-[#00f2fe]/50 focus:ring-[#00f2fe]/20 rounded-lg h-11"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="email" className="text-sm text-white/60">
+            Email
+          </Label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            disabled={loading}
+            className="bg-white/[0.03] border-white/[0.08] text-white placeholder:text-white/30 focus:border-[#00f2fe]/50 focus:ring-[#00f2fe]/20 rounded-lg h-11"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="password" className="text-sm text-white/60">
+            Password
+          </Label>
+          <Input
+            id="password"
+            type="password"
+            placeholder="Create a password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            disabled={loading}
+            minLength={6}
+            className="bg-white/[0.03] border-white/[0.08] text-white placeholder:text-white/30 focus:border-[#00f2fe]/50 focus:ring-[#00f2fe]/20 rounded-lg h-11"
+          />
+        </div>
 
-            {error && (
-              <Alert variant="destructive">
-                <AlertDescription>{error}</AlertDescription>
-              </Alert>
-            )}
+        {error && (
+          <Alert variant="destructive" className="bg-red-500/10 border-red-500/20 text-red-400">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
 
-            {message && (
-              <Alert>
-                <AlertDescription>{message}</AlertDescription>
-              </Alert>
-            )}
+        {message && (
+          <Alert className="bg-[#00f2fe]/10 border-[#00f2fe]/20 text-[#00f2fe]">
+            <AlertDescription>{message}</AlertDescription>
+          </Alert>
+        )}
 
-            <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Creating account..." : "Create Account"}
-            </Button>
-          </form>
+        <Button
+          type="submit"
+          className="w-full bg-white text-black hover:bg-white/90 font-medium rounded-lg h-11 transition-all duration-300"
+          disabled={loading}
+        >
+          {loading ? "Creating account..." : "Create account"}
+        </Button>
+      </form>
 
-          <div className="mt-6 text-center text-sm">
-            <span className="text-muted-foreground">Already have an account? </span>
-            <Link href="/login" className="text-primary hover:underline">
-              Sign in
-            </Link>
-          </div>
-        </CardContent>
-      </Card>
+      <div className="mt-6 text-center text-sm">
+        <span className="text-white/40">Already have an account? </span>
+        <Link href="/login" className="text-white hover:text-[#00f2fe] transition-colors">
+          Sign in
+        </Link>
+      </div>
     </div>
   )
 }

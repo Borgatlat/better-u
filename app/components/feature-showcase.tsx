@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence, useInView } from "framer-motion"
 import { FEATURE_SHOWCASE } from "@/lib/constants"
-import { Dumbbell, Brain, ShoppingBag, Users, ChevronRight } from "lucide-react"
+import { Dumbbell, Brain, Users, ChevronRight, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export function FeatureShowcase() {
@@ -11,166 +11,148 @@ export function FeatureShowcase() {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: false, amount: 0.3 })
 
-  // Auto-rotate features
   useEffect(() => {
     if (!isInView) return
-
     const interval = setInterval(() => {
       setActiveFeature((prev) => (prev + 1) % FEATURE_SHOWCASE.length)
     }, 5000)
-
     return () => clearInterval(interval)
   }, [isInView])
 
-  // Get icon based on feature index
   const getFeatureIcon = (index: number) => {
-    switch (index) {
-      case 0:
-        return <Users className="w-6 h-6" />
-      case 1:
-        return <Dumbbell className="w-6 h-6" />
-      case 2:
-        return <Brain className="w-6 h-6" />
-      case 3:
-        return <ShoppingBag className="w-6 h-6" />
-      default:
-        return <Users className="w-6 h-6" />
-    }
+    const icons = [
+      <Users key="users" className="w-5 h-5" />,
+      <Dumbbell key="dumbbell" className="w-5 h-5" />,
+      <Brain key="brain" className="w-5 h-5" />,
+      <Sparkles key="sparkles" className="w-5 h-5" />,
+    ]
+    return icons[index] || icons[0]
   }
 
   return (
-    <div ref={containerRef} className="py-24 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#001a1a] to-black opacity-50" />
+    <section ref={containerRef} className="py-24 lg:py-32 relative">
+      <div className="absolute inset-0 gradient-mesh" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container max-w-screen-xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] bg-clip-text text-transparent">
-            Transform Every Aspect of Your Life
+          <p className="text-[#00f2fe] text-sm font-medium tracking-widest uppercase mb-4">Features</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-white mb-6">
+            Transform Every Aspect
+            <br />
+            <span className="text-white/60">of Your Life</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Our AI-powered platform helps you improve in four key areas, guided by Jesuit-inspired values
+          <p className="text-white/50 text-lg max-w-2xl mx-auto">
+            Our AI-powered platform helps you improve across key areas, guided by proven methodologies.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Feature selector */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : -50 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : -30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-4"
+            className="space-y-3"
           >
             {FEATURE_SHOWCASE.map((item, index) => (
-              <motion.div
+              <motion.button
                 key={index}
                 className={cn(
-                  "p-6 rounded-xl cursor-pointer transition-all duration-300 relative overflow-hidden group",
+                  "w-full p-5 rounded-xl text-left transition-all duration-300 relative group",
                   activeFeature === index
-                    ? "bg-white/10 backdrop-blur-sm border border-[#00f2fe]/30"
-                    : "bg-black/20 hover:bg-black/40 border border-white/5",
+                    ? "bg-white/[0.06] border border-white/[0.1]"
+                    : "bg-transparent border border-transparent hover:bg-white/[0.03]",
                 )}
                 onClick={() => setActiveFeature(index)}
-                whileHover={{ x: 5 }}
+                whileHover={{ x: 4 }}
               >
-                {/* Active indicator */}
                 {activeFeature === index && (
                   <motion.div
-                    className="absolute left-0 top-0 bottom-0 w-1 bg-[#00f2fe]"
-                    layoutId="activeFeatureIndicator"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-8 bg-[#00f2fe] rounded-full"
+                    layoutId="activeIndicator"
                   />
                 )}
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   <div
                     className={cn(
-                      "p-3 rounded-lg transition-colors",
+                      "p-2.5 rounded-lg transition-colors",
                       activeFeature === index
-                        ? "bg-[#00f2fe]/20 text-[#00f2fe]"
-                        : "bg-white/5 text-gray-400 group-hover:text-white",
+                        ? "bg-[#00f2fe]/10 text-[#00f2fe]"
+                        : "bg-white/[0.04] text-white/40 group-hover:text-white/60",
                     )}
                   >
                     {getFeatureIcon(index)}
                   </div>
 
                   <div className="flex-1">
-                    <div className="flex justify-between items-center mb-2">
-                      <h3
-                        className={cn(
-                          "font-bold text-xl transition-colors",
-                          activeFeature === index ? "text-white" : "text-gray-400 group-hover:text-white",
-                        )}
-                      >
-                        {item.title}
-                      </h3>
-                      <ChevronRight
-                        className={cn(
-                          "w-5 h-5 transition-transform",
-                          activeFeature === index
-                            ? "text-[#00f2fe] translate-x-0"
-                            : "text-gray-500 -translate-x-2 group-hover:translate-x-0",
-                        )}
-                      />
-                    </div>
-                    <p className="text-gray-400">{item.description}</p>
+                    <h3
+                      className={cn(
+                        "font-medium text-base transition-colors",
+                        activeFeature === index ? "text-white" : "text-white/60 group-hover:text-white/80",
+                      )}
+                    >
+                      {item.title}
+                    </h3>
+                    <p className="text-white/40 text-sm mt-0.5 line-clamp-1">{item.description}</p>
                   </div>
+
+                  <ChevronRight
+                    className={cn(
+                      "w-4 h-4 transition-all",
+                      activeFeature === index
+                        ? "text-[#00f2fe] translate-x-0"
+                        : "text-white/20 -translate-x-1 group-hover:translate-x-0",
+                    )}
+                  />
                 </div>
-              </motion.div>
+              </motion.button>
             ))}
           </motion.div>
 
-          {/* Feature details */}
-          <div className="relative h-[500px] bg-black/20 rounded-2xl border border-white/10 overflow-hidden">
-            {/* Feature background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#001a1a] to-black opacity-70" />
+          <div className="relative h-[480px] rounded-2xl overflow-hidden bg-white/[0.02] border border-white/[0.06]">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#00f2fe]/[0.03] to-transparent" />
 
-            {/* Feature content */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeFeature}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.4 }}
                 className="relative z-10 p-8 h-full flex flex-col"
               >
                 <div className="mb-6">
-                  <div className="inline-block p-3 rounded-lg bg-[#00f2fe]/20 text-[#00f2fe] mb-4">
+                  <div className="inline-flex p-2.5 rounded-xl bg-[#00f2fe]/10 text-[#00f2fe] mb-4">
                     {getFeatureIcon(activeFeature)}
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">{FEATURE_SHOWCASE[activeFeature].title}</h3>
-                  <p className="text-gray-300">{FEATURE_SHOWCASE[activeFeature].description}</p>
+                  <h3 className="text-xl font-semibold text-white mb-2">{FEATURE_SHOWCASE[activeFeature].title}</h3>
+                  <p className="text-white/50 text-sm">{FEATURE_SHOWCASE[activeFeature].description}</p>
                 </div>
 
-                <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 overflow-auto">
+                <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3 overflow-auto">
                   {FEATURE_SHOWCASE[activeFeature].features.map((feature, idx) => (
                     <motion.div
                       key={idx}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: idx * 0.1 }}
-                      className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10"
+                      transition={{ duration: 0.3, delay: idx * 0.05 }}
+                      className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.04]"
                     >
-                      <h4 className="font-semibold text-[#00f2fe] mb-1">{feature.title}</h4>
-                      <p className="text-sm text-gray-400">{feature.description}</p>
+                      <h4 className="font-medium text-sm text-white mb-1">{feature.title}</h4>
+                      <p className="text-xs text-white/40 leading-relaxed">{feature.description}</p>
                     </motion.div>
                   ))}
                 </div>
               </motion.div>
             </AnimatePresence>
-
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-40 h-40 bg-[#00f2fe] rounded-full filter blur-[100px] opacity-20" />
-            <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#00f2fe] rounded-full filter blur-[100px] opacity-10" />
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

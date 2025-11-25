@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { ChevronRight } from "lucide-react"
 
 export function Breadcrumbs() {
   const pathname = usePathname()
@@ -12,19 +13,24 @@ export function Breadcrumbs() {
   let currentPath = ""
   pathSegments.forEach((segment) => {
     currentPath += `/${segment}`
-    const label = segment.replace(/[-]/g, " ") // Replace hyphens with spaces
+    const label = segment.replace(/[-]/g, " ")
     breadcrumbs.push({ label: capitalizeFirstLetter(label), href: currentPath })
   })
 
   return (
-    <nav aria-label="Breadcrumb">
-      <ol className="flex items-center space-x-2">
+    <nav aria-label="Breadcrumb" className="mb-8">
+      <ol className="flex items-center gap-1">
         {breadcrumbs.map((breadcrumb, index) => (
-          <li key={index}>
-            <Link href={breadcrumb.href} className="text-sm text-gray-400 hover:text-[#00f2fe] transition-colors">
+          <li key={index} className="flex items-center">
+            <Link
+              href={breadcrumb.href}
+              className={`text-sm transition-colors ${
+                index === breadcrumbs.length - 1 ? "text-white/80" : "text-white/40 hover:text-white/60"
+              }`}
+            >
               {breadcrumb.label}
             </Link>
-            {index < breadcrumbs.length - 1 && <span className="mx-2 text-gray-400">/</span>}
+            {index < breadcrumbs.length - 1 && <ChevronRight className="w-3.5 h-3.5 mx-1.5 text-white/20" />}
           </li>
         ))}
       </ol>

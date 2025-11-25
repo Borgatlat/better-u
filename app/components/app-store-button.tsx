@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { AppleIcon, Download, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface AppStoreButtonProps {
@@ -30,65 +29,56 @@ export function AppStoreButton({
 
   if (size === "large") {
     return (
-      <div className="relative inline-block group">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#00f2fe] via-[#00b4ff] to-[#00f2fe] rounded-2xl blur-xl opacity-30 group-hover:opacity-60 animate-pulse transition-opacity duration-500" />
+      <div className="relative inline-flex flex-col items-center gap-4">
+        {/* Subtle ambient glow */}
+        <div
+          className={cn(
+            "absolute inset-0 rounded-xl transition-opacity duration-700",
+            "bg-gradient-to-b from-white/5 to-transparent blur-2xl",
+            isHovered ? "opacity-100" : "opacity-0",
+          )}
+        />
 
-        {showBadge && (
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1 bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg shadow-orange-500/40 animate-bounce">
-            <Sparkles className="h-3 w-3" />
-            <span>NOW LIVE!</span>
-            <Sparkles className="h-3 w-3" />
-          </div>
-        )}
-
+        {/* Main button - Apple Store official style */}
         <button
           className={cn(
-            "relative px-8 py-4 rounded-2xl font-bold text-base overflow-hidden transition-all duration-500 transform",
-            "bg-gradient-to-br from-[#00f2fe] via-[#00b4ff] to-[#0099ff]",
-            "hover:from-[#00ffff] hover:via-[#00d4ff] hover:to-[#00b4ff]",
-            "text-black shadow-xl shadow-[#00f2fe]/50",
-            "hover:scale-105 hover:shadow-[0_0_40px_rgba(0,242,254,0.6)]",
-            "active:scale-100",
-            "border-2 border-white/20",
+            "relative flex items-center gap-3 px-6 py-3 rounded-xl",
+            "bg-white text-black",
+            "transition-all duration-300 ease-out",
+            "hover:bg-gray-100 hover:scale-[1.02]",
+            "active:scale-[0.98]",
+            "shadow-lg shadow-black/20",
+            "focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black",
             className,
           )}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onClick={handleClick}
         >
-          <div className="absolute inset-0 overflow-hidden">
-            <div
-              className="absolute top-1/4 left-1/4 w-1.5 h-1.5 bg-white rounded-full animate-ping opacity-60"
-              style={{ animationDelay: "0s" }}
-            />
-            <div
-              className="absolute top-1/2 right-1/4 w-1 h-1 bg-white rounded-full animate-ping opacity-60"
-              style={{ animationDelay: "0.5s" }}
-            />
-            <div
-              className="absolute bottom-1/3 left-1/3 w-0.5 h-0.5 bg-white rounded-full animate-ping opacity-60"
-              style={{ animationDelay: "1s" }}
-            />
+          {/* Apple Logo */}
+          {showIcon && (
+            <svg viewBox="0 0 384 512" className="h-8 w-8" fill="currentColor">
+              <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-googletag61.5-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+            </svg>
+          )}
+
+          {/* Text content */}
+          <div className="flex flex-col items-start leading-tight">
+            <span className="text-[10px] font-medium tracking-wide uppercase opacity-80">Download on the</span>
+            <span className="text-xl font-semibold -mt-0.5">App Store</span>
           </div>
-
-          <div className="relative z-10 flex items-center justify-center gap-3">
-            {showIcon && (
-              <div className="bg-white/20 p-2 rounded-lg backdrop-blur-sm transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110">
-                <AppleIcon className="h-6 w-6" />
-              </div>
-            )}
-            <div className="flex flex-col items-start">
-              <span className="text-xs font-medium opacity-90 tracking-wide">Download now on</span>
-              <span className="text-xl font-black leading-tight tracking-tight">App Store</span>
-            </div>
-            <Download className="h-5 w-5 ml-1 transition-transform duration-300 group-hover:translate-y-1 group-hover:scale-110" />
-          </div>
-
-          {/* Shimmer effect */}
-          <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12" />
-
-          <div className="absolute inset-0 rounded-2xl border-2 border-white/0 group-hover:border-white/20 transition-all duration-300" />
         </button>
+
+        {/* Subtle "Available Now" indicator */}
+        {showBadge && (
+          <div className="flex items-center gap-2 text-sm text-gray-400">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="font-medium">Available Now</span>
+          </div>
+        )}
       </div>
     )
   }
@@ -98,12 +88,11 @@ export function AppStoreButton({
       variant={variant}
       size={size}
       className={cn(
-        "relative overflow-hidden transition-all duration-300 cursor-pointer group",
-        "bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] text-black font-bold",
-        "border-2 border-white/20",
-        "hover:from-[#00ffff] hover:to-[#00d4ff]",
-        "hover:shadow-xl hover:shadow-[#00f2fe]/60 hover:scale-110 hover:-translate-y-1",
-        "active:scale-100 active:translate-y-0",
+        "relative overflow-hidden transition-all duration-300 cursor-pointer",
+        "bg-white text-black font-semibold",
+        "hover:bg-gray-100 hover:scale-[1.02]",
+        "active:scale-[0.98]",
+        "shadow-md shadow-black/10",
         className,
       )}
       onMouseEnter={() => setIsHovered(true)}
@@ -111,12 +100,11 @@ export function AppStoreButton({
       onClick={handleClick}
     >
       {showIcon && (
-        <AppleIcon
-          className={cn("h-5 w-5 mr-2 transition-transform duration-300", isHovered ? "scale-125 rotate-12" : "")}
-        />
+        <svg viewBox="0 0 384 512" className="h-4 w-4 mr-2" fill="currentColor">
+          <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.5-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+        </svg>
       )}
-      <span className="relative z-10 font-bold text-base">{text}</span>
-      <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+      <span className="relative z-10">{text}</span>
     </Button>
   )
 }

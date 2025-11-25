@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Breadcrumbs } from "../components/breadcrumbs"
-import { WaitlistForm } from "../components/waitlist-form"
+import { AppStoreButton } from "../components/app-store-button"
+import { ArrowRight } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Blog - BetterU AI | Self-Improvement Insights & Tips",
@@ -27,7 +28,6 @@ export const metadata: Metadata = {
   },
 }
 
-// Sample blog posts
 const blogPosts = [
   {
     title: "How AI is Revolutionizing Personal Fitness",
@@ -42,24 +42,8 @@ const blogPosts = [
     excerpt:
       "Learn how technology and AI can enhance traditional mental wellness practices like meditation, journaling, and cognitive behavioral therapy.",
     date: "April 5, 2025",
-    category: "Mental Wellness",
+    category: "Wellness",
     slug: "mental-wellness-practices-enhanced-technology",
-  },
-  {
-    title: "The Science Behind Effective Skincare Routines",
-    excerpt:
-      "Explore the scientific principles that make a skincare routine effective and how AI can help you optimize your personal regimen.",
-    date: "March 28, 2025",
-    category: "Facial Enhancement",
-    slug: "science-behind-effective-skincare-routines",
-  },
-  {
-    title: "Smart Shopping: How to Choose Products That Actually Work",
-    excerpt:
-      "Cut through marketing hype and learn how to select products that deliver real results for your self-improvement journey.",
-    date: "March 20, 2025",
-    category: "Smart Shop",
-    slug: "smart-shopping-choose-products-that-work",
   },
   {
     title: "The Future of Self-Improvement: AI Companions",
@@ -80,85 +64,58 @@ const blogPosts = [
 ]
 
 export default function BlogPage() {
-  // Structured data for Blog page
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    name: "BetterU AI Blog",
-    description: "Articles on AI-powered self-improvement, fitness, mental wellness, and more",
-    url: "https://betteruai.com/blog",
-    publisher: {
-      "@type": "Organization",
-      name: "BetterU AI",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://betteruai.com/logo.png",
-      },
-    },
-    blogPost: blogPosts.map((post) => ({
-      "@type": "BlogPosting",
-      headline: post.title,
-      description: post.excerpt,
-      datePublished: post.date,
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": `https://betteruai.com/blog/${post.slug}`,
-      },
-    })),
-  }
-
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <div className="container max-w-4xl mx-auto px-4 py-24 mt-safe-top pt-14">
+    <div className="min-h-screen bg-[#050505]">
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#00f2fe]/[0.02] rounded-full blur-[150px]" />
+      </div>
+
+      <div className="container max-w-4xl mx-auto px-6 py-32 relative z-10">
         <Breadcrumbs />
 
         <section className="mb-16">
-          <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] bg-clip-text text-transparent">
-            BetterU AI Blog
-          </h1>
-
-          <p className="text-lg text-gray-300 mb-8">
-            Explore the latest insights, tips, and strategies for AI-powered self-improvement. Our articles cover
-            everything from fitness and mental wellness to skincare and smart shopping.
+          <p className="text-[#00f2fe] text-sm font-medium tracking-widest uppercase mb-4">Blog</p>
+          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Insights & Articles</h1>
+          <p className="text-lg text-white/40 max-w-2xl">
+            Explore the latest insights on AI-powered self-improvement, fitness strategies, and mental wellness.
           </p>
-
-          <div className="grid gap-8 md:grid-cols-2">
-            {blogPosts.map((post, index) => (
-              <article key={index} className="bg-black/30 border border-gray-800 rounded-xl p-6 backdrop-blur-sm">
-                <div className="mb-2">
-                  <span className="text-xs font-medium bg-[#00f2fe]/10 text-[#00f2fe] px-2 py-1 rounded">
-                    {post.category}
-                  </span>
-                  <span className="text-xs text-gray-400 ml-2">{post.date}</span>
-                </div>
-                <h2 className="text-xl font-bold mb-2 hover:text-[#00f2fe] transition-colors">
-                  <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                </h2>
-                <p className="text-gray-400 mb-4">{post.excerpt}</p>
-                <Link href={`/blog/${post.slug}`} className="text-[#00f2fe] hover:underline text-sm font-medium">
-                  Read more →
-                </Link>
-              </article>
-            ))}
-          </div>
         </section>
 
-        <section className="my-16 text-center">
-          <div className="bg-gradient-to-br from-[#003333] to-black border border-[#00f2fe]/20 rounded-xl p-8 backdrop-blur-sm">
-            <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] bg-clip-text text-transparent">
-              Stay Updated
-            </h2>
-            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-              Join our waitlist to receive the latest articles, tips, and updates from BetterU AI directly in your
-              inbox.
-            </p>
-            <div className="max-w-md mx-auto">
-              <WaitlistForm />
-            </div>
-          </div>
+        <div className="grid gap-6 md:grid-cols-2 mb-20">
+          {blogPosts.map((post, index) => (
+            <article
+              key={index}
+              className="group p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.1] transition-all duration-300"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-xs font-medium bg-white/[0.06] text-white/60 px-2.5 py-1 rounded-full">
+                  {post.category}
+                </span>
+                <span className="text-xs text-white/30">{post.date}</span>
+              </div>
+              <h2 className="text-lg font-medium text-white mb-3 group-hover:text-[#00f2fe] transition-colors">
+                <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+              </h2>
+              <p className="text-sm text-white/40 mb-4 leading-relaxed">{post.excerpt}</p>
+              <Link
+                href={`/blog/${post.slug}`}
+                className="inline-flex items-center gap-1.5 text-sm text-white/50 hover:text-[#00f2fe] transition-colors"
+              >
+                Read article
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </article>
+          ))}
+        </div>
+
+        <section className="text-center py-16 border-t border-white/[0.06]">
+          <h2 className="text-2xl font-semibold text-white mb-4 tracking-tight">Stay Updated</h2>
+          <p className="text-white/40 mb-8 max-w-md mx-auto">
+            Download the app to get the latest updates and start your self-improvement journey.
+          </p>
+          <AppStoreButton variant="hero" text="Download on App Store" />
         </section>
       </div>
-    </>
+    </div>
   )
 }

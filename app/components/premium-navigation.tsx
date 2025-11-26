@@ -33,11 +33,6 @@ export function PremiumNavigation() {
             </li>
             <li>
               <a href="#" className="hover:text-gray-300">
-                Pricing
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-300">
                 Support
               </a>
             </li>

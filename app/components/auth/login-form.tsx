@@ -46,9 +46,9 @@ export function LoginForm() {
 
   return (
     <div className="w-full">
-      <form onSubmit={handleLogin} className="space-y-4">
+      <form onSubmit={handleLogin} className="space-y-5">
         <div className="space-y-2">
-          <Label htmlFor="email" className="text-sm text-white/60">
+          <Label htmlFor="email" className="text-sm font-medium text-white/50">
             Email
           </Label>
           <Input
@@ -59,11 +59,11 @@ export function LoginForm() {
             onChange={(e) => setEmail(e.target.value)}
             required
             disabled={loading}
-            className="bg-white/[0.03] border-white/[0.08] text-white placeholder:text-white/30 focus:border-[#00f2fe]/50 focus:ring-[#00f2fe]/20 rounded-lg h-11"
+            className="bg-white/[0.02] border-white/[0.06] text-white placeholder:text-white/25 focus:border-[#00f2fe]/40 focus:ring-1 focus:ring-[#00f2fe]/20 rounded-xl h-12 transition-all duration-300"
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="password" className="text-sm text-white/60">
+          <Label htmlFor="password" className="text-sm font-medium text-white/50">
             Password
           </Label>
           <Input
@@ -74,34 +74,34 @@ export function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
             required
             disabled={loading}
-            className="bg-white/[0.03] border-white/[0.08] text-white placeholder:text-white/30 focus:border-[#00f2fe]/50 focus:ring-[#00f2fe]/20 rounded-lg h-11"
+            className="bg-white/[0.02] border-white/[0.06] text-white placeholder:text-white/25 focus:border-[#00f2fe]/40 focus:ring-1 focus:ring-[#00f2fe]/20 rounded-xl h-12 transition-all duration-300"
           />
         </div>
 
         {error && (
-          <Alert variant="destructive" className="bg-red-500/10 border-red-500/20 text-red-400">
-            <AlertDescription>{error}</AlertDescription>
+          <Alert variant="destructive" className="bg-red-500/10 border-red-500/20 text-red-400 rounded-xl">
+            <AlertDescription className="text-sm">{error}</AlertDescription>
           </Alert>
         )}
 
         {message && (
-          <Alert className="bg-[#00f2fe]/10 border-[#00f2fe]/20 text-[#00f2fe]">
-            <AlertDescription>{message}</AlertDescription>
+          <Alert className="bg-[#00f2fe]/10 border-[#00f2fe]/20 text-[#00f2fe] rounded-xl">
+            <AlertDescription className="text-sm">{message}</AlertDescription>
           </Alert>
         )}
 
         <Button
           type="submit"
-          className="w-full bg-white text-black hover:bg-white/90 font-medium rounded-lg h-11 transition-all duration-300"
+          className="w-full bg-white text-black hover:bg-white/90 font-medium rounded-xl h-12 text-sm tracking-wide transition-all duration-300"
           disabled={loading}
         >
           {loading ? "Signing in..." : "Sign in"}
         </Button>
       </form>
 
-      <div className="mt-6 text-center text-sm">
+      <div className="mt-8 text-center text-sm">
         <span className="text-white/40">Don't have an account? </span>
-        <Link href="/signup" className="text-white hover:text-[#00f2fe] transition-colors">
+        <Link href="/signup" className="text-white/70 hover:text-[#00f2fe] transition-colors duration-300">
           Sign up
         </Link>
       </div>

@@ -1,15 +1,15 @@
 export const NAVIGATION = [
   {
     title: "Gym & Fitness",
-    href: "/gym-fitness",
+    href: "/features/fitness",
   },
   {
     title: "Mental Wellness",
-    href: "/mental-wellness",
+    href: "/features/mental-wellness",
   },
   {
-    title: "Pricing",
-    href: "/pricing",
+    title: "Community",
+    href: "/features/community",
   },
   {
     title: "Login",
@@ -25,24 +25,38 @@ export const NAVIGATION = [
 export const FEATURE_SHOWCASE = [
   {
     title: "Gym & Fitness",
-    href: "/gym-fitness",
-    description: "Personalized workout plans, nutrition tracking, and fitness goals",
+    href: "/features/fitness",
+    description: "Personalized workout plans, progress tracking, and fitness goals",
+    image: "/images/fitness-app.png",
     features: [
       { title: "Custom Workouts", description: "AI-generated workout plans tailored to your goals" },
       { title: "Progress Tracking", description: "Track weights, PRs, and body measurements" },
-      { title: "Nutrition Planning", description: "Personalized meal plans and calorie tracking" },
-      { title: "Challenge System", description: "Join community challenges and track achievements" },
+      { title: "Shared Workouts", description: "Share and discover workouts from the community" },
+      { title: "Personal Records", description: "Track and celebrate your fitness milestones" },
     ],
   },
   {
     title: "Mental Wellness",
-    href: "/mental-wellness",
-    description: "AI therapy, meditation guidance, and emotional support",
+    href: "/features/mental-wellness",
+    description: "Meditation, mood tracking, and emotional well-being support",
+    image: "/images/mental-app.png",
     features: [
-      { title: "AI Therapy", description: "24/7 emotional support and guided conversations" },
-      { title: "Meditation Guide", description: "Personalized meditation and mindfulness practices" },
-      { title: "Journal Analytics", description: "AI-powered insights from your journal entries" },
+      { title: "Breathing Exercises", description: "Guided breathing techniques to calm your mind" },
+      { title: "Meditation", description: "Find peace with guided meditation sessions" },
+      { title: "Stress Relief", description: "Quick exercises to reduce stress and anxiety" },
       { title: "Mood Tracking", description: "Track and analyze your emotional well-being" },
+    ],
+  },
+  {
+    title: "Community",
+    href: "/features/community",
+    description: "Connect with others, share progress, and stay motivated",
+    image: null,
+    features: [
+      { title: "Social Feed", description: "Share achievements and motivate each other" },
+      { title: "Challenges", description: "Join community challenges and compete" },
+      { title: "Leagues", description: "Compete in fitness leagues with friends" },
+      { title: "Support Groups", description: "Connect with like-minded individuals" },
     ],
   },
 ]

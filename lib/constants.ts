@@ -51,7 +51,7 @@ export const FEATURE_SHOWCASE = [
     title: "Community",
     href: "/features/community",
     description: "Connect with others, share progress, and stay motivated",
-    image: null,
+    image: "/images/community-app.png",
     features: [
       { title: "Social Feed", description: "Share achievements and motivate each other" },
       { title: "Challenges", description: "Join community challenges and compete" },

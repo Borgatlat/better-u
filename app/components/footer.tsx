@@ -15,7 +15,7 @@ export function Footer() {
     company: [
       { title: "About", href: "/about-us" },
       { title: "Blog", href: "/blog" },
-      { title: "Contact", href: "mailto:lucas@betteruai.com" },
+      { title: "Contact", href: "mailto:lucas@betteru.app" },
     ],
     legal: [
       { title: "Privacy", href: "/privacy-policy" },
@@ -35,9 +35,9 @@ export function Footer() {
       <div className="container max-w-screen-xl mx-auto px-6 py-16 lg:py-20">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
           <div className="col-span-2 lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-3 mb-6" aria-label="BetterU AI Home">
+            <Link href="/" className="inline-flex items-center gap-3 mb-6" aria-label="BetterU Home">
               <BetterULogo width={40} height={40} />
-              <span className="text-white font-semibold text-lg tracking-tight">BetterU AI</span>
+              <span className="text-white font-semibold text-lg tracking-tight">BetterU</span>
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs mb-8">
               Transform your life with AI-powered personal development. Fitness, mental wellness, and continuous
@@ -107,7 +107,7 @@ export function Footer() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-white/40 text-sm">{currentYear} BetterU AI. All rights reserved.</p>
+          <p className="text-white/40 text-sm">&copy; {currentYear} BetterU LLC. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link href="/cookie-preferences" className="text-white/40 text-sm hover:text-white/60 transition-colors">
               Cookie Preferences

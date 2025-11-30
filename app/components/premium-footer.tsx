@@ -48,9 +48,9 @@ export function PremiumFooter() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 py-12 border-t border-white/[0.06]">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-2 mb-6" aria-label="BetterU AI Home">
+            <Link href="/" className="inline-flex items-center gap-2 mb-6" aria-label="BetterU Home">
               <BetterULogo width={36} height={36} />
-              <span className="text-white font-semibold tracking-tight">BetterU AI</span>
+              <span className="text-white font-semibold tracking-tight">BetterU</span>
             </Link>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
               AI-powered personal development for fitness and mental wellness.
@@ -80,7 +80,7 @@ export function PremiumFooter() {
               </li>
               <li>
                 <Link
-                  href="mailto:lucas@betteruai.com"
+                  href="mailto:lucas@betteru.app"
                   className="text-white/60 text-sm hover:text-white transition-colors inline-flex items-center gap-1 group"
                 >
                   Contact
@@ -113,7 +113,7 @@ export function PremiumFooter() {
         </div>
 
         <div className="border-t border-white/[0.06] py-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/30 text-sm">{currentYear} BetterU AI</p>
+          <p className="text-white/30 text-sm">&copy; {currentYear} BetterU LLC</p>
           <div className="flex items-center gap-6">
             <SocialIcon
               href="https://www.instagram.com/betteru2025"

@@ -83,7 +83,7 @@ export function HeroSection() {
             <span className="text-white">Transform Your Life</span>
             <br />
             <span className="text-white">with </span>
-            <span className="text-gradient">BetterU AI</span>
+            <span className="text-gradient">BetterU</span>
           </h1>
 
           <motion.p

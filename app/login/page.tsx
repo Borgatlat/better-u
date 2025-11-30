@@ -13,7 +13,7 @@ export default function LoginPage() {
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2 mb-8">
             <BetterULogo width={40} height={40} />
-            <span className="text-white font-semibold text-lg tracking-tight">BetterU AI</span>
+            <span className="text-white font-semibold text-lg tracking-tight">BetterU</span>
           </Link>
           <h1 className="text-2xl font-semibold text-white mb-2 tracking-tight">Welcome back</h1>
           <p className="text-sm text-white/40">Sign in to continue your journey</p>

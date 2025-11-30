@@ -97,8 +97,8 @@ export default function MentalWellnessPage() {
                   <div className="relative rounded-[38px] overflow-hidden bg-black">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 w-28 h-7 bg-black rounded-b-2xl" />
                     <Image
-                      src="/images/img-6129.jpeg"
-                      alt="BetterU AI Mental Wellness App"
+                      src="/images/mental-eleos-chat.png"
+                      alt="BetterU AI Eleos Mental Health Companion"
                       width={320}
                       height={640}
                       className="w-[320px] h-auto"

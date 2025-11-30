@@ -18,47 +18,47 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "BetterUAI - AI-Powered Personal Self-Improvement Assistant",
-    template: "%s | BetterUAI",
+    default: "BetterU - AI-Powered Personal Self-Improvement Assistant",
+    template: "%s | BetterU",
   },
   description:
-    "Transform your life with BetterUAI - your personal AI companion for complete self-improvement across fitness and mental wellness.",
-  keywords: ["AI", "self-improvement", "fitness", "mental wellness", "personal development", "BetterUAI"],
-  authors: [{ name: "BetterUAI Team" }],
-  creator: "BetterUAI",
-  publisher: "BetterUAI",
+    "Transform your life with BetterU - your personal AI companion for complete self-improvement across fitness and mental wellness.",
+  keywords: ["AI", "self-improvement", "fitness", "mental wellness", "personal development", "BetterU"],
+  authors: [{ name: "BetterU Team" }],
+  creator: "BetterU",
+  publisher: "BetterU LLC",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://betteruai.com"),
+  metadataBase: new URL("https://betteru.app"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://betteruai.com",
-    siteName: "BetterUAI",
-    title: "BetterUAI - AI-Powered Personal Self-Improvement Assistant",
+    url: "https://betteru.app",
+    siteName: "BetterU",
+    title: "BetterU - AI-Powered Personal Self-Improvement Assistant",
     description:
-      "Transform your life with BetterUAI - your personal AI companion for complete self-improvement across all aspects of your life.",
+      "Transform your life with BetterU - your personal AI companion for complete self-improvement across all aspects of your life.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "BetterUAI - AI-Powered Self-Improvement",
+        alt: "BetterU - AI-Powered Self-Improvement",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BetterUAI - AI-Powered Personal Self-Improvement Assistant",
-    description: "Transform your life with BetterUAI - your personal AI companion for complete self-improvement.",
+    title: "BetterU - AI-Powered Personal Self-Improvement Assistant",
+    description: "Transform your life with BetterU - your personal AI companion for complete self-improvement.",
     images: ["/og-image.png"],
-    creator: "@betteruai",
+    creator: "@betteru_app",
   },
   robots: {
     index: true,

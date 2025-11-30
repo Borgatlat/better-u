@@ -85,8 +85,8 @@ export const SOCIAL_LINKS = [
 ] as const
 
 export const COMPANY_INFO = {
-  name: "BetterUAI",
+  name: "BetterU",
   description: "Your personal AI companion for complete self-improvement across all aspects of your life.",
-  email: "hello@betteruai.com",
+  email: "hello@betteru.app",
   address: "San Francisco, CA",
 } as const

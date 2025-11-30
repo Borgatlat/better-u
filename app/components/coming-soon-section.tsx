@@ -54,7 +54,7 @@ export function ComingSoonSection() {
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6">
             <span className="text-white">Download </span>
-            <span className="text-gradient">BetterU AI</span>
+            <span className="text-gradient">BetterU</span>
             <br />
             <span className="text-white/60">Today</span>
           </h2>

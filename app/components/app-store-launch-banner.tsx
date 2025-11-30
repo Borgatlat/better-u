@@ -54,7 +54,7 @@ export function AppStoreLaunchBanner() {
           >
             <span className="block text-white/90">Start Your Journey</span>
             <span className="block mt-2 bg-gradient-to-r from-[#00f2fe] via-[#00d4ff] to-[#00b4ff] bg-clip-text text-transparent">
-              Download BetterU AI
+              Download BetterU
             </span>
           </motion.h2>
 

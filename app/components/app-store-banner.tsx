@@ -45,7 +45,7 @@ export function AppStoreBanner() {
           <div className="flex items-center space-x-2">
             <AppleIcon className="h-5 w-5" />
             <p className="text-sm font-medium">
-              BetterU AI is now available on the App Store!{" "}
+              BetterU is now available on the App Store!{" "}
               <a
                 href="https://apps.apple.com/us/app/betteru-social-fitness/id6744857930"
                 target="_blank"

@@ -54,8 +54,8 @@ export default function CookiePolicy() {
         <h2 className="text-xl font-semibold text-white mt-8">4. Contact Us</h2>
         <p>If you have any questions about our Cookie Policy, please contact us at:</p>
         <p className="mt-2">
-          <a href="mailto:lucas@betteruai.com" className="text-[#00f2fe] hover:underline">
-            lucas@betteruai.com
+          <a href="mailto:support@betteruai.com" className="text-[#00f2fe] hover:underline">
+            support@betteruai.com
           </a>
         </p>
 

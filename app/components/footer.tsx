@@ -15,7 +15,7 @@ export function Footer() {
     company: [
       { title: "About", href: "/about-us" },
       { title: "Blog", href: "/blog" },
-      { title: "Contact", href: "mailto:lucas@betteru.app" },
+      { title: "Contact", href: "mailto:lucas@betteruai.com" },
     ],
     legal: [
       { title: "Privacy", href: "/privacy-policy" },

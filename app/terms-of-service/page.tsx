@@ -16,10 +16,10 @@ export default function TermsOfService() {
         <h2 className="text-xl font-semibold text-white mt-8">1. Definitions</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li>
-            <strong>BetterUAI, we, us:</strong> BetterUAI Inc.
+            <strong>BetterU, we, us:</strong> BetterU LLC.
           </li>
           <li>
-            <strong>Service:</strong> the BetterUAI mobile and web applications, including all features and content.
+            <strong>Service:</strong> the BetterU mobile and web applications, including all features and content.
           </li>
           <li>
             <strong>User Content:</strong> any text, images, or other materials you upload or submit.
@@ -58,7 +58,7 @@ export default function TermsOfService() {
 
         <h2 className="text-xl font-semibold text-white mt-8">6. Content Ownership & License</h2>
         <ul className="list-disc pl-6 space-y-2">
-          <li>All content and features of the Service are the exclusive property of BetterUAI.</li>
+          <li>All content and features of the Service are the exclusive property of BetterU LLC.</li>
           <li>
             By submitting User Content, you grant us a worldwide, royalty‑free, sublicensable license to use, reproduce,
             modify, and display it in connection with the Service.
@@ -93,7 +93,7 @@ export default function TermsOfService() {
 
         <h2 className="text-xl font-semibold text-white mt-8">10. Limitation of Liability</h2>
         <p>
-          To the fullest extent permitted by law, BetterUAI's total liability for any claim arising out of or relating
+          To the fullest extent permitted by law, BetterU LLC's total liability for any claim arising out of or relating
           to these Terms or the Service will not exceed the greater of (a) the amount you paid us in the twelve months
           prior to the claim or (b) fifty U.S. dollars (USD $50).
         </p>
@@ -113,7 +113,7 @@ export default function TermsOfService() {
             If any provision of these Terms is found unenforceable, the remaining provisions will remain in full force.
           </li>
           <li>
-            These Terms, along with our Privacy Policy, constitute the entire agreement between you and BetterUAI
+            These Terms, along with our Privacy Policy, constitute the entire agreement between you and BetterU LLC
             regarding the Service.
           </li>
         </ul>

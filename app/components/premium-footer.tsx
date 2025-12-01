@@ -80,7 +80,7 @@ export function PremiumFooter() {
               </li>
               <li>
                 <Link
-                  href="mailto:lucas@betteru.app"
+                  href="mailto:lucas@betteruai.com"
                   className="text-white/60 text-sm hover:text-white transition-colors inline-flex items-center gap-1 group"
                 >
                   Contact

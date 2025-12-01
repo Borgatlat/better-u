@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
       <Breadcrumbs />
 
       <h1 className="text-3xl font-bold mb-8 bg-gradient-to-r from-[#00f2fe] to-[#00b4ff] bg-clip-text text-transparent">
-        BetterUAI Privacy Policy
+        BetterU Privacy Policy
       </h1>
 
       <div className="space-y-6 text-gray-300">
@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
 
         <h2 className="text-xl font-semibold text-white mt-8">1. Introduction</h2>
         <p>
-          BetterUAI, Inc. ("BetterUAI," "we," "us," or "our") respects your privacy and is committed to protecting your
+          BetterU LLC ("BetterU," "we," "us," or "our") respects your privacy and is committed to protecting your
           personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your
           information when you use our mobile and web applications (the "Service").
         </p>
@@ -79,7 +79,7 @@ export default function PrivacyPolicy() {
           </li>
           <li>
             <strong>Data Deletion:</strong> You can request deletion of your account and personal data by contacting us
-            at support@betteru.ai. We will process your request unless retention is legally required.
+            at support@betteruai.com. We will process your request unless retention is legally required.
           </li>
         </ul>
 
@@ -123,7 +123,7 @@ export default function PrivacyPolicy() {
         </p>
 
         <p className="mt-8 font-semibold text-white">
-          By using BetterUAI, you acknowledge that you have read and understood this Privacy Policy.
+          By using BetterU, you acknowledge that you have read and understood this Privacy Policy.
         </p>
 
         <div className="mt-12 pt-6 border-t border-gray-800">

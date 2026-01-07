@@ -116,7 +116,7 @@ export function PremiumFooter() {
           <p className="text-white/30 text-sm">&copy; {currentYear} BetterU LLC</p>
           <div className="flex items-center gap-6">
             <SocialIcon
-              href="https://www.instagram.com/betteru2025"
+              href="https://www.instagram.com/betteruapp"
               aria-label="Instagram"
               icon={<InstagramIcon className="h-4 w-4" />}
               target="_blank"

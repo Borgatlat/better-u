@@ -45,7 +45,7 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               <SocialIcon
-                href="https://www.instagram.com/betteru2025"
+                href="https://www.instagram.com/betteruapp"
                 aria-label="Instagram"
                 icon={<InstagramIcon className="h-4 w-4" />}
                 target="_blank"

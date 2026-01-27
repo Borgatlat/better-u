@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { BetterULogo } from "./betteru-logo"
+import Image from "next/image"
 
 interface LogoProps {
   className?: string
@@ -10,7 +10,13 @@ export function Logo({ className, size = 32 }: LogoProps) {
   return (
     <Link href="/" className={className}>
       <div className="flex items-center gap-2.5">
-        <BetterULogo width={size} height={size} />
+        <Image
+          src="/images/betteru-logo.png"
+          alt="BetterU Logo"
+          width={size}
+          height={size}
+          className="object-contain"
+        />
         <span className="text-white font-semibold text-base tracking-tight hidden sm:inline">BetterU</span>
       </div>
     </Link>

@@ -70,6 +70,7 @@
     "react-native-reanimated": "latest",
     "react-native-web": "latest",
     "react-native-webview": "latest",
+    "react-native-worklets": "latest",
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.4",
     "resend": "6.5.2",
